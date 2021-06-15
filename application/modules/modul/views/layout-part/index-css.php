@@ -1,0 +1,2 @@
+<link rel="stylesheet" href="<?php echo base_url('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/vendors/jquery-tags-input/jquery.tagsinput.min.css') ?>">
