@@ -9,6 +9,9 @@ class Position extends MX_Controller
 	{
 		parent::__construct();
 		$this->load->model('Position_model', 'position');
+		if($this->session->userdata('status') != 'isLogin') {
+			redirect('login','refresh');
+		}
 	}
 
 	public $_data = array(

@@ -9,6 +9,9 @@ class Department extends MX_Controller
 	{
 		parent::__construct();
 		$this->load->model('Department_model', 'department');
+		if($this->session->userdata('status') != 'isLogin') {
+			redirect('login','refresh');
+		}
 	}
 
 	public $_data = array(

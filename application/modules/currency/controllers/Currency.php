@@ -9,6 +9,9 @@ class Currency extends MX_Controller
 	{
 		parent::__construct();
 		$this->load->model('Currency_model', 'currency');
+		if($this->session->userdata('status') != 'isLogin') {
+			redirect('login','refresh');
+		}
 	}
 
 	public $_data = array(

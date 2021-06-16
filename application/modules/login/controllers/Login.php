@@ -68,7 +68,8 @@ class Login extends MX_Controller
 			$data_session = array(
 				'id' => $dataUser->id_user,
 				'nama' => $username,
-				'employeeId' => $dataUser->id_employee
+				'employeeId' => $dataUser->id_employee,
+				'status' => 'isLogin',
 			);
  
 			$this->session->set_userdata($data_session);
