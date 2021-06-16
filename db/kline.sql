@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jun 2021 pada 16.13
+-- Waktu pembuatan: 16 Jun 2021 pada 14.36
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -65,7 +65,8 @@ INSERT INTO `tb_company` (`id_company`, `company_name`, `init`, `is_holding`, `a
 ('1', 'IT Company', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('2', 'PT Karana Line Jakarta', 'JKT', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('3', 'PT Karana Line Medan', 'MDN', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('4', 'PT Karana Line Batam', 'BTM', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+('4', 'PT Karana Line Batam', 'BTM', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('5', 'PT Karana Line Surabaya', 'SBY', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -93,7 +94,8 @@ INSERT INTO `tb_currency` (`id_currency`, `currency`, `init`, `created_time`, `c
 (3, 'Singapore', 'SGD', '2021-06-14 10:24:06', 'nurman', '2021-06-14 10:24:06', 'nurman'),
 (4, 'United States Of America', 'USD', '2021-06-14 10:24:35', 'nurman', '2021-06-14 10:24:35', 'nurman'),
 (5, 'Japan', 'YEN', '2021-06-14 10:24:47', 'nurman', '2021-06-14 10:24:47', 'nurman'),
-(10, 'London', 'Pound', '2021-06-15 07:58:25', 'nurman', '2021-06-15 07:58:25', 'nurman');
+(10, 'London', 'Pound', '2021-06-15 07:58:25', 'nurman', '2021-06-15 07:58:25', 'nurman'),
+(11, 'Thailand', 'THD', '2021-06-16 11:18:47', 'nurman', '2021-06-16 11:18:47', 'nurman');
 
 -- --------------------------------------------------------
 
@@ -105,6 +107,7 @@ CREATE TABLE `tb_department` (
   `id_department` int(5) NOT NULL,
   `department_name` varchar(255) DEFAULT NULL,
   `init` varchar(255) DEFAULT NULL,
+  `id_company` varchar(255) DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `updated_time` datetime DEFAULT NULL,
@@ -115,8 +118,10 @@ CREATE TABLE `tb_department` (
 -- Dumping data untuk tabel `tb_department`
 --
 
-INSERT INTO `tb_department` (`id_department`, `department_name`, `init`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(2, 'FINANCE & ADMIN', 'FADM', '2021-06-15 08:51:16', 'nurman', '2021-06-15 08:51:16', 'nurman');
+INSERT INTO `tb_department` (`id_department`, `department_name`, `init`, `id_company`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+(2, 'FINANCE & ADMIN', 'FADM', '2', '2021-06-15 08:51:16', 'nurman', '2021-06-15 08:51:16', 'nurman'),
+(6, 'Agency 1', 'AGN 1', '5', '2021-06-16 14:13:09', 'nurman', '2021-06-16 14:13:09', 'nurman'),
+(7, 'Agency 2', 'AGN 2', '5', '2021-06-16 14:17:44', 'nurman', '2021-06-16 14:17:44', 'nurman');
 
 -- --------------------------------------------------------
 
@@ -222,16 +227,16 @@ CREATE TABLE `tb_perkiraan` (
   `no_acc` varchar(255) DEFAULT NULL,
   `nama_acc` varchar(255) DEFAULT NULL,
   `acc_induk` varchar(255) DEFAULT NULL,
-  `level` varchar(255) DEFAULT NULL,
-  `kategori` varchar(255) DEFAULT NULL,
+  `level` enum('1','2','3','4','5','6') DEFAULT NULL,
+  `kategori` enum('AKTIVA','PASSIVA','AKTIVABY','PASSIVABY') DEFAULT NULL,
   `jenis_perkiraan` varchar(255) DEFAULT NULL,
   `is_jurnal` varchar(255) DEFAULT NULL,
   `jenis_jurnal` varchar(255) DEFAULT NULL,
   `laporan_gl` varchar(255) DEFAULT NULL,
   `init_kas_bank` varchar(255) DEFAULT NULL,
   `saldo_min` double(255,0) DEFAULT NULL,
-  `is_budget` varchar(255) DEFAULT NULL,
-  `is_disb` varchar(255) DEFAULT NULL,
+  `is_budget` enum('YES','NO') DEFAULT NULL,
+  `is_disb` enum('YES','NO') DEFAULT NULL,
   `nama_bank` varchar(255) DEFAULT NULL,
   `no_rekening_bank` varchar(255) DEFAULT NULL,
   `id_company` varchar(255) DEFAULT NULL,
@@ -395,13 +400,13 @@ ALTER TABLE `tb_user_auth`
 -- AUTO_INCREMENT untuk tabel `tb_currency`
 --
 ALTER TABLE `tb_currency`
-  MODIFY `id_currency` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_currency` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_department`
 --
 ALTER TABLE `tb_department`
-  MODIFY `id_department` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_department` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_modul`
