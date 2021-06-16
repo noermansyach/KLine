@@ -15,44 +15,126 @@
              	<div class="col-md-8 grid-margin stretch-card">
                 	<div class="card">
                  		<div class="card-body">
-                    		<h4 class="card-title">Form Suplier</h4>
-                    		<p class="card-description"> Formulir penambahan suplier bahan baku</p>
+                 			<form class="form-sample" action="" method="post">
+                 				<div class="form-group row">
+                 					<label class="col-sm-3 col-form-label">No. Acc</label>
+                 					<div class="col-sm-7">
+                 						<input type="text" class="form-control" name="no_acc">
+                 					</div>
+                 				</div>
 
-		                    <form class="forms-sample" action="<?php echo base_url('suplier/add') ?>" method="post">
-		                    
+                 				<div class="form-group row">
+                 					<label class="col-sm-3 col-form-label">Nama Perkiraan</label>
+                 					<div class="col-sm-7">
+                 						<input type="text" class="form-control" name="nama_acc">
+                 					</div>
+                 				</div>
 
-		                    	<div class="form-group row">
-		                            <div class="col-sm-7">
-		                                <input type="hidden" class="form-control" id="nkd_suplier" name="kd_suplier" value="<?php echo $kodeSuplier ?>" readonly>
-		                            </div>
-		                        </div>
+                 				<div class="form-group row">
+                 					<label class="col-sm-3 col-form-label">Acc Induk</label>
+                 					<div class="col-sm-7">
+                 						<select name="acc_induk" class="js-example-basic-single" style="width:100%">
+                 							<option>- Pilih Acc Induk -</option>
+                 							<?php 
+                 								if (!empty($dataAccInduk)) {
+                 									foreach ($dataAccInduk as $value) {
+                 							?>
+                 							<option value="<?php echo $value->no_acc; ?>"><?php echo $value->no_acc . '-' . $value->nama_acc?></option>
+                 							<?php
+                 									}
+                 								}
+                 							?>
+                 						</select>
+                 					</div>
+                 				</div>
 
-		                        <div class="form-group row">
-		                            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nama Suplier *</label>
-		                            <div class="col-sm-7">
-		                                <input type="text" class="form-control" id="nama_suplier" name="nama_suplier">
-		                            </div>
-		                        </div>
+                 				<div class="form-group row">
+                 					<label class="col-sm-3 col-form-label">Cabang</label>
+                 					<div class="col-sm-7">
+                 						<select id="company" name="company" class="js-example-basic-single" style="width:100%">
+		                                   <option>- Pilih Cabang -</option>
+		                                   <?php foreach ($dataCabang as $value): ?>
+		                                   		<option value="<?php echo $value->id_company ?>"><?php echo str_replace('PT Karana Line', '', $value->company_name) . ' - ' . $value->init ?></option>
+		                                   <?php endforeach ?>
+		                                </select>
+                 					</div>
+                 				</div>
 
-		                        <div class="form-group row">
-		                            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Alamat *</label>
-		                            <div class="col-sm-7">
-		                                <textarea class="form-control" id="alamat" name="alamat" cols="10" rows="5"></textarea>
-		                            </div>
-		                        </div>
+                 				<div class="form-group row">
+                 					<label class="col-sm-3 col-form-label">Level</label>
+                 					<div class="col-sm-7">
+                 						<input type="radio" name="level" value="1"> 1 &nbsp;
+                 						<input type="radio" name="level" value="2"> 2 &nbsp;
+                 						<input type="radio" name="level" value="3"> 3 &nbsp;
+                 						<input type="radio" name="level" value="4"> 4 &nbsp;
+                 						<input type="radio" name="level" value="5"> 5 &nbsp; 
+                 						<input type="radio" name="level" value="6"> 6 &nbsp;
+                 					</div> 
+                 				</div>
 
-		                        <div class="form-group row">
-		                            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nomor Telepon *</label>
-		                            <div class="col-sm-5">
-		                                <input type="text" class="form-control" id="telp" name="telp">
-		                            </div>
-		                        </div>
+                 				<div class="form-group row">
+                 					<label class="col-sm-3 col-form-label">Currency</label>
+                 					<div class="col-sm-7">
+                 						<select id="currency" name="currency" class="js-example-basic-single" style="width:100%">
+		                                   <option>- Pilih Currency -</option>
+		                                   <?php foreach ($dataCurrency as $value): ?>
+		                                   		<option value="<?php echo $value->id_currency ?>"><?php echo $value->currency . ' - ' . $value->init; ?></option>
+		                                   <?php endforeach ?>
+		                                </select>
+                 					</div>
+                 				</div>
 
-		                        <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-		                        <!-- <button class="btn btn-dark">Batalkan</button> -->
-		                       	
-		                    <!-- <?php echo form_close(); ?> -->
-		                    </form>
+                 				<div class="form-group row">
+                 					<label class="col-sm-3 col-form-label">Jenis Jurnal</label>
+                 					<div class="col-sm-7">
+                 						<select id="jenisJurnal" name="jenis_jurnal" class="js-example-basic-single" style="width:100%">
+		                                   <option>- Pilih Jenis Jurnal -</option>
+		                                   <option value="KAS">Kas</option>
+		                                   <option value="BANK">Bank</option>
+		                                   <option value="PIUTANG">Piutang</option>
+		                                   <option value="HUTANG">Hutang</option>
+		                                </select>
+                 					</div>
+                 				</div>
+
+                 				<div class="form-group row">
+                 					<label class="col-sm-3 col-form-label">Init Kas Bank</label>
+                 					<div class="col-sm-7">
+                 						<input type="text" class="form-control" name="init_kas_bank">
+                 					</div>
+                 				</div>
+
+                 				<div class="form-group row">
+                 					<label class="col-sm-3 col-form-label">Kategori</label>
+                 					<div class="col-sm-7">
+                 						<input type="radio" name="Kategori" class="" value="AKTIVA"> Aktiva &nbsp;
+                 						<input type="radio" name="Kategori" class="f" value="PASSIVA"> Passiva &nbsp;
+                 						<input type="radio" name="Kategori" class="" value="AKTIVA"> Aktivaby &nbsp;
+                 						<input type="radio" name="Kategori" class="" value="AKTIVA"> Passivaby &nbsp;
+                 					</div>
+                 				</div>
+
+                 				<div class="form-group row">
+                 					<label class="col-sm-3 col-form-label">Budget</label>
+                 					<div class="col-sm-7">
+                 						<input type="radio" name="budget" class="" value="YES"> Yes &nbsp;
+                 						<input type="radio" name="budget" class="" value="NO"> No &nbsp;
+                 					</div>
+                 				</div>
+
+                 				<div class="form-group row">
+                 					<label class="col-sm-3 col-form-label">Disb</label>
+                 					<div class="col-sm-7">
+                 						<input type="radio" name="disb" class="" value="YES"> Yes &nbsp;
+                 						<input type="radio" name="disb" class="" value="NO"> No &nbsp;
+                 					</div>
+                 				</div>
+
+                 				<div class="d-flex flex-row-reverse">
+                 					<button type="submit" class="btn btn-outline-primary btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i> Submit </button>
+                 				</div>
+                 			</form>
+
                   		</div>
                 	</div>
              	</div>

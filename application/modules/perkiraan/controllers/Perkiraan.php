@@ -41,18 +41,22 @@ class Perkiraan extends MX_Controller
 		$this->_data['js'] = "layout-part/form-js";
 		$this->_data['content'] = "add";
 
+		$this->_data['dataCabang'] = $this->perkiraan->getDataCabang();
+		$this->_data['dataCurrency'] = $this->perkiraan->getDataCurrency();
+		$this->_data['dataAccInduk'] = $this->perkiraan->getDataAccInduk();
+
 		if ($_POST) {
-			$data = array(
-						'position' => $_POST['position'],
-						'init' => $_POST['init'],
-						'created_time' => date('Y-m-d H:i:s'),
-						'created_by' => $this->session->userdata('nama'),
-						'updated_time' => date('Y-m-d H:i:s'),
-						'updated_by' => $this->session->userdata('nama')
-					);
-			// print_r($_POST);
-			$this->position->insertPosition($data);
-			redirect('position','refresh');
+			// $data = array(
+			// 			'position' => $_POST['position'],
+			// 			'init' => $_POST['init'],
+			// 			'created_time' => date('Y-m-d H:i:s'),
+			// 			'created_by' => $this->session->userdata('nama'),
+			// 			'updated_time' => date('Y-m-d H:i:s'),
+			// 			'updated_by' => $this->session->userdata('nama')
+			// 		);
+			// // print_r($_POST);
+			// $this->position->insertPosition($data);
+			// redirect('position','refresh');
 		} else {
 			$this->load->view('layout', $this->_data);
 		}

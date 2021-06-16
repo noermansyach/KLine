@@ -18,9 +18,10 @@
 				</a>
 				<div class="collapse" id="general">
 					<ul class="nav flex-column sub-menu">
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('currency') ?>">Currency</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('company') ?>">Company</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('department') ?>">Department</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('position') ?>">Position</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('currency') ?>">Currency</a></li>
 					</ul>
 				</div>
 			</li>

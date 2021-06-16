@@ -23,4 +23,25 @@ class Perkiraan_model extends MY_Model
 		return $query;
 	}
 
+	public function getDataAccInduk()
+	{
+		return $this->db->select('no_acc, nama_acc')
+					 	->get('tb_perkiraan')->result();
+	}
+
+	public function getDataCabang() 
+	{
+		return $this->db->select('id_company, company_name, init')
+						->where('id_company !=', '1')
+						->order_by('id_company', 'asc')
+						->get('tb_company')->result();
+	}
+
+	public function getDataCurrency()
+	{
+		return $this->db->select('id_currency, currency, init')
+						->get('tb_currency')
+						->result();
+	}
+
 }

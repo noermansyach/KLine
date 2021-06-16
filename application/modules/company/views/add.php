@@ -1,9 +1,9 @@
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       	<div class="modal-content">
-      		<form method="post" action="<?php echo base_url("department/add") ?>">
+      		<form method="post" action="<?php echo base_url("currency/add") ?>">
 	            <div class="modal-header">
-	                <h5 class="modal-title" id="exampleModalLabel">Add Department</h5>
+	                <h5 class="modal-title" id="exampleModalLabel">Add Company</h5>
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	                    <span aria-hidden="true">&times;</span>
 	                </button>
@@ -12,25 +12,7 @@
 	            <div class="modal-body">
 	                <table class="table table-modal" width="500px" style="table-layout: fixed;"> 
 	                	<tr>
-	                		<td width="150px">Company</td>
-	                		<td><div class="nama_suplier">
-	                			<select name="id_company" class="js-example-basic-single" style="width:100%">
-         							<option>- Pilih Perusahaan -</option>
-         							<?php 
-         								if (!empty($dataCompany)) {
-         									foreach ($dataCompany as $value) {
-         							?>
-         							<option value="<?php echo $value->id_company; ?>"><?php echo $value->init . ' - ' . $value->company_name?></option>
-         							<?php
-         									}
-         								}
-         							?>
-                 				</select>
-	                		</div></td>
-
-	                	</tr>
-	                	<tr>
-	                		<td width="200px">Department Name</td>
+	                		<td>Currency Name</td>
 	                		<td><div class="nama_suplier"><input type="text" name="currency" class="form-control form-control-sm"></div></td>
 	                	</tr>
 

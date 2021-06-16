@@ -5,10 +5,14 @@
 class Department_model extends MY_Model
 {
 
-	public function readAllDepartment(){
-		$query = $this->db->where('id_department !=', '1')
-						  ->get('tb_department')->result();
-		return $query;
+	public function readAllDepartment()
+	{
+		return $this->db->select('B.company_name, B.init as init_company, A.*')
+						->join('tb_company B', 'A.id_company = B.id_company')
+						->order_by('A.id_company asc')
+						// ->order_by('B.id_department')
+						->get('tb_department A')
+						->result();
 	}
 	
 	public function insertDepartment($data) {
@@ -20,5 +24,7 @@ class Department_model extends MY_Model
 						  ->update('tb_department', $data);
 		return $query;
 	}
+
+	
 
 }
