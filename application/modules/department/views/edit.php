@@ -12,6 +12,26 @@
 
 	            <div class="modal-body">
 	                <table class="table table-modal" width="500px" style="table-layout: fixed;"> 
+
+	                	<tr>
+	                		<td width="150px">Company</td>
+	                		<td><div class="nama_suplier">
+	                			<select name="id_company" id="idCompany" class="js-example-basic-single" style="width:100%">
+         							<option>- Pilih Perusahaan -</option>
+         							<?php 
+         								if (!empty($dataCompany)) {
+         									foreach ($dataCompany as $value) {
+         							?>
+         							<option value="<?php echo $value->id_company; ?>"><?php echo $value->init . ' - ' . $value->company_name?></option>
+         							<?php
+         									}
+         								}
+         							?>
+                 				</select>
+	                		</div></td>
+
+	                	</tr>
+
 	                	<tr>
 	                		<td width="200px">Department Name</td>
 	                		<td>

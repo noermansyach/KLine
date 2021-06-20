@@ -22,6 +22,10 @@
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('department') ?>">Department</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('position') ?>">Position</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('currency') ?>">Currency</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('bank') ?>">Bank</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('kas_bank') ?>">Kas Bank</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('jenis_jurnal') ?>">Jenis Jurnal</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('mperkiraan') ?>">Mperkiraan</a></li>
 					</ul>
 				</div>
 			</li>

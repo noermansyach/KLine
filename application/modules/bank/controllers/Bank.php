@@ -2,21 +2,20 @@
 /**
  * 
  */
-class Department extends MX_Controller 
+class Bank extends MX_Controller 
 {
 	
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Department_model', 'department');
-		$this->load->model('company/Company_model', 'company');
+		$this->load->model('Bank_model', 'bank');
 		if($this->session->userdata('status') != 'isLogin') {
 			redirect('login','refresh');
 		}
 	}
 
 	public $_data = array(
-		'title' => "Department",
+		'title' => "Bank",
 		'css' => "",
 		'js' => "",
 		'content' => ""
@@ -29,12 +28,9 @@ class Department extends MX_Controller
 		$this->_data['content'] = "index";
 
 
-		$table = $this->department->readAllDepartment(); 
-		$this->_data['dataCompany'] = $this->company->readAllCompany();
+		$table = $this->bank->readAllBank(); 
 		if ($table) {
 			$this->_data['table_data'] = $table;
-		} else {
-			$this->_data['table_data'] = "Tidak ada data untuk ditampilkan";
 		}
 
 		$this->load->view('layout', $this->_data);
@@ -47,16 +43,16 @@ class Department extends MX_Controller
 
 		if ($_POST) {
 			$data = array(
-						'id_company' => $_POST['id_company'],
-						'department_name' => $_POST['currency'],
-						'init' => $_POST['init'],
+						'nama_bank' => $_POST['nama_bank'],
+						'initial' => $_POST['initial'],
+						'no_rek' => $_POST['no_rek'],
 						'created_time' => date('Y-m-d H:i:s'),
 						'created_by' => $this->session->userdata('nama'),
 						'updated_time' => date('Y-m-d H:i:s'),
 						'updated_by' => $this->session->userdata('nama')
 					);
-			$this->department->insertDepartment($data);
-			redirect('department','refresh');
+			$this->bank->insertBank($data);
+			redirect('bank','refresh');
 		}
 	}
 
@@ -65,24 +61,27 @@ class Department extends MX_Controller
 		$this->_data['css'] = "layout-part/form-css";
 		$this->_data['js'] = "layout-part/form-js";
 
-		$filter = array( 'id_department' => $_POST['id_department']);
-		$data = array('department_name' => $_POST['department_name'],
-					  'init' => $_POST['init']);
-		$this->department->updateDepartment($filter, (object) $data);
-		redirect('department','refresh');
+		$filter = array( 'id_bank' => $_POST['id_bank']);
+		$data = array('nama_bank' => $_POST['nama_bank'],
+					  'initial' => $_POST['initial'],
+					  'no_rek' => $_POST['no_rek'],
+					);
+		$this->bank->updateBank($filter, (object) $data);
+		redirect('bank','refresh');
 	}
 
 	public function delete($id) 
 	{
-		$this->department->delete(array('id_department' => $id));
+		$this->bank->delete(array('id_bank' => $id));
 
-		redirect('department');
+		redirect('bank');
 	}
 
 	public function detail($id)
 	{
-		// $where = "id_department = $id";
-		$departmentData = $this->department->getDepartment($id)->row();
-		echo json_encode($departmentData);
+		$where = "id_bank = $id";
+		$bankData = $this->bank->get_where($where)->row();
+
+		echo json_encode($bankData);
 	}
 }

@@ -19,7 +19,7 @@
 						          <h4 class="mb-0 mr-3"><?php echo ucfirst($title) ?></h4>
 						        </div>
 						        <div class="ml-lg-auto d-flex align-items-stretch justify-content-end">
-						            <button type="button" class="btn btn-success no-wrap ml-0" data-toggle="modal" data-target="#add" title="Detail">+ add company</button>
+						            <button type="button" class="btn btn-success no-wrap ml-0" data-toggle="modal" data-target="#add" title="add" >+ add kas bank</button>
 						        </div>
 						    </div>
 
@@ -34,33 +34,35 @@
 											<thead>
 												<tr>
 													<th>No.</th>
-													<th>Perusahaan</th>
-													<th>Initial</th>
-													<th>Keterangan</th>
-													<th>Telephone</th>
+													<th>No. Account</th>
+													<th>Kas Bank</th>
+													<th>Inisial</th>
+													<th>No. Rekening</th>
 													<th class="text-center">Actions</th>
 												</tr>
 											</thead>
 											<tbody>
-												<?php 
-													$no = 1;
-													foreach ($table_data as $value) {
+												<?php
+													if (!empty($table_data)) {
+														$no = 1;
+														foreach ($table_data as $value) {
 												?>
-												<tr>
-													<td><?php echo $no++; ?></td>
-													<td><?php echo str_replace('PT Karana Line', '', $value->company_name); ?></td>
-													<td><?php echo $value->init ?></td>
-													<td><?php echo ($value->is_holding == 1 ? "Pusat" : "Cabang"); ?></td>
-													<td><?php echo $value->telephone ?></td>
-													<td class="text-center">
-														<!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit" onclick="detail('<?php echo $value->id_currency; ?>')" title="edit"><i class="mdi mdi-pencil"></i> </button>
+														<tr>
+															<td><?php echo $no++; ?></td>
+															<td><?php echo $value->no_acc; ?></td>
+															<td><?php echo $value->kas_bank ?></td>
+															<td><?php echo $value->init_kas_bank ?></td>
+															<td><?php echo $value->no_rekening ?></td>
+															<td class="text-center">
+																<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit" onclick="detail('<?php echo $value->id_kas_bank; ?>')" title="edit"><i class="mdi mdi-pencil"></i> </button>
 
-														<a href="<?php echo base_url('currency/delete/' . $value->id_currency) ?>" class="btn btn-danger tombol-hapus" title="Delete"><i class="fa fa-trash-o"></i> </a> -->
-													</td>
-												</tr>
+																<a href="<?php echo base_url('kas_bank/delete/' . $value->id_kas_bank) ?>" class="btn btn-danger tombol-hapus" title="Delete"><i class="fa fa-trash-o"></i> </a>
+															</td>
+														</tr>
 												<?php 
+														}
 													}
-												?>
+												?>	
 											</tbody>
 										</table>
 							        </div>

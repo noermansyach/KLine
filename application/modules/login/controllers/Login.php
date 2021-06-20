@@ -74,7 +74,7 @@ class Login extends MX_Controller
  
 			$this->session->set_userdata($data_session);
 			
-			redirect('modul','refresh');
+			redirect('company','refresh');
 			// echo "berhasil";
 		}else{
 			// redirect('login','refresh');

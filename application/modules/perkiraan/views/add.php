@@ -105,7 +105,7 @@
                  				</div>
 
                  				<div class="form-group row">
-                 					<label class="col-sm-3 col-form-label">Kategori</label>
+                 					<label class="col-sm-3 col-form-label">Jenis Perkiraan</label>
                  					<div class="col-sm-7">
                  						<input type="radio" name="Kategori" class="" value="AKTIVA"> Aktiva &nbsp;
                  						<input type="radio" name="Kategori" class="f" value="PASSIVA"> Passiva &nbsp;

@@ -2,21 +2,20 @@
 /**
  * 
  */
-class Department extends MX_Controller 
+class Jenis_jurnal extends MX_Controller 
 {
 	
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Department_model', 'department');
-		$this->load->model('company/Company_model', 'company');
+		$this->load->model('Jenis_jurnal_model', 'jenisJurnal');
 		if($this->session->userdata('status') != 'isLogin') {
 			redirect('login','refresh');
 		}
 	}
 
 	public $_data = array(
-		'title' => "Department",
+		'title' => "Jenis Jurnal",
 		'css' => "",
 		'js' => "",
 		'content' => ""
@@ -29,12 +28,9 @@ class Department extends MX_Controller
 		$this->_data['content'] = "index";
 
 
-		$table = $this->department->readAllDepartment(); 
-		$this->_data['dataCompany'] = $this->company->readAllCompany();
+		$table = $this->jenisJurnal->readAllJenisJurnal(); 
 		if ($table) {
 			$this->_data['table_data'] = $table;
-		} else {
-			$this->_data['table_data'] = "Tidak ada data untuk ditampilkan";
 		}
 
 		$this->load->view('layout', $this->_data);
@@ -47,16 +43,14 @@ class Department extends MX_Controller
 
 		if ($_POST) {
 			$data = array(
-						'id_company' => $_POST['id_company'],
-						'department_name' => $_POST['currency'],
-						'init' => $_POST['init'],
+						'jenis_jurnal' => $_POST['jenis_jurnal'],
 						'created_time' => date('Y-m-d H:i:s'),
 						'created_by' => $this->session->userdata('nama'),
 						'updated_time' => date('Y-m-d H:i:s'),
 						'updated_by' => $this->session->userdata('nama')
 					);
-			$this->department->insertDepartment($data);
-			redirect('department','refresh');
+			$this->jenisJurnal->insertJenisJurnal($data);
+			redirect('jenis_jurnal','refresh');
 		}
 	}
 
@@ -65,24 +59,27 @@ class Department extends MX_Controller
 		$this->_data['css'] = "layout-part/form-css";
 		$this->_data['js'] = "layout-part/form-js";
 
-		$filter = array( 'id_department' => $_POST['id_department']);
-		$data = array('department_name' => $_POST['department_name'],
-					  'init' => $_POST['init']);
-		$this->department->updateDepartment($filter, (object) $data);
-		redirect('department','refresh');
+		$filter = array( 'id_kas_bank' => $_POST['id_kas_bank']);
+		$data = array('kas_bank' => $_POST['nama_kas_bank'],
+					  'init_kas_bank' => $_POST['init_kas_bank'],
+					  'no_rekening' => $_POST['no_rekening'],
+					);
+		$this->kasBank->updateKasBank($filter, (object) $data);
+		redirect('kas_bank','refresh');
 	}
 
 	public function delete($id) 
 	{
-		$this->department->delete(array('id_department' => $id));
+		$this->jenisJurnal->delete(array('id_jenis_jurnal' => $id));
 
-		redirect('department');
+		redirect('jenis_jurnal');
 	}
 
 	public function detail($id)
 	{
-		// $where = "id_department = $id";
-		$departmentData = $this->department->getDepartment($id)->row();
-		echo json_encode($departmentData);
+		$where = "id_kas_bank = $id";
+		$kasBankData = $this->kasBank->get_where($where)->row();
+
+		echo json_encode($kasBankData);
 	}
 }

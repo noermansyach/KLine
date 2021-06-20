@@ -10,7 +10,6 @@ class Department_model extends MY_Model
 		return $this->db->select('B.company_name, B.init as init_company, A.*')
 						->join('tb_company B', 'A.id_company = B.id_company')
 						->order_by('A.id_company asc')
-						// ->order_by('B.id_department')
 						->get('tb_department A')
 						->result();
 	}
@@ -25,6 +24,13 @@ class Department_model extends MY_Model
 		return $query;
 	}
 
-	
+	public function getDepartment($id_department) {
+		// return $this->db->select('B.company_name, B.init as init_company, A.*')
+		// 				->join('tb_company B', 'A.id_company = B.id_company')
+		// 				->order_by('A.id_company asc')
+		// 				->where('A.id_department', );
+		// 				->get('tb_department A')
+		// 				->result();
+	}
 
 }
