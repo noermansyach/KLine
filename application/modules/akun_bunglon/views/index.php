@@ -19,9 +19,12 @@
 						          <h4 class="mb-0 mr-3"><?php echo ucfirst($title) ?></h4>
 						        </div>
 						        <div class="ml-lg-auto d-flex align-items-stretch justify-content-end">
-						        	<a href="<?php echo base_url('mperkiraan/add/') ?>" class="btn btn-success no-wrap ml-0" title="add">+ add akun perkiraan</a>
+						            <button type="button" class="btn btn-success no-wrap ml-0" data-toggle="modal" data-target="#add" title="add" >+ add jenis jurnal</button>
 						        </div>
 						    </div>
+
+						    <?php $this->load->view('add'); ?>
+						    <?php $this->load->view('edit'); ?>
 
 						    <br>
 						    <div class="row">
@@ -30,38 +33,31 @@
 										<table id="order-listing" class="table">
 											<thead>
 												<tr>
-													<th>Nomor Akun</th>
-													<th>Nama Perkiraan</th>
-													<th>Akun Induk</th>
-													<th>Cabang</th>
-													<th>Level</th>
-													<th>Currency</th>
+													<th>No Akun</th>
+													<th>Jenis Perkiraan</th>
+													<th></th>
 													<th class="text-center">Actions</th>
 												</tr>
 											</thead>
 											<tbody>
-												<?php 
+												<?php
 													if (!empty($table_data)) {
+														$no = 1;
 														foreach ($table_data as $value) {
 												?>
+														<tr>
+															<td><?php echo $no++; ?></td>
+															<td><?php echo $value->jenis_jurnal ?></td>
+															<td class="text-center">
+																<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit" onclick="detail('<?php echo $value->id_jenis_jurnal; ?>')" title="edit"><i class="mdi mdi-pencil"></i> </button>
 
-												<tr>
-													<td><?php echo $value->no_acc; ?></td>
-													<td><?php echo $value->nama_acc; ?></td>
-													<td><?php echo $value->acc_induk; ?></td>
-													<td><?php echo $value->company_name ?></td>
-													<td><?php echo $value->level ?></td>
-													<td><?php echo $value->currency . ' - ' .  $value->init ?></td>
-													<td class="text-center">
-														<a href="<?php echo base_url('mperkiraan/delete/'.  $value->no_acc); ?>" class="btn btn-danger tombol-hapus" title="Delete"><i class="fa fa-trash-o"></i> </a>
-														<a href="<?php echo base_url('mperkiraan/delete/'.  $value->no_acc); ?>" class="btn btn-light tombol-hapus" title="Detail"><i class="fa fa-eye"></i> </a>
-													</td>
-												</tr>
-
-												<?php
+																<a href="<?php echo base_url('jenis_jurnal/delete/' . $value->id_jenis_jurnal) ?>" class="btn btn-danger tombol-hapus" title="Delete"><i class="fa fa-trash-o"></i> </a>
+															</td>
+														</tr>
+												<?php 
 														}
 													}
-												?>
+												?>	
 											</tbody>
 										</table>
 							        </div>

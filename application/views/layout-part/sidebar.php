@@ -23,9 +23,9 @@
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('position') ?>">Position</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('currency') ?>">Currency</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('bank') ?>">Bank</a></li>
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('kas_bank') ?>">Kas Bank</a></li>
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('jenis_jurnal') ?>">Jenis Jurnal</a></li>
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('mperkiraan') ?>">Mperkiraan</a></li>
+						<!-- <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('kas_bank') ?>">Kas Bank</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('jenis_jurnal') ?>">Jenis Jurnal</a></li> -->
+						
 					</ul>
 				</div>
 			</li>
@@ -38,7 +38,8 @@
 				</a>
 				<div class="collapse" id="finance">
 					<ul class="nav flex-column sub-menu">
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('perkiraan') ?>">Perkiraan</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('mperkiraan') ?>">Perkiraan</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('mperkiraan') ?>">Akun Bunglon</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('') ?>">Currency Rate</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('') ?>">InQuery</a></li>
 					</ul>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Jun 2021 pada 14.36
+-- Waktu pembuatan: 20 Jun 2021 pada 15.56
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -24,6 +24,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_akun_bunglon`
+--
+
+CREATE TABLE `tb_akun_bunglon` (
+  `no_acc` varchar(255) NOT NULL,
+  `jenis_perkiraan` varchar(255) DEFAULT NULL,
+  `no_acc_bayangan` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_auth_level`
 --
 
@@ -35,6 +51,33 @@ CREATE TABLE `tb_auth_level` (
   `updated_time` datetime DEFAULT NULL,
   `updated_by` varchar(0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_bank`
+--
+
+CREATE TABLE `tb_bank` (
+  `id_bank` int(10) NOT NULL,
+  `nama_bank` varchar(255) DEFAULT NULL,
+  `initial` varchar(15) DEFAULT NULL,
+  `no_rek` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_bank`
+--
+
+INSERT INTO `tb_bank` (`id_bank`, `nama_bank`, `initial`, `no_rek`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+(7, 'Mandiri', 'MDR', '12949578278', '2021-06-18 05:09:22', 'nurman', '2021-06-18 05:09:22', 'nurman'),
+(8, 'Bank Central Asia', 'BCA', '1248718247912', '2021-06-18 05:09:41', 'nurman', '2021-06-18 05:09:41', 'nurman'),
+(9, 'Bank Rakyat Indonesia', 'BRI', '773268753', '2021-06-18 05:09:54', 'nurman', '2021-06-18 05:09:54', 'nurman'),
+(10, 'Bank Negara Indonesia', 'BNI', '92949832797', '2021-06-18 05:10:10', 'nurman', '2021-06-18 05:10:10', 'nurman');
 
 -- --------------------------------------------------------
 
@@ -66,7 +109,9 @@ INSERT INTO `tb_company` (`id_company`, `company_name`, `init`, `is_holding`, `a
 ('2', 'PT Karana Line Jakarta', 'JKT', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('3', 'PT Karana Line Medan', 'MDN', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('4', 'PT Karana Line Batam', 'BTM', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('5', 'PT Karana Line Surabaya', 'SBY', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+('5', 'PT Karana Line Surabaya', 'SBY', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('6', 'PT Karana Line Samarinda', 'SMD', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('7', 'PT Karana Line Banjarmasin', 'BJM', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -167,6 +212,133 @@ INSERT INTO `tb_employee` (`id_employee`, `employee_name`, `place_of_birth`, `da
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_jenis_jurnal`
+--
+
+CREATE TABLE `tb_jenis_jurnal` (
+  `id_jenis_jurnal` int(10) NOT NULL,
+  `jenis_jurnal` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_jenis_jurnal`
+--
+
+INSERT INTO `tb_jenis_jurnal` (`id_jenis_jurnal`, `jenis_jurnal`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+(1, 'Hutang', '2021-06-18 14:20:24', NULL, '2021-06-18 14:20:29', NULL),
+(2, 'Kas', '2021-06-18 14:20:24', NULL, '2021-06-18 14:20:29', NULL),
+(3, 'Bank', '2021-06-18 14:20:24', NULL, '2021-06-18 14:20:29', NULL),
+(4, 'Piutang', '2021-06-18 14:20:24', NULL, '2021-06-18 14:20:29', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_kas_bank`
+--
+
+CREATE TABLE `tb_kas_bank` (
+  `id_kas_bank` int(10) NOT NULL,
+  `no_acc` varchar(255) DEFAULT NULL,
+  `kas_bank` varchar(255) DEFAULT NULL,
+  `init_kas_bank` varchar(255) DEFAULT NULL,
+  `no_rekening` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_kas_bank`
+--
+
+INSERT INTO `tb_kas_bank` (`id_kas_bank`, `no_acc`, `kas_bank`, `init_kas_bank`, `no_rekening`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+(18, '1000.00', 'KAS', '', NULL, NULL, NULL, NULL, NULL),
+(19, '1000.00', 'KAS', NULL, NULL, NULL, NULL, NULL, NULL),
+(20, '1100.00', 'DEPOSITO', NULL, NULL, NULL, NULL, NULL, NULL),
+(21, '1100.00', 'DEPOSITO', NULL, NULL, NULL, NULL, NULL, NULL),
+(22, '1200.00', 'PIUTANG SHIPPER', NULL, NULL, NULL, NULL, NULL, NULL),
+(23, '1200.00', 'PIUTANG SHIPPER', NULL, NULL, NULL, NULL, NULL, NULL),
+(24, '1300.00', 'PIUTANG LAIN-LAIN', NULL, NULL, NULL, NULL, NULL, NULL),
+(25, '1300.00', 'PIUTANG LAIN-LAIN', NULL, NULL, NULL, NULL, NULL, NULL),
+(26, '1500.00', 'BIAYA DIBAYAR DIMUKA', NULL, NULL, NULL, NULL, NULL, NULL),
+(27, '1500.00', 'BIAYA DIBAYAR DIMUKA', NULL, NULL, NULL, NULL, NULL, NULL),
+(28, '1700.00', 'TANAH & BANGUNAN', NULL, NULL, NULL, NULL, NULL, NULL),
+(29, '1700.00', 'TANAH & BANGUNAN', NULL, NULL, NULL, NULL, NULL, NULL),
+(30, '1900.00', 'INVESTASI', NULL, NULL, NULL, NULL, NULL, NULL),
+(31, '1900.00', 'INVESTASI', NULL, NULL, NULL, NULL, NULL, NULL),
+(32, '2200.00', 'HUTANG USAHA', NULL, NULL, NULL, NULL, NULL, NULL),
+(33, '2200.00', 'HUTANG USAHA', NULL, NULL, NULL, NULL, NULL, NULL),
+(34, '2300.00', 'HUTANG PAJAK', NULL, NULL, NULL, NULL, NULL, NULL),
+(35, '2300.00', 'HUTANG PAJAK', NULL, NULL, NULL, NULL, NULL, NULL),
+(36, '2500.00', 'HUTANG AFILIASI', NULL, NULL, NULL, NULL, NULL, NULL),
+(37, '2500.00', 'HUTANG AFILIASI', NULL, NULL, NULL, NULL, NULL, NULL),
+(38, '2700.00', 'AKUMULASI PENYUSUTAN GEDUNG/BANGUNAN', NULL, NULL, NULL, NULL, NULL, NULL),
+(39, '2700.00', 'AKUMULASI PENYUSUTAN GEDUNG/BANGUNAN', NULL, NULL, NULL, NULL, NULL, NULL),
+(40, '2800.00', 'MODAL SAHAM DISETOR', NULL, NULL, NULL, NULL, NULL, NULL),
+(41, '2800.00', 'MODAL SAHAM DISETOR', NULL, NULL, NULL, NULL, NULL, NULL),
+(42, '3100.00', 'FREIGHT NORTH BOUND KAPAL MILIK', NULL, NULL, NULL, NULL, NULL, NULL),
+(43, '3100.00', 'FREIGHT NORTH BOUND KAPAL MILIK', NULL, NULL, NULL, NULL, NULL, NULL),
+(44, '3200.00', 'PENDAPATAN CHARTERING & BROKERING', NULL, NULL, NULL, NULL, NULL, NULL),
+(45, '3200.00', 'PENDAPATAN CHARTERING & BROKERING', NULL, NULL, NULL, NULL, NULL, NULL),
+(46, '3300.00', 'CHARTER KAPAL MILIK', NULL, NULL, NULL, NULL, NULL, NULL),
+(47, '3300.00', 'CHARTER KAPAL MILIK', NULL, NULL, NULL, NULL, NULL, NULL),
+(48, '3400.00', 'LAIN-LAIN KAPAL MILIK', NULL, NULL, NULL, NULL, NULL, NULL),
+(49, '3400.00', 'LAIN-LAIN KAPAL MILIK', NULL, NULL, NULL, NULL, NULL, NULL),
+(50, '3500.00', 'OPERATING COST / LCT. MUARA MEGAH', NULL, NULL, NULL, NULL, NULL, NULL),
+(51, '3500.00', 'OPERATING COST / LCT. MUARA MEGAH', NULL, NULL, NULL, NULL, NULL, NULL),
+(52, '3600.00', 'OPERATING COST / MV. PRITHA', NULL, NULL, NULL, NULL, NULL, NULL),
+(53, '3600.00', 'OPERATING COST / MV. PRITHA', NULL, NULL, NULL, NULL, NULL, NULL),
+(54, '4100.00', 'PENDAPATAN KEAGENAN I / STX PAN OCEAN', NULL, NULL, NULL, NULL, NULL, NULL),
+(55, '4100.00', 'PENDAPATAN KEAGENAN I / STX PAN OCEAN', NULL, NULL, NULL, NULL, NULL, NULL),
+(56, '4200.00', 'HASIL KEAGENAN II', NULL, NULL, NULL, NULL, NULL, NULL),
+(57, '4200.00', 'HASIL KEAGENAN II', NULL, NULL, NULL, NULL, NULL, NULL),
+(58, '4300.00', 'HASIL KEAGENAN LOKAL (AGCY & CALL FEE)', NULL, NULL, NULL, NULL, NULL, NULL),
+(59, '4300.00', 'HASIL KEAGENAN LOKAL (AGCY & CALL FEE)', NULL, NULL, NULL, NULL, NULL, NULL),
+(60, '4300.00A', 'HASIL KEAGENAN LOKAL (AGCY & CALL FEE) CAB.TG.PRIOK', NULL, NULL, NULL, NULL, NULL, NULL),
+(61, '4300.00A', 'HASIL KEAGENAN LOKAL (AGCY & CALL FEE) CAB.TG.PRIOK', NULL, NULL, NULL, NULL, NULL, NULL),
+(62, '4300.00B', 'HASIL KEAGENAN LOKAL (AGCY & CALL FEE) CAB.CIGADING', NULL, NULL, NULL, NULL, NULL, NULL),
+(63, '4300.00B', 'HASIL KEAGENAN LOKAL (AGCY & CALL FEE) CAB.CIGADING', NULL, NULL, NULL, NULL, NULL, NULL),
+(64, '4300.00C', 'HASIL KEAGENAN LOKAL (AGCY & CALL FEE) CAB.DUMAI', NULL, NULL, NULL, NULL, NULL, NULL),
+(65, '4300.00C', 'HASIL KEAGENAN LOKAL (AGCY & CALL FEE) CAB.DUMAI', NULL, NULL, NULL, NULL, NULL, NULL),
+(66, '4500.00', 'HASIL BUNGA DEPOSITO DAN JASA GIRO', NULL, NULL, NULL, NULL, NULL, NULL),
+(67, '4500.00', 'HASIL BUNGA DEPOSITO DAN JASA GIRO', NULL, NULL, NULL, NULL, NULL, NULL),
+(68, '4500.00A', 'HASIL BUNGA DEPOSITO DAN JASA GIRO CAB.TG.PRIOK', NULL, NULL, NULL, NULL, NULL, NULL),
+(69, '4500.00A', 'HASIL BUNGA DEPOSITO DAN JASA GIRO CAB.TG.PRIOK', NULL, NULL, NULL, NULL, NULL, NULL),
+(70, '4500.00B', 'HASIL BUNGA DEPOSITO DAN JASA GIRO CAB.CIGADING', NULL, NULL, NULL, NULL, NULL, NULL),
+(71, '4500.00B', 'HASIL BUNGA DEPOSITO DAN JASA GIRO CAB.CIGADING', NULL, NULL, NULL, NULL, NULL, NULL),
+(72, '5200.00', 'HUTANG USAHA', NULL, NULL, NULL, NULL, NULL, NULL),
+(73, '5200.00', 'HUTANG USAHA', NULL, NULL, NULL, NULL, NULL, NULL),
+(74, '5300.00', 'HUTANG PAJAK', NULL, NULL, NULL, NULL, NULL, NULL),
+(75, '5300.00', 'HUTANG PAJAK', NULL, NULL, NULL, NULL, NULL, NULL),
+(76, '5500.00', 'HUTANG AFILIASI', NULL, NULL, NULL, NULL, NULL, NULL),
+(77, '5500.00', 'HUTANG AFILIASI', NULL, NULL, NULL, NULL, NULL, NULL),
+(78, '5700.00', 'AKUMULASI PENYUSUTAN GEDUNG/BANGUNAN', NULL, NULL, NULL, NULL, NULL, NULL),
+(79, '5700.00', 'AKUMULASI PENYUSUTAN GEDUNG/BANGUNAN', NULL, NULL, NULL, NULL, NULL, NULL),
+(80, '5800.00', 'MODAL SAHAM DISETOR', NULL, NULL, NULL, NULL, NULL, NULL),
+(81, '5800.00', 'MODAL SAHAM DISETOR', NULL, NULL, NULL, NULL, NULL, NULL),
+(82, '6000.00', 'KAS', NULL, NULL, NULL, NULL, NULL, NULL),
+(83, '6000.00', 'KAS', NULL, NULL, NULL, NULL, NULL, NULL),
+(84, '6100.00', 'DEPOSITO', NULL, NULL, NULL, NULL, NULL, NULL),
+(85, '6100.00', 'DEPOSITO', NULL, NULL, NULL, NULL, NULL, NULL),
+(86, '6200.00', 'PIUTANG SHIPPER', NULL, NULL, NULL, NULL, NULL, NULL),
+(87, '6200.00', 'PIUTANG SHIPPER', NULL, NULL, NULL, NULL, NULL, NULL),
+(88, '6300.00', 'PIUTANG LAIN-LAIN', NULL, NULL, NULL, NULL, NULL, NULL),
+(89, '6300.00', 'PIUTANG LAIN-LAIN', NULL, NULL, NULL, NULL, NULL, NULL),
+(90, '6500.00', 'BIAYA DIBAYAR DIMUKA', NULL, NULL, NULL, NULL, NULL, NULL),
+(91, '6500.00', 'BIAYA DIBAYAR DIMUKA', NULL, NULL, NULL, NULL, NULL, NULL),
+(92, '6700.00', 'TANAH & BANGUNAN', NULL, NULL, NULL, NULL, NULL, NULL),
+(93, '6700.00', 'TANAH & BANGUNAN', NULL, NULL, NULL, NULL, NULL, NULL),
+(94, '6900.00', 'INVESTASI', NULL, NULL, NULL, NULL, NULL, NULL),
+(95, '6900.00', 'INVESTASI', NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_modul`
 --
 
@@ -223,24 +395,21 @@ INSERT INTO `tb_modul_action` (`id_modul_action`, `name`, `id_modul`, `created_t
 --
 
 CREATE TABLE `tb_perkiraan` (
-  `id_perkiraan` varchar(14) DEFAULT NULL,
-  `no_acc` varchar(255) DEFAULT NULL,
-  `nama_acc` varchar(255) DEFAULT NULL,
-  `acc_induk` varchar(255) DEFAULT NULL,
-  `level` enum('1','2','3','4','5','6') DEFAULT NULL,
-  `kategori` enum('AKTIVA','PASSIVA','AKTIVABY','PASSIVABY') DEFAULT NULL,
-  `jenis_perkiraan` varchar(255) DEFAULT NULL,
-  `is_jurnal` varchar(255) DEFAULT NULL,
-  `jenis_jurnal` varchar(255) DEFAULT NULL,
-  `laporan_gl` varchar(255) DEFAULT NULL,
-  `init_kas_bank` varchar(255) DEFAULT NULL,
-  `saldo_min` double(255,0) DEFAULT NULL,
+  `no_acc` varchar(254) DEFAULT NULL,
+  `nama_acc` varchar(254) DEFAULT NULL,
+  `acc_induk` varchar(254) DEFAULT NULL,
+  `level` varchar(254) DEFAULT NULL,
+  `jenis_perkiraan` enum('AKTIVA','PASSIVA','AKTIVABY','PASSIVABY','BIAYA','PENDAPATAN') DEFAULT NULL,
+  `is_jurnal` enum('YES','NO') DEFAULT NULL,
+  `jenis_jurnal` enum('KAS','BANK','PIUTANG','HUTANG') DEFAULT NULL,
+  `laporan_gl` varchar(254) DEFAULT NULL,
+  `saldo_min` double DEFAULT NULL,
   `is_budget` enum('YES','NO') DEFAULT NULL,
   `is_disb` enum('YES','NO') DEFAULT NULL,
-  `nama_bank` varchar(255) DEFAULT NULL,
-  `no_rekening_bank` varchar(255) DEFAULT NULL,
-  `id_company` varchar(255) DEFAULT NULL,
-  `id_currency` int(5) DEFAULT NULL,
+  `id_company` varchar(254) DEFAULT NULL,
+  `init_kas_bank` varchar(255) DEFAULT NULL,
+  `id_bank` varchar(254) DEFAULT NULL,
+  `id_currency` varchar(254) DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `updated_time` datetime DEFAULT NULL,
@@ -251,8 +420,54 @@ CREATE TABLE `tb_perkiraan` (
 -- Dumping data untuk tabel `tb_perkiraan`
 --
 
-INSERT INTO `tb_perkiraan` (`id_perkiraan`, `no_acc`, `nama_acc`, `acc_induk`, `level`, `kategori`, `jenis_perkiraan`, `is_jurnal`, `jenis_jurnal`, `laporan_gl`, `init_kas_bank`, `saldo_min`, `is_budget`, `is_disb`, `nama_bank`, `no_rekening_bank`, `id_company`, `id_currency`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-('1', '1', 'AKTIVA', NULL, '1', 'AKTIVA', 'No', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_perkiraan` (`no_acc`, `nama_acc`, `acc_induk`, `level`, `jenis_perkiraan`, `is_jurnal`, `jenis_jurnal`, `laporan_gl`, `saldo_min`, `is_budget`, `is_disb`, `id_company`, `init_kas_bank`, `id_bank`, `id_currency`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('1', 'AKTIVA', '', '1', 'AKTIVA', 'NO', 'KAS', 'TES', NULL, '', NULL, '2', 'KAS-TES', '7', '2', '2021-06-20 13:14:38', 'nurman', '2021-06-20 13:14:38', 'nurman'),
+('10', 'HUTANG JANGKA PENDEK', '1', '2', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:31:22', 'nurman', '2021-06-20 15:31:22', 'nurman'),
+('100', 'KAS & SETARA KAS', '10', '3', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:31:41', 'nurman', '2021-06-20 15:31:41', 'nurman'),
+('1000.00', 'KAS', '100', '4', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:32:07', 'nurman', '2021-06-20 15:32:07', 'nurman'),
+('1000.01', 'KAS BESAR RUPIAH', '1000.00', '5', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:32:28', 'nurman', '2021-06-20 15:32:28', 'nurman'),
+('1001.01', 'KAS BESAR RUPIAH SEMARANG', '1000.01', '6', 'AKTIVA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:48:58', 'nurman', '2021-06-20 15:48:58', 'nurman'),
+('1001.02', 'KAS BESAR', '1000.01', '6', 'PASSIVA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:50:06', 'nurman', '2021-06-20 15:50:06', 'nurman'),
+('1001.03', 'TES', '1000.01', '6', 'BIAYA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:12', 'nurman', '2021-06-20 15:51:12', 'nurman'),
+('1001.04', 'TES 2', '1000.01', '6', 'AKTIVA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:42', 'nurman', '2021-06-20 15:51:42', 'nurman');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_perkiraan_bunglon`
+--
+
+CREATE TABLE `tb_perkiraan_bunglon` (
+  `no_acc_bunglon` varchar(255) DEFAULT NULL,
+  `no_acc` varchar(254) DEFAULT NULL,
+  `nama_acc` varchar(254) DEFAULT NULL,
+  `acc_induk` varchar(254) DEFAULT NULL,
+  `level` varchar(254) DEFAULT NULL,
+  `jenis_perkiraan` enum('AKTIVA','PASSIVA','AKTIVABY','PASSIVABY','BIAYA','PENDAPATAN') DEFAULT NULL,
+  `is_jurnal` enum('YES','NO') DEFAULT NULL,
+  `jenis_jurnal` enum('KAS','BANK','PIUTANG','HUTANG') DEFAULT NULL,
+  `laporan_gl` varchar(254) DEFAULT NULL,
+  `saldo_min` double DEFAULT NULL,
+  `is_budget` enum('YES','NO') DEFAULT NULL,
+  `is_disb` enum('YES','NO') DEFAULT NULL,
+  `id_company` varchar(254) DEFAULT NULL,
+  `init_kas_bank` varchar(255) DEFAULT NULL,
+  `id_bank` varchar(254) DEFAULT NULL,
+  `id_currency` varchar(254) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_perkiraan_bunglon`
+--
+
+INSERT INTO `tb_perkiraan_bunglon` (`no_acc_bunglon`, `no_acc`, `nama_acc`, `acc_induk`, `level`, `jenis_perkiraan`, `is_jurnal`, `jenis_jurnal`, `laporan_gl`, `saldo_min`, `is_budget`, `is_disb`, `id_company`, `init_kas_bank`, `id_bank`, `id_currency`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('6001.01', '1001.01', 'KAS BESAR RUPIAH SEMARANG', '1000.01', '6', 'PASSIVABY', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:48:58', 'nurman', '2021-06-20 15:48:58', 'nurman'),
+('5001.02', '1001.02', 'KAS BESAR', '1000.01', '6', 'AKTIVABY', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:50:06', 'nurman', '2021-06-20 15:50:06', 'nurman'),
+('6001.04', '1001.04', 'TES 2', '1000.01', '6', 'PASSIVABY', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:42', 'nurman', '2021-06-20 15:51:42', 'nurman');
 
 -- --------------------------------------------------------
 
@@ -333,10 +548,22 @@ INSERT INTO `tb_user_auth` (`id`, `id_user`, `id_modul_action`, `created_time`, 
 --
 
 --
+-- Indeks untuk tabel `tb_akun_bunglon`
+--
+ALTER TABLE `tb_akun_bunglon`
+  ADD PRIMARY KEY (`no_acc`);
+
+--
 -- Indeks untuk tabel `tb_auth_level`
 --
 ALTER TABLE `tb_auth_level`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `tb_bank`
+--
+ALTER TABLE `tb_bank`
+  ADD PRIMARY KEY (`id_bank`);
 
 --
 -- Indeks untuk tabel `tb_company`
@@ -361,6 +588,18 @@ ALTER TABLE `tb_department`
 --
 ALTER TABLE `tb_employee`
   ADD PRIMARY KEY (`id_employee`);
+
+--
+-- Indeks untuk tabel `tb_jenis_jurnal`
+--
+ALTER TABLE `tb_jenis_jurnal`
+  ADD PRIMARY KEY (`id_jenis_jurnal`);
+
+--
+-- Indeks untuk tabel `tb_kas_bank`
+--
+ALTER TABLE `tb_kas_bank`
+  ADD PRIMARY KEY (`id_kas_bank`);
 
 --
 -- Indeks untuk tabel `tb_modul`
@@ -397,6 +636,12 @@ ALTER TABLE `tb_user_auth`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_bank`
+--
+ALTER TABLE `tb_bank`
+  MODIFY `id_bank` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_currency`
 --
 ALTER TABLE `tb_currency`
@@ -407,6 +652,18 @@ ALTER TABLE `tb_currency`
 --
 ALTER TABLE `tb_department`
   MODIFY `id_department` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_jenis_jurnal`
+--
+ALTER TABLE `tb_jenis_jurnal`
+  MODIFY `id_jenis_jurnal` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_kas_bank`
+--
+ALTER TABLE `tb_kas_bank`
+  MODIFY `id_kas_bank` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_modul`

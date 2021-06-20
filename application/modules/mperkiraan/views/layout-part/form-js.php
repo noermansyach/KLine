@@ -40,6 +40,8 @@
                     type: "GET",
                     success: function(result) {
                         var objLevel1 = JSON.parse(result);
+                        var opt = "<option selected>- Pilih Akun Induk -</option>";
+                        $("#selectAccLevel2").append(opt);
                         jQuery.each(objLevel1, function(i, obj) {
 
                             opt = "<option value='"+obj.no_acc+"'>"+ obj.no_acc +" - "+obj.nama_acc + " - " + obj.jenis_perkiraan +"</option>";
@@ -59,6 +61,8 @@
                     type: "GET",
                     success: function(result) {
                         var objLevel2 = JSON.parse(result);
+                        var opt = "<option selected>- Pilih Akun Induk -</option>";
+                        $("#selectAccLevel3").append(opt);                        
                         jQuery.each(objLevel2, function(i, obj) {
                             opt = "<option value='"+obj.no_acc+"'>"+ obj.no_acc +" - "+obj.nama_acc + " - " + obj.jenis_perkiraan +"</option>";
 
@@ -77,6 +81,8 @@
                     type: "GET",
                     success: function(result) {
                         var objLevel3 = JSON.parse(result);
+                        var opt = "<option selected>- Pilih Akun Induk -</option>";
+                        $("#selectAccLevel4").append(opt);
                         jQuery.each(objLevel3, function(i, obj) {
                             opt = "<option value='"+obj.no_acc+"'>"+ obj.no_acc +" - "+obj.nama_acc + " - " + obj.jenis_perkiraan +"</option>";
 
@@ -95,6 +101,8 @@
                     type: "GET",
                     success: function(result) {
                         var objLevel3 = JSON.parse(result);
+                        var opt = "<option selected>- Pilih Akun Induk -</option>";
+                        $("#selectAccLevel5").append(opt);
                         jQuery.each(objLevel3, function(i, obj) {
                             opt = "<option value='"+obj.no_acc+"'>"+ obj.no_acc +" - "+obj.nama_acc + " - " + obj.jenis_perkiraan +"</option>";
 
