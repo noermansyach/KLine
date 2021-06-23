@@ -15,7 +15,8 @@ class Login_model extends MY_Model
 
 	public function get_data_user($where)
 	{
-		return $this->db->get($this->_tb_user. ' A')->row();
+		return $this->db->where($where)
+						->get($this->_tb_user. ' A')->row();
 	}
 
 }

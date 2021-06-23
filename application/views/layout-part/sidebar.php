@@ -13,15 +13,15 @@
 			<li class="nav-item">
 				<a class="nav-link" data-toggle="collapse" href="#general" aria-expanded="false" aria-controls="page-layouts">
 					<span class="icon-bg"> <i class="mdi mdi-apps menu-icon"></i> </span>
-					<span class="menu-title">General</span>
+					<span class="menu-title">Umum</span>
 					<i class="menu-arrow"></i>
 				</a>
 				<div class="collapse" id="general">
 					<ul class="nav flex-column sub-menu">
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('company') ?>">Company</a></li>
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('department') ?>">Department</a></li>
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('position') ?>">Position</a></li>
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('currency') ?>">Currency</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('company') ?>">Perusahaan</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('department') ?>">Departemen</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('position') ?>">Jabatan</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('currency') ?>">Mata Uang</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('bank') ?>">Bank</a></li>
 						<!-- <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('kas_bank') ?>">Kas Bank</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('jenis_jurnal') ?>">Jenis Jurnal</a></li> -->
@@ -33,7 +33,7 @@
 			<li class="nav-item">
 				<a class="nav-link" data-toggle="collapse" href="#finance" aria-expanded="false" aria-controls="page-layouts">
 					<span class="icon-bg"> <i class="mdi mdi-apps menu-icon"></i> </span>
-					<span class="menu-title">Finance</span>
+					<span class="menu-title">Keuangan</span>
 					<i class="menu-arrow"></i>
 				</a>
 				<div class="collapse" id="finance">
@@ -69,6 +69,20 @@
                 <span class="menu-title">Kunjungan Kapal</span>
               </a>
             </li>
+
+            <li class="nav-item">
+				<a class="nav-link" data-toggle="collapse" href="#kasBank" aria-expanded="false" aria-controls="page-layouts">
+					<span class="icon-bg"> <i class="fa fa-bank menu-icon"></i> </span>
+					<span class="menu-title">Kas & Bank</span>
+					<i class="menu-arrow"></i>
+				</a>
+				<div class="collapse" id="kasBank">
+					<ul class="nav flex-column sub-menu">
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">Entry Kas</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">Entry Bank</a></li>
+					</ul>
+				</div>
+			</li>
 
 		</ul>
     </nav>

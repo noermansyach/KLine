@@ -10,20 +10,26 @@ class Kunjungan_model extends MY_Model
 						->join('tb_company B', 'A.id_company = B.id_company')
 						->join('tb_kapal C', 'A.id_kapal = C.id_kapal')
 						->join('tb_pelabuhan D', 'A.id_pelabuhan = D.id_pelabuhan')
-						->join('tb_currency E', 'A.id_currency = E.id_currency')
 						->get('tb_kunjungan A')
 						->result();
 
 	}
 	
-	public function insertPelabuhan($data) {
-		return $this->db->insert('tb_pelabuhan', $data);
+	public function insertKunjungan($data) {
+		return $this->db->insert('tb_kunjungan', $data);
 	}
 
-	public function updatePelabuhan($filter, $data) {
-		$query = $this->db->where($filter)
-						  ->update('tb_pelabuhan', $data);
+	public function updateKunjungan($data, $idTransaksi) {
+		$query = $this->db->where('id_transaksi', $idTransaksi)
+						  ->update('tb_kunjungan', $data);
 		return $query;
+	}
+
+	public function getDataTransaksi($idTransaksi) 
+	{
+		return $this->db->where('id_transaksi', $idTransaksi)
+						->get('tb_kunjungan')
+						->row();
 	}
 
 	public function getAccLevelSix() {

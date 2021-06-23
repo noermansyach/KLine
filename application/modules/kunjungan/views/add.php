@@ -23,13 +23,13 @@
                             </div>
 
                             <br>
-                            <form class="form-sample" action="<?php echo('mperkiraan/add/') ?>" method="post">
+                            <form class="form-sample" action="<?php echo('kunjungan/add/') ?>" method="post">
 
                             	<table class="table table-striped">
                             		<tr>
                             			<td><label class="col-form-label">No. Transaksi</label></td>
                             			<td>
-                            				<input type="text" name="noAcc6" class="form-control" id="noAcc6" value="<?php echo $idTransKunjungan ?>" readonly="readonly">
+                            				<input type="text" name="idTransaksi" class="form-control" id="idTransaksi" value="<?php echo $idTransKunjungan ?>" readonly="readonly">
                                     	</td>
 
                                     	<td></td>
@@ -37,7 +37,7 @@
                             				
                                     	</td>
                                         <td><label class="col-form-label">Tanggal Transaksi</label></td>
-                                        <td><input type="text" name="noAcc6" class="form-control" id="noAcc6" class="text-center" value="<?php echo $tglTransaksi; ?>" readonly="readonly"></td>
+                                        <td><input type="text" name="tglTransaksi" class="form-control" id="tglTransaksi" class="text-center" value="<?php echo $tglTransaksi; ?>" readonly="readonly"></td>
                             		</tr>
 
                                     <tr>
@@ -71,19 +71,19 @@
                                     <tr>
                                         <td><label class="col-form-label">Voyage</label></td>
                                         <td>
-                                            <input type="text" name="noAcc6" class="form-control" id="noAcc6" placeholder="">
+                                            <input type="text" name="voyage" class="form-control" id="voyage" placeholder="">
                                         </td>
 
                                         <td class="text-right">
                                             <label class="col-form-label">TA</label>
                                         </td>
                                         <td style="width: 20%">
-                                            <input type="date" name="noAcc6" class="form-control" id="noAcc6" placeholder="TA">
+                                            <input type="date" name="ta" class="form-control" id="ta" placeholder="TA">
                                         </td>
                                         <td class="text-right">
                                             <label class="col-form-label">TD</label>
                                         </td>
-                                        <td style="width: 20%"><input type="date" name="noAcc6" class="form-control" id="noAcc6" placeholder="TD"></td>
+                                        <td style="width: 20%"><input type="date" name="td" class="form-control" id="td" placeholder="TD"></td>
                                     </tr>
 
                                     <tr>

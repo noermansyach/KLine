@@ -70,6 +70,7 @@ class Login extends MX_Controller
 				'nama' => $username,
 				'employeeId' => $dataUser->id_employee,
 				'status' => 'isLogin',
+				'company' => $dataUser->id_company
 			);
  
 			$this->session->set_userdata($data_session);

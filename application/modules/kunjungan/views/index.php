@@ -35,12 +35,12 @@
 												<tr>
 													<th>No</th>
 													<th>No. Transaksi</th>
-													<th>Berangkat</th>
-													<th>Tiba</th>
+													<th>TA</th>
+													<th>TD</th>
 													<th>Kapal</th>
 													<th>Pelabuhan</th>
 													<th>Voyage</th>
-													<th>Status</th>
+													<th>Status Close</th>
 													<th class="text-center">Actions</th>
 												</tr>
 											</thead>
@@ -60,6 +60,7 @@
 															<td><?php echo strtoupper($value->voyage); ?></td>
 															<td><?php echo strtoupper($value->is_close); ?></td>
 															<td class="text-center">
+																<a href="<?php echo base_url('kunjungan/edit/'.$value->id_transaksi); ?>" class="btn btn-warning" title="edit"><i class="mdi mdi-pencil"></i> </a>
 																<!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit" onclick="detail('<?php echo $value->id_pelabuhan; ?>')" title="edit"><i class="mdi mdi-pencil"></i> </button>
 
 																<a href="<?php echo base_url('pelabuhan/delete/' . $value->id_pelabuhan) ?>" class="btn btn-danger tombol-hapus" title="Delete"><i class="fa fa-trash-o"></i> </a> -->

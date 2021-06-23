@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jun 2021 pada 06.51
+-- Waktu pembuatan: 23 Jun 2021 pada 10.50
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -363,7 +363,7 @@ CREATE TABLE `tb_kunjungan` (
   `rate` varchar(255) DEFAULT NULL,
   `debet` varchar(255) DEFAULT NULL,
   `kredit` varchar(255) DEFAULT NULL,
-  `is_close` enum('YES','NO') DEFAULT NULL,
+  `is_close` enum('CLOSE','OPEN') DEFAULT NULL,
   `is_bayar` enum('YES','NO') DEFAULT NULL,
   `is_batal` enum('YES','NO') DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
@@ -371,6 +371,14 @@ CREATE TABLE `tb_kunjungan` (
   `updated_time` datetime DEFAULT NULL,
   `updated_by` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_kunjungan`
+--
+
+INSERT INTO `tb_kunjungan` (`id_transaksi`, `id_company`, `tgl_transaksi`, `id_kapal`, `id_pelabuhan`, `voyage`, `tgl_berangkat`, `tgl_tiba`, `no_acc`, `id_currency`, `rate`, `debet`, `kredit`, `is_close`, `is_bayar`, `is_batal`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('TR210806462317', '2', '2021-06-23', 'KPL210706012218', 'PLB210706392206', '1102', '2021-06-23', '2021-06-26', '1001.01', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'NO', '2021-06-23 10:12:27', 'admin', '2021-06-23 10:12:27', 'admin'),
+('TR211006122335', '2', '2021-06-23', 'KPL210706072239', 'PLB210706392214', '1231', '2021-06-24', '2021-06-28', '1001.01', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'NO', '2021-06-23 10:12:50', 'admin', '2021-06-23 10:12:50', 'admin');
 
 -- --------------------------------------------------------
 
@@ -577,7 +585,7 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`id_user`, `username`, `password`, `is_active`, `id_department`, `id_company`, `id_employee`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
 ('210613154321', 'nurman', '202cb962ac59075b964b07152d234b70', '1', '1', '1', '0', '2021-06-13 15:44:11', NULL, '2021-06-13 15:44:17', NULL),
-('210614124944', 'wahyu', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+('210614124944', 'admin', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL, '2', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
