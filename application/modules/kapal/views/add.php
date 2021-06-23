@@ -1,9 +1,9 @@
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       	<div class="modal-content">
-      		<form method="post" action="<?php echo base_url("jenis_jurnal/add") ?>">
+      		<form method="post" action="<?php echo base_url("kapal/add") ?>">
 	            <div class="modal-header">
-	                <h5 class="modal-title" id="exampleModalLabel">Add Jenis Jurnal</h5>
+	                <h5 class="modal-title" id="exampleModalLabel">Add Kapal</h5>
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	                    <span aria-hidden="true">&times;</span>
 	                </button>
@@ -12,8 +12,8 @@
 	            <div class="modal-body">
 	                <table class="table table-modal" width="500px" style="table-layout: fixed;"> 
 	                	<tr>
-	                		<td width="200px">Jenis Jurnal</td>
-	                		<td><input type="text" name="jenis_jurnal" class="form-control form-control-sm"></td>
+	                		<td width="200px">Nama Kapal</td>
+	                		<td><input type="text" name="namaKapal" id="namaKapal" class="form-control form-control-sm"></td>
 	                	</tr>
 	                </table>
 	            </div>

@@ -16,5 +16,3 @@
     <script src="<?php echo base_url('assets/js/select2.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/dropify.js') ?>"></script>
     <!-- End custom js for this page -->
-
-    

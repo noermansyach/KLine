@@ -10,8 +10,8 @@
     <!-- End custom js for this page -->
 
     <script type="text/javascript">
-    	function detail(idJenisJurnal) {
-    		$("#id").val(idJenisJurnal);
+    	function detail(idKasBank) {
+    		$("#idKasBank").val(idKasBank);
     		$.ajax({
 				url : "<?php echo base_url('kas_bank/detail/'); ?>" + idKasBank,
 				type : "GET",

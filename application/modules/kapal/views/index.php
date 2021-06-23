@@ -19,7 +19,7 @@
 						          <h4 class="mb-0 mr-3"><?php echo ucfirst($title) ?></h4>
 						        </div>
 						        <div class="ml-lg-auto d-flex align-items-stretch justify-content-end">
-						            <button type="button" class="btn btn-success no-wrap ml-0" data-toggle="modal" data-target="#add" title="add" >+ add jenis jurnal</button>
+						            <button type="button" class="btn btn-success no-wrap ml-0" data-toggle="modal" data-target="#add" title="Detail">+ add kapal</button>
 						        </div>
 						    </div>
 
@@ -33,31 +33,31 @@
 										<table id="order-listing" class="table">
 											<thead>
 												<tr>
-													<th>No Akun</th>
-													<th>Jenis Perkiraan</th>
-													<th></th>
+													<th>No</th>
+													<th>Kapal</th>
 													<th class="text-center">Actions</th>
 												</tr>
 											</thead>
 											<tbody>
-												<?php
+												<?php 
+													$no = 1;
 													if (!empty($table_data)) {
-														$no = 1;
 														foreach ($table_data as $value) {
+													
 												?>
-														<tr>
-															<td><?php echo $no++; ?></td>
-															<td><?php echo $value->jenis_jurnal ?></td>
-															<td class="text-center">
-																<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit" onclick="detail('<?php echo $value->id_jenis_jurnal; ?>')" title="edit"><i class="mdi mdi-pencil"></i> </button>
+												<tr>
+													<td><?php echo $no++; ?></td>
+													<td><?php echo strtoupper($value->nama_kapal); ?></td>
+													<td class="text-center">
+														<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit" onclick="detail('<?php echo $value->id_kapal; ?>')" title="edit"><i class="mdi mdi-pencil"></i> </button>
 
-																<a href="<?php echo base_url('jenis_jurnal/delete/' . $value->id_jenis_jurnal) ?>" class="btn btn-danger tombol-hapus" title="Delete"><i class="fa fa-trash-o"></i> </a>
-															</td>
-														</tr>
+														<a href="<?php echo base_url('kapal/delete/' . $value->id_kapal) ?>" class="btn btn-danger tombol-hapus" title="Delete"><i class="fa fa-trash-o"></i> </a>
+													</td>
+												</tr>
 												<?php 
 														}
 													}
-												?>	
+												?>
 											</tbody>
 										</table>
 							        </div>

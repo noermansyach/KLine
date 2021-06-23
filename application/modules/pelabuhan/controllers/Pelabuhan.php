@@ -2,20 +2,20 @@
 /**
  * 
  */
-class Akun_bunglon extends MX_Controller 
+class Pelabuhan extends MX_Controller 
 {
 	
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Akun_bunglon_model', 'akunBunglon');
+		$this->load->model('Pelabuhan_model', 'pelabuhan');
 		if($this->session->userdata('status') != 'isLogin') {
 			redirect('login','refresh');
 		}
 	}
 
 	public $_data = array(
-		'title' => "Akun Bunglon",
+		'title' => "Pelabuhan",
 		'css' => "",
 		'js' => "",
 		'content' => ""
@@ -27,8 +27,8 @@ class Akun_bunglon extends MX_Controller
 		$this->_data['js'] = "layout-part/index-js";
 		$this->_data['content'] = "index";
 
-
-		$table = $this->akunBunglon->readAllAkunBunglon(); 
+		// get table data parameter (where = array(), orderby = "[string]")
+		$table = $this->pelabuhan->readAllPelabuhan(); 
 		if ($table) {
 			$this->_data['table_data'] = $table;
 		}
@@ -40,17 +40,22 @@ class Akun_bunglon extends MX_Controller
 	{
 		$this->_data['css'] = "layout-part/form-css";
 		$this->_data['js'] = "layout-part/form-js";
+		$this->_data['content'] = "add";
+		// $this->_data['kodeSuplier'] = "SUP-" . date("ymdhis");
 
 		if ($_POST) {
+			$idPelabuhan = "PLB". date("yhmids");
 			$data = array(
-						'jenis_jurnal' => $_POST['jenis_jurnal'],
+						'id_pelabuhan' => $idPelabuhan,
+						'nama_pelabuhan' => $_POST['namaPelabuhan'],
 						'created_time' => date('Y-m-d H:i:s'),
 						'created_by' => $this->session->userdata('nama'),
 						'updated_time' => date('Y-m-d H:i:s'),
 						'updated_by' => $this->session->userdata('nama')
 					);
-			$this->jenisJurnal->insertJenisJurnal($data);
-			redirect('jenis_jurnal','refresh');
+			// print_r($_POST);
+			$this->pelabuhan->insertPelabuhan($data);
+			redirect('pelabuhan','refresh');
 		}
 	}
 
@@ -59,27 +64,24 @@ class Akun_bunglon extends MX_Controller
 		$this->_data['css'] = "layout-part/form-css";
 		$this->_data['js'] = "layout-part/form-js";
 
-		$filter = array( 'id_kas_bank' => $_POST['id_kas_bank']);
-		$data = array('kas_bank' => $_POST['nama_kas_bank'],
-					  'init_kas_bank' => $_POST['init_kas_bank'],
-					  'no_rekening' => $_POST['no_rekening'],
-					);
-		$this->kasBank->updateKasBank($filter, (object) $data);
-		redirect('kas_bank','refresh');
+		$filter = array( 'id_pelabuhan' => $_POST['idPelabuhan']);
+		$data = array('nama_pelabuhan' => $_POST['nama_pelabuhan']);
+		$this->pelabuhan->updatePelabuhan($filter, (object) $data);
+		redirect('pelabuhan','refresh');
 	}
 
 	public function delete($id) 
 	{
-		$this->jenisJurnal->delete(array('id_jenis_jurnal' => $id));
+		$this->pelabuhan->delete(array('id_pelabuhan' => $id));
 
-		redirect('jenis_jurnal');
+		redirect('pelabuhan');
 	}
 
 	public function detail($id)
 	{
-		$where = "id_kas_bank = $id";
-		$kasBankData = $this->kasBank->get_where($where)->row();
-
-		echo json_encode($kasBankData);
+		$where = "id_pelabuhan = '" . $id ."'";
+		$pelabuhanData = $this->pelabuhan->get_where($where)->row();
+		echo json_encode($pelabuhanData);
 	}
+
 }

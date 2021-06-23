@@ -1,0 +1,116 @@
+		<div class="content-wrapper">
+
+            <div class="page-header">
+				<h3 class="page-title"> <?php echo ucfirst($title) ?> </h3>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#">Forms</a></li>
+						<li class="breadcrumb-item active" aria-current="page"><?php echo ucfirst($title); ?></li>
+					</ol>
+				</nav>
+            </div>
+
+            <div class="row">
+
+             	<div class="col-md-10 grid-margin stretch-card">
+                	<div class="card">
+                 		<div class="card-body">
+
+                            <div class="d-lg-flex justify-content-between align-items-center pt-2 pb-3 border-bottom">
+                                <div class="d-flex align-items-center">
+                                    <h4 class="mb-0 mr-3"><?php echo ucfirst($title) ?></h4>
+                                </div>
+                            </div>
+
+                            <br>
+                            <form class="form-sample" action="<?php echo('mperkiraan/add/') ?>" method="post">
+
+                            	<table class="table table-striped">
+                            		<tr>
+                            			<td><label class="col-form-label">No. Transaksi</label></td>
+                            			<td>
+                            				<input type="text" name="noAcc6" class="form-control" id="noAcc6" value="<?php echo $idTransKunjungan ?>" readonly="readonly">
+                                    	</td>
+
+                                    	<td></td>
+                            			<td>
+                            				
+                                    	</td>
+                                        <td><label class="col-form-label">Tanggal Transaksi</label></td>
+                                        <td><input type="text" name="noAcc6" class="form-control" id="noAcc6" class="text-center" value="<?php echo $tglTransaksi; ?>" readonly="readonly"></td>
+                            		</tr>
+
+                                    <tr>
+                                        <td><label class="col-form-label">Kapal / MV</label></td>
+                                        <td class="text-left" colspan="3">
+                                            <select name="selectMV" id="selectMV" class="js-example-basic-single" style="width:100%">
+                                                <option>- Pilih MV -</option>
+                                                <?php foreach ($dataMv as $value): ?>
+                                                    <option value="<?php echo $value->id_kapal ?>"><?php echo $value->id_kapal . ' - ' . $value->nama_kapal; ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style=""><label class="col-form-label">Pelabuhan</label></td>
+                                        <td style="" class="text-left" colspan="3">
+                                            <select name="selectPort" id="selectPort" class="js-example-basic-single" style="width:100%">
+                                                <option>- Pilih Port -</option>
+                                                <?php foreach ($dataPort as $value): ?>
+                                                    <option value="<?php echo $value->id_pelabuhan; ?>"><?php echo $value->id_pelabuhan . ' - ' . $value->nama_pelabuhan ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label class="col-form-label">Voyage</label></td>
+                                        <td>
+                                            <input type="text" name="noAcc6" class="form-control" id="noAcc6" placeholder="">
+                                        </td>
+
+                                        <td class="text-right">
+                                            <label class="col-form-label">TA</label>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <input type="date" name="noAcc6" class="form-control" id="noAcc6" placeholder="TA">
+                                        </td>
+                                        <td class="text-right">
+                                            <label class="col-form-label">TD</label>
+                                        </td>
+                                        <td style="width: 20%"><input type="date" name="noAcc6" class="form-control" id="noAcc6" placeholder="TD"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label class="col-form-label">No. Akun</label></td>
+                                        <td colspan="3">
+                                            <select name="selectAcc" id="selectAcc" class="js-example-basic-single" style="width:100%">
+                                                <option>- Pilih Akun -</option>
+                                                <?php foreach ($dataAcc as $value): ?>
+                                                    <option value="<?php echo $value->no_acc ?>"><?php echo $value->no_acc . ' - ' . $value->nama_acc; ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+
+                            	</table>
+
+                                <br>
+                 			
+                                <div class="d-flex flex-row-reverse">
+                                    <button type="submit" class="btn btn-outline-primary btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i> Submit </button>
+                                </div>
+                  		</div>
+                	</div>
+             	</div>
+                
+          </div>
+          <!-- content-wrapper ends -->

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Jun 2021 pada 15.56
+-- Waktu pembuatan: 23 Jun 2021 pada 06.51
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -20,22 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `kline`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_akun_bunglon`
---
-
-CREATE TABLE `tb_akun_bunglon` (
-  `no_acc` varchar(255) NOT NULL,
-  `jenis_perkiraan` varchar(255) DEFAULT NULL,
-  `no_acc_bayangan` varchar(255) DEFAULT NULL,
-  `created_time` datetime DEFAULT NULL,
-  `created_by` varchar(255) DEFAULT NULL,
-  `updated_time` datetime DEFAULT NULL,
-  `updated_by` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -237,6 +221,29 @@ INSERT INTO `tb_jenis_jurnal` (`id_jenis_jurnal`, `jenis_jurnal`, `created_time`
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_kapal`
+--
+
+CREATE TABLE `tb_kapal` (
+  `id_kapal` varchar(255) NOT NULL,
+  `nama_kapal` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_kapal`
+--
+
+INSERT INTO `tb_kapal` (`id_kapal`, `nama_kapal`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('KPL210706012218', 'GULF JASH', '2021-06-22 07:01:18', 'nurman', '2021-06-22 07:01:18', 'nurman'),
+('KPL210706072239', 'LOK PRATAP', '2021-06-22 07:07:39', 'nurman', '2021-06-22 07:07:39', 'nurman');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_kas_bank`
 --
 
@@ -339,6 +346,35 @@ INSERT INTO `tb_kas_bank` (`id_kas_bank`, `no_acc`, `kas_bank`, `init_kas_bank`,
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_kunjungan`
+--
+
+CREATE TABLE `tb_kunjungan` (
+  `id_transaksi` varchar(255) NOT NULL,
+  `id_company` varchar(255) DEFAULT NULL,
+  `tgl_transaksi` varchar(255) DEFAULT NULL,
+  `id_kapal` varchar(255) DEFAULT NULL,
+  `id_pelabuhan` varchar(255) DEFAULT NULL,
+  `voyage` varchar(255) DEFAULT NULL,
+  `tgl_berangkat` varchar(255) DEFAULT NULL,
+  `tgl_tiba` varchar(255) DEFAULT NULL,
+  `no_acc` varchar(255) DEFAULT NULL,
+  `id_currency` varchar(255) DEFAULT NULL,
+  `rate` varchar(255) DEFAULT NULL,
+  `debet` varchar(255) DEFAULT NULL,
+  `kredit` varchar(255) DEFAULT NULL,
+  `is_close` enum('YES','NO') DEFAULT NULL,
+  `is_bayar` enum('YES','NO') DEFAULT NULL,
+  `is_batal` enum('YES','NO') DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_modul`
 --
 
@@ -387,6 +423,29 @@ INSERT INTO `tb_modul_action` (`id_modul_action`, `name`, `id_modul`, `created_t
 ('5', 'edit', 2, '2021-06-14 12:44:52', NULL, '2021-06-14 12:44:59', NULL),
 ('6', 'delete', 2, '2021-06-14 12:44:52', NULL, '2021-06-14 12:44:59', NULL),
 ('7', 'read', 2, '2021-06-14 12:44:52', NULL, '2021-06-14 12:44:59', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_pelabuhan`
+--
+
+CREATE TABLE `tb_pelabuhan` (
+  `id_pelabuhan` varchar(255) NOT NULL,
+  `nama_pelabuhan` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_pelabuhan`
+--
+
+INSERT INTO `tb_pelabuhan` (`id_pelabuhan`, `nama_pelabuhan`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('PLB210706392206', 'CILEGON FABRICATOR', '2021-06-22 07:39:06', 'nurman', '2021-06-22 07:39:06', 'nurman'),
+('PLB210706392214', 'BITUNG', '2021-06-22 07:39:14', 'nurman', '2021-06-22 07:39:14', 'nurman');
 
 -- --------------------------------------------------------
 
@@ -548,12 +607,6 @@ INSERT INTO `tb_user_auth` (`id`, `id_user`, `id_modul_action`, `created_time`, 
 --
 
 --
--- Indeks untuk tabel `tb_akun_bunglon`
---
-ALTER TABLE `tb_akun_bunglon`
-  ADD PRIMARY KEY (`no_acc`);
-
---
 -- Indeks untuk tabel `tb_auth_level`
 --
 ALTER TABLE `tb_auth_level`
@@ -596,10 +649,22 @@ ALTER TABLE `tb_jenis_jurnal`
   ADD PRIMARY KEY (`id_jenis_jurnal`);
 
 --
+-- Indeks untuk tabel `tb_kapal`
+--
+ALTER TABLE `tb_kapal`
+  ADD PRIMARY KEY (`id_kapal`);
+
+--
 -- Indeks untuk tabel `tb_kas_bank`
 --
 ALTER TABLE `tb_kas_bank`
   ADD PRIMARY KEY (`id_kas_bank`);
+
+--
+-- Indeks untuk tabel `tb_kunjungan`
+--
+ALTER TABLE `tb_kunjungan`
+  ADD PRIMARY KEY (`id_transaksi`);
 
 --
 -- Indeks untuk tabel `tb_modul`
@@ -612,6 +677,12 @@ ALTER TABLE `tb_modul`
 --
 ALTER TABLE `tb_modul_action`
   ADD PRIMARY KEY (`id_modul_action`);
+
+--
+-- Indeks untuk tabel `tb_pelabuhan`
+--
+ALTER TABLE `tb_pelabuhan`
+  ADD PRIMARY KEY (`id_pelabuhan`);
 
 --
 -- Indeks untuk tabel `tb_position`
