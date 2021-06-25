@@ -2,11 +2,11 @@
 /**
  * 
  */
-class Kunjungan_model extends MY_Model
+class Estimasi_uang_model extends MY_Model
 {
 
-	public function readAllKunjungan(){
-		return $this->db->select('A.id_kunjungan, A.tgl_berangkat, A.tgl_tiba, C.nama_kapal, D.nama_pelabuhan, A.voyage, A.is_close')
+	public function readAllEstimasi($status){
+		return $this->db->select('A.id_transaksi, A.tgl_berangkat, A.tgl_tiba, C.nama_kapal, D.nama_pelabuhan, A.voyage, A.is_close')
 						->join('tb_company B', 'A.id_company = B.id_company')
 						->join('tb_kapal C', 'A.id_kapal = C.id_kapal')
 						->join('tb_pelabuhan D', 'A.id_pelabuhan = D.id_pelabuhan')
@@ -20,14 +20,14 @@ class Kunjungan_model extends MY_Model
 	}
 
 	public function updateKunjungan($data, $idTransaksi) {
-		$query = $this->db->where('id_kunjungan', $idTransaksi)
+		$query = $this->db->where('id_transaksi', $idTransaksi)
 						  ->update('tb_kunjungan', $data);
 		return $query;
 	}
 
 	public function getDataTransaksi($idTransaksi) 
 	{
-		return $this->db->where('id_kunjungan', $idTransaksi)
+		return $this->db->where('id_transaksi', $idTransaksi)
 						->get('tb_kunjungan')
 						->row();
 	}

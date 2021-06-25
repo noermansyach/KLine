@@ -2,23 +2,20 @@
 /**
  * 
  */
-class Kunjungan extends MX_Controller 
+class Estimasi_uang extends MX_Controller 
 {
 	
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Kunjungan_model', 'kunjungan');
-		$this->load->model('kapal/Kapal_model', 'kapal');
-		$this->load->model('pelabuhan/Pelabuhan_model', 'pelabuhan');
-		$this->load->model('mperkiraan/Mperkiraan_model', 'perkiraan');
+		$this->load->model('Estimasi_uang_model', 'estimasiUang');
 		if($this->session->userdata('status') != 'isLogin') {
 			redirect('login','refresh');
 		}
 	}
 
 	public $_data = array(
-		'title' => "Kunjungan Kapal",
+		'title' => "Estimasi Uang",
 		'css' => "",
 		'js' => "",
 		'content' => ""
@@ -26,17 +23,53 @@ class Kunjungan extends MX_Controller
 
 	public function index() 
 	{
-		$this->_data['css'] = "layout-part/index-css";
-		$this->_data['js'] = "layout-part/index-js";
-		$this->_data['content'] = "index";
+		// $this->_data['css'] = "layout-part/index-css";
+		// $this->_data['js'] = "layout-part/index-js";
+		// $this->_data['content'] = "index";
 
-		// get table data parameter (where = array(), orderby = "[string]")
-		$table = $this->kunjungan->readAllKunjungan(); 
-		if ($table) {
-			$this->_data['table_data'] = $table;
+		// // get table data parameter (where = array(), orderby = "[string]")
+		// $table = $this->estimasiUang->readAllKunjungan(); 
+		// if ($table) {
+		// 	$this->_data['table_data'] = $table;
+		// }
+
+		// $this->load->view('layout', $this->_data);
+		$this->_data['css'] = "layout-part/form-css";
+		$this->_data['js'] = "layout-part/form-js";
+		$this->_data['content'] = "add";
+		$this->_data['idTransKunjungan'] = "TR" . date("yhmids");
+		$this->_data['tglTransaksi'] = date('d/m/Y');
+
+		if ($_POST) {
+			// $date=date_create($_POST['ta']);
+			// $tglBerangkat = date_format($date,"Y-m-d");
+
+			// $date=date_create($_POST['td']);
+			// $tglTiba = date_format($date,"Y-m-d");
+			// $data = array(
+			// 				'id_transaksi' => $_POST['idTransaksi'],
+			// 				'id_company' => $this->session->userdata('company'),
+			// 				'tgl_transaksi' => date('Y-m-d'),
+			// 				'id_kapal' => $_POST['selectMV'],
+			// 				'id_pelabuhan' => $_POST['selectPort'],
+			// 				'voyage' => $_POST['voyage'],
+			// 				'tgl_berangkat' => $tglBerangkat,
+			// 				'tgl_tiba' => $tglTiba,
+			// 				'no_acc' => $_POST['selectAcc'],
+			// 				'is_close' => "OPEN",
+			// 				'is_bayar' => "NO",
+			// 				'is_batal' => "NO",
+			// 				'created_time' => date('Y-m-d H:i:s'),
+			// 				'created_by' => $this->session->userdata('nama'),
+			// 				'updated_time' => date('Y-m-d H:i:s'),
+			// 				'updated_by' => $this->session->userdata('nama')
+			// 		);
+			// // print_r($data);
+			// $this->kunjungan->insertKunjungan($data);
+			// redirect('kunjungan');
+		} else {
+			$this->load->view('layout', $this->_data);
 		}
-
-		$this->load->view('layout', $this->_data);
 	}
 
 	public function add() 
@@ -58,7 +91,7 @@ class Kunjungan extends MX_Controller
 			$date=date_create($_POST['td']);
 			$tglTiba = date_format($date,"Y-m-d");
 			$data = array(
-							'id_kunjungan' => $_POST['idTransaksi'],
+							'id_transaksi' => $_POST['idTransaksi'],
 							'id_company' => $this->session->userdata('company'),
 							'tgl_transaksi' => date('Y-m-d'),
 							'id_kapal' => $_POST['selectMV'],

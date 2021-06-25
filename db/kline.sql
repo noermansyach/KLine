@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jun 2021 pada 10.50
+-- Waktu pembuatan: 25 Jun 2021 pada 10.25
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -107,6 +107,7 @@ CREATE TABLE `tb_currency` (
   `id_currency` int(5) NOT NULL,
   `currency` varchar(255) DEFAULT NULL,
   `init` varchar(10) DEFAULT NULL,
+  `rate` varchar(20) DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `updated_time` datetime DEFAULT NULL,
@@ -117,14 +118,15 @@ CREATE TABLE `tb_currency` (
 -- Dumping data untuk tabel `tb_currency`
 --
 
-INSERT INTO `tb_currency` (`id_currency`, `currency`, `init`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(1, 'Hongkong', 'HKD', '2021-06-14 10:17:01', 'nurman', '2021-06-14 10:17:01', 'nurman'),
-(2, 'Indonesia', 'RP', '2021-06-14 10:23:42', 'nurman', '2021-06-14 10:23:42', 'nurman'),
-(3, 'Singapore', 'SGD', '2021-06-14 10:24:06', 'nurman', '2021-06-14 10:24:06', 'nurman'),
-(4, 'United States Of America', 'USD', '2021-06-14 10:24:35', 'nurman', '2021-06-14 10:24:35', 'nurman'),
-(5, 'Japan', 'YEN', '2021-06-14 10:24:47', 'nurman', '2021-06-14 10:24:47', 'nurman'),
-(10, 'London', 'Pound', '2021-06-15 07:58:25', 'nurman', '2021-06-15 07:58:25', 'nurman'),
-(11, 'Thailand', 'THD', '2021-06-16 11:18:47', 'nurman', '2021-06-16 11:18:47', 'nurman');
+INSERT INTO `tb_currency` (`id_currency`, `currency`, `init`, `rate`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+(1, 'Hongkong', 'Yuan', '0,00045', '2021-06-14 10:17:01', 'nurman', '2021-06-24 11:35:35', 'admin'),
+(2, 'Indonesia', 'RP', NULL, '2021-06-14 10:23:42', 'nurman', '2021-06-14 10:23:42', 'nurman'),
+(3, 'Singapore', 'SGD', NULL, '2021-06-14 10:24:06', 'nurman', '2021-06-14 10:24:06', 'nurman'),
+(4, 'United States Of America', 'USD', NULL, '2021-06-14 10:24:35', 'nurman', '2021-06-14 10:24:35', 'nurman'),
+(5, 'Japan', 'YEN', NULL, '2021-06-14 10:24:47', 'nurman', '2021-06-14 10:24:47', 'nurman'),
+(10, 'London', 'Pound', '0,00005', '2021-06-15 07:58:25', 'nurman', '2021-06-24 11:35:12', 'admin'),
+(11, 'Thailand', 'THD', NULL, '2021-06-16 11:18:47', 'nurman', '2021-06-16 11:18:47', 'nurman'),
+(12, 'Ringgit Malaysia', 'RM', '0,00029', '2021-06-24 11:36:35', 'admin', '2021-06-24 11:36:35', 'admin');
 
 -- --------------------------------------------------------
 
@@ -192,6 +194,34 @@ CREATE TABLE `tb_employee` (
 
 INSERT INTO `tb_employee` (`id_employee`, `employee_name`, `place_of_birth`, `date_of_birth`, `gender`, `religion`, `marital_status`, `last_education`, `citizenship`, `nik`, `address`, `postal_code`, `phone_number`, `email`, `npwp`, `ptkp`, `join_date`, `out_date`, `id_department`, `id_position`, `id_company`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
 ('210614124636', 'WAHYU TRISNADI', NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_estimasi`
+--
+
+CREATE TABLE `tb_estimasi` (
+  `kd_estimasi` varchar(255) DEFAULT NULL,
+  `id_company` varchar(255) DEFAULT NULL,
+  `no_acc` varchar(255) DEFAULT NULL,
+  `tgl_transaksi` date DEFAULT NULL,
+  `status` enum('MASUK','KELUAR') DEFAULT NULL,
+  `debit_kredit` enum('DEBIT','KREDIT') DEFAULT NULL,
+  `amount_rate` varchar(255) DEFAULT NULL,
+  `amount_dbfc` varchar(255) DEFAULT NULL,
+  `amount_crfc` varchar(255) DEFAULT NULL,
+  `debit` varchar(255) DEFAULT NULL,
+  `kredit` varchar(255) DEFAULT NULL,
+  `uraian` varchar(255) DEFAULT NULL,
+  `jumlah_fc` varchar(255) DEFAULT NULL,
+  `jumlah` varchar(255) DEFAULT NULL,
+  `id_kunjungan` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -350,7 +380,7 @@ INSERT INTO `tb_kas_bank` (`id_kas_bank`, `no_acc`, `kas_bank`, `init_kas_bank`,
 --
 
 CREATE TABLE `tb_kunjungan` (
-  `id_transaksi` varchar(255) NOT NULL,
+  `id_kunjungan` varchar(255) NOT NULL,
   `id_company` varchar(255) DEFAULT NULL,
   `tgl_transaksi` varchar(255) DEFAULT NULL,
   `id_kapal` varchar(255) DEFAULT NULL,
@@ -376,7 +406,8 @@ CREATE TABLE `tb_kunjungan` (
 -- Dumping data untuk tabel `tb_kunjungan`
 --
 
-INSERT INTO `tb_kunjungan` (`id_transaksi`, `id_company`, `tgl_transaksi`, `id_kapal`, `id_pelabuhan`, `voyage`, `tgl_berangkat`, `tgl_tiba`, `no_acc`, `id_currency`, `rate`, `debet`, `kredit`, `is_close`, `is_bayar`, `is_batal`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+INSERT INTO `tb_kunjungan` (`id_kunjungan`, `id_company`, `tgl_transaksi`, `id_kapal`, `id_pelabuhan`, `voyage`, `tgl_berangkat`, `tgl_tiba`, `no_acc`, `id_currency`, `rate`, `debet`, `kredit`, `is_close`, `is_bayar`, `is_batal`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('TR210506582534', '2', '2021-06-25', 'KPL210706012218', 'PLB210706392206', '1110', '2021-06-25', '2021-06-29', '1001.01', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'NO', '2021-06-25 05:58:55', 'admin', '2021-06-25 05:58:55', 'admin'),
 ('TR210806462317', '2', '2021-06-23', 'KPL210706012218', 'PLB210706392206', '1102', '2021-06-23', '2021-06-26', '1001.01', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'NO', '2021-06-23 10:12:27', 'admin', '2021-06-23 10:12:27', 'admin'),
 ('TR211006122335', '2', '2021-06-23', 'KPL210706072239', 'PLB210706392214', '1231', '2021-06-24', '2021-06-28', '1001.01', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'NO', '2021-06-23 10:12:50', 'admin', '2021-06-23 10:12:50', 'admin');
 
@@ -475,6 +506,7 @@ CREATE TABLE `tb_perkiraan` (
   `is_disb` enum('YES','NO') DEFAULT NULL,
   `id_company` varchar(254) DEFAULT NULL,
   `init_kas_bank` varchar(255) DEFAULT NULL,
+  `no_rek` varchar(255) DEFAULT NULL,
   `id_bank` varchar(254) DEFAULT NULL,
   `id_currency` varchar(254) DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
@@ -487,16 +519,17 @@ CREATE TABLE `tb_perkiraan` (
 -- Dumping data untuk tabel `tb_perkiraan`
 --
 
-INSERT INTO `tb_perkiraan` (`no_acc`, `nama_acc`, `acc_induk`, `level`, `jenis_perkiraan`, `is_jurnal`, `jenis_jurnal`, `laporan_gl`, `saldo_min`, `is_budget`, `is_disb`, `id_company`, `init_kas_bank`, `id_bank`, `id_currency`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-('1', 'AKTIVA', '', '1', 'AKTIVA', 'NO', 'KAS', 'TES', NULL, '', NULL, '2', 'KAS-TES', '7', '2', '2021-06-20 13:14:38', 'nurman', '2021-06-20 13:14:38', 'nurman'),
-('10', 'HUTANG JANGKA PENDEK', '1', '2', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:31:22', 'nurman', '2021-06-20 15:31:22', 'nurman'),
-('100', 'KAS & SETARA KAS', '10', '3', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:31:41', 'nurman', '2021-06-20 15:31:41', 'nurman'),
-('1000.00', 'KAS', '100', '4', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:32:07', 'nurman', '2021-06-20 15:32:07', 'nurman'),
-('1000.01', 'KAS BESAR RUPIAH', '1000.00', '5', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:32:28', 'nurman', '2021-06-20 15:32:28', 'nurman'),
-('1001.01', 'KAS BESAR RUPIAH SEMARANG', '1000.01', '6', 'AKTIVA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:48:58', 'nurman', '2021-06-20 15:48:58', 'nurman'),
-('1001.02', 'KAS BESAR', '1000.01', '6', 'PASSIVA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:50:06', 'nurman', '2021-06-20 15:50:06', 'nurman'),
-('1001.03', 'TES', '1000.01', '6', 'BIAYA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:12', 'nurman', '2021-06-20 15:51:12', 'nurman'),
-('1001.04', 'TES 2', '1000.01', '6', 'AKTIVA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:42', 'nurman', '2021-06-20 15:51:42', 'nurman');
+INSERT INTO `tb_perkiraan` (`no_acc`, `nama_acc`, `acc_induk`, `level`, `jenis_perkiraan`, `is_jurnal`, `jenis_jurnal`, `laporan_gl`, `saldo_min`, `is_budget`, `is_disb`, `id_company`, `init_kas_bank`, `no_rek`, `id_bank`, `id_currency`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('1', 'AKTIVA', '', '1', 'AKTIVA', 'NO', 'KAS', 'TES', NULL, '', NULL, '2', 'KAS-TES', NULL, '7', '2', '2021-06-20 13:14:38', 'nurman', '2021-06-20 13:14:38', 'nurman'),
+('10', 'HUTANG JANGKA PENDEK', '1', '2', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:31:22', 'nurman', '2021-06-20 15:31:22', 'nurman'),
+('100', 'KAS & SETARA KAS', '10', '3', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:31:41', 'nurman', '2021-06-20 15:31:41', 'nurman'),
+('1000.00', 'KAS', '100', '4', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:32:07', 'nurman', '2021-06-20 15:32:07', 'nurman'),
+('1000.01', 'KAS BESAR RUPIAH', '1000.00', '5', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:32:28', 'nurman', '2021-06-20 15:32:28', 'nurman'),
+('1001.01', 'KAS BESAR RUPIAH SEMARANG', '1000.01', '6', 'AKTIVA', 'YES', '', '', 1500000, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:48:58', 'nurman', '2021-06-20 15:48:58', 'nurman'),
+('1001.02', 'KAS BESAR', '1000.01', '6', 'PASSIVA', 'YES', '', '', 2000000, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:50:06', 'nurman', '2021-06-20 15:50:06', 'nurman'),
+('1001.03', 'TES', '1000.01', '6', 'BIAYA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:12', 'nurman', '2021-06-20 15:51:12', 'nurman'),
+('1001.04', 'TES 2', '1000.01', '6', 'AKTIVA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:42', 'nurman', '2021-06-20 15:51:42', 'nurman'),
+('1000.01', 'Bank Mandiri Tebet', '1000.01', '6', 'AKTIVA', 'YES', 'KAS', 'TES', NULL, '', NULL, '2', 'MDR TEBET', '123 12312 123112', '7', '1', '2021-06-24 12:00:50', 'admin', '2021-06-24 12:00:50', 'admin');
 
 -- --------------------------------------------------------
 
@@ -519,6 +552,7 @@ CREATE TABLE `tb_perkiraan_bunglon` (
   `is_disb` enum('YES','NO') DEFAULT NULL,
   `id_company` varchar(254) DEFAULT NULL,
   `init_kas_bank` varchar(255) DEFAULT NULL,
+  `no_rek` varchar(255) DEFAULT NULL,
   `id_bank` varchar(254) DEFAULT NULL,
   `id_currency` varchar(254) DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
@@ -531,10 +565,11 @@ CREATE TABLE `tb_perkiraan_bunglon` (
 -- Dumping data untuk tabel `tb_perkiraan_bunglon`
 --
 
-INSERT INTO `tb_perkiraan_bunglon` (`no_acc_bunglon`, `no_acc`, `nama_acc`, `acc_induk`, `level`, `jenis_perkiraan`, `is_jurnal`, `jenis_jurnal`, `laporan_gl`, `saldo_min`, `is_budget`, `is_disb`, `id_company`, `init_kas_bank`, `id_bank`, `id_currency`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-('6001.01', '1001.01', 'KAS BESAR RUPIAH SEMARANG', '1000.01', '6', 'PASSIVABY', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:48:58', 'nurman', '2021-06-20 15:48:58', 'nurman'),
-('5001.02', '1001.02', 'KAS BESAR', '1000.01', '6', 'AKTIVABY', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:50:06', 'nurman', '2021-06-20 15:50:06', 'nurman'),
-('6001.04', '1001.04', 'TES 2', '1000.01', '6', 'PASSIVABY', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:42', 'nurman', '2021-06-20 15:51:42', 'nurman');
+INSERT INTO `tb_perkiraan_bunglon` (`no_acc_bunglon`, `no_acc`, `nama_acc`, `acc_induk`, `level`, `jenis_perkiraan`, `is_jurnal`, `jenis_jurnal`, `laporan_gl`, `saldo_min`, `is_budget`, `is_disb`, `id_company`, `init_kas_bank`, `no_rek`, `id_bank`, `id_currency`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('6001.01', '1001.01', 'KAS BESAR RUPIAH SEMARANG', '1000.01', '6', 'PASSIVABY', 'YES', '', '', 1500000, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:48:58', 'nurman', '2021-06-20 15:48:58', 'nurman'),
+('5001.02', '1001.02', 'KAS BESAR', '1000.01', '6', 'AKTIVABY', 'YES', '', '', 2000000, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:50:06', 'nurman', '2021-06-20 15:50:06', 'nurman'),
+('6001.04', '1001.04', 'TES 2', '1000.01', '6', 'PASSIVABY', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:42', 'nurman', '2021-06-20 15:51:42', 'nurman'),
+('6000.01', '1000.01', 'Bank Mandiri Tebet', '1000.01', '6', 'PASSIVABY', 'YES', 'KAS', 'TES', NULL, '', NULL, '2', 'MDR TEBET', '123 12312 123112', '7', '1', '2021-06-24 12:00:50', 'admin', '2021-06-24 12:00:50', 'admin');
 
 -- --------------------------------------------------------
 
@@ -672,7 +707,7 @@ ALTER TABLE `tb_kas_bank`
 -- Indeks untuk tabel `tb_kunjungan`
 --
 ALTER TABLE `tb_kunjungan`
-  ADD PRIMARY KEY (`id_transaksi`);
+  ADD PRIMARY KEY (`id_kunjungan`) USING BTREE;
 
 --
 -- Indeks untuk tabel `tb_modul`
@@ -724,7 +759,7 @@ ALTER TABLE `tb_bank`
 -- AUTO_INCREMENT untuk tabel `tb_currency`
 --
 ALTER TABLE `tb_currency`
-  MODIFY `id_currency` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_currency` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_department`

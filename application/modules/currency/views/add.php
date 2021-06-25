@@ -12,13 +12,18 @@
 	            <div class="modal-body">
 	                <table class="table table-modal" width="500px" style="table-layout: fixed;"> 
 	                	<tr>
-	                		<td width="200px">Currency Name</td>
+	                		<td width="200px">Nama Mata Uang</td>
 	                		<td><div class="nama_suplier"><input type="text" name="currency" class="form-control form-control-sm"></div></td>
 	                	</tr>
 
 	                	<tr>
-	                		<td>Initial</td>
+	                		<td>Inisial</td>
 	                		<td><div class="pic"><input type="text" name="init" class="form-control form-control-sm"></div></td>
+	                	</tr>
+
+	                	<tr>
+	                		<td>Rate [ Rp - ]</td>
+	                		<td><div class="pic"><input type="text" name="rate" class="form-control form-control-sm"></div></td>
 	                	</tr>
 	                </table>
 	            </div>

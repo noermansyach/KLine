@@ -32,7 +32,7 @@
                             		<tr>
                             			<td><label class="col-form-label">No. Transaksi</label></td>
                             			<td>
-                            				<input type="text" name="idTransaksi" class="form-control" id="idTransaksi" value="<?php echo $dataKunjungan->id_kunjungan; ?>" readonly="readonly">
+                            				<input type="text" name="idTransaksi" class="form-control" id="idTransaksi" value="<?php echo $dataKunjungan->id_transaksi; ?>" readonly="readonly">
                                     	</td>
 
                                     	<td></td>

@@ -34,17 +34,20 @@
 											<thead>
 												<tr>
 													<th>Initial</th>
-													<th>Currency Name</th>
+													<th>Nama Mata Uang</th>
+													<th>Rate</th>
 													<th class="text-center">Actions</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php 
-													foreach ($table_data as $value) {
+													if (!empty($table_data)) {
+														foreach ($table_data as $value) {
 												?>
 												<tr>
-													<td><?php echo $value->init ?></td>
-													<td><?php echo $value->currency ?></td>
+													<td><?php echo $value->init; ?></td>
+													<td><?php echo $value->currency; ?></td>
+													<td><?php echo $value->rate; ?></td>
 													<td class="text-center">
 														<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit" onclick="detail('<?php echo $value->id_currency; ?>')" title="edit"><i class="mdi mdi-pencil"></i> </button>
 
@@ -52,6 +55,7 @@
 													</td>
 												</tr>
 												<?php 
+														}
 													}
 												?>
 											</tbody>

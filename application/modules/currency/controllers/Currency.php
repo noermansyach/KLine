@@ -15,7 +15,7 @@ class Currency extends MX_Controller
 	}
 
 	public $_data = array(
-		'title' => "Currency",
+		'title' => "Mata Uang",
 		'css' => "",
 		'js' => "",
 		'content' => ""
@@ -31,8 +31,6 @@ class Currency extends MX_Controller
 		$table = $this->currency->readAllCurrency(); 
 		if ($table) {
 			$this->_data['table_data'] = $table;
-		} else {
-			$this->_data['table_data'] = "Tidak ada data untuk ditampilkan";
 		}
 
 		$this->load->view('layout', $this->_data);
@@ -49,6 +47,7 @@ class Currency extends MX_Controller
 			$data = array(
 						'currency' => $_POST['currency'],
 						'init' => $_POST['init'],
+						'rate' => $_POST['rate'],
 						'created_time' => date('Y-m-d H:i:s'),
 						'created_by' => $this->session->userdata('nama'),
 						'updated_time' => date('Y-m-d H:i:s'),
@@ -67,7 +66,11 @@ class Currency extends MX_Controller
 
 		$filter = array( 'id_currency' => $_POST['id_currency']);
 		$data = array('currency' => $_POST['currency'],
-					  'init' => $_POST['init']);
+					  'init' => $_POST['init'],
+					  'rate' => $_POST['rate'],
+					  'updated_time' => date('Y-m-d H:i:s'),
+					  'updated_by' => $this->session->userdata('nama')
+					);
 		$this->currency->updateCurrency($filter, (object) $data);
 		redirect('currency','refresh');
 	}

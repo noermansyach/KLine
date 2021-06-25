@@ -52,7 +52,7 @@
 												?>
 														<tr>
 															<td><?php echo $no++; ?></td>
-															<td><?php echo strtoupper($value->id_kunjungan); ?></td>
+															<td><?php echo strtoupper($value->id_transaksi); ?></td>
 															<td><?php echo strtoupper($value->tgl_berangkat); ?></td>
 															<td><?php echo strtoupper($value->tgl_tiba); ?></td>
 															<td><?php echo strtoupper($value->nama_kapal); ?></td>
@@ -60,7 +60,7 @@
 															<td><?php echo strtoupper($value->voyage); ?></td>
 															<td><?php echo strtoupper($value->is_close); ?></td>
 															<td class="text-center">
-																<a href="<?php echo base_url('kunjungan/edit/'.$value->id_kunjungan); ?>" class="btn btn-warning" title="edit"><i class="mdi mdi-pencil"></i> </a>
+																<a href="<?php echo base_url('kunjungan/edit/'.$value->id_transaksi); ?>" class="btn btn-warning" title="edit"><i class="mdi mdi-pencil"></i> </a>
 																<!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit" onclick="detail('<?php echo $value->id_pelabuhan; ?>')" title="edit"><i class="mdi mdi-pencil"></i> </button>
 
 																<a href="<?php echo base_url('pelabuhan/delete/' . $value->id_pelabuhan) ?>" class="btn btn-danger tombol-hapus" title="Delete"><i class="fa fa-trash-o"></i> </a> -->

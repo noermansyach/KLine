@@ -267,6 +267,11 @@
                                 <input type="text" name="initKas" id="initKas" class="form-control">
                             </div>
 
+                            <div class="form-group">
+                                <label class="col-form-label">No. Rekening</label>
+                                <input type="text" name="noRek" id="noRek" class="form-control">
+                            </div>
+
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Budget</label>
                                 <div class="col-sm-3">

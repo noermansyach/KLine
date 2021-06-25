@@ -40,6 +40,7 @@
 					<ul class="nav flex-column sub-menu">
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('mperkiraan') ?>">Perkiraan</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('perkiraan_bunglon') ?>">Akun Bunglon</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('saldo_minimum') ?>">Saldo Minimum</a></li>
 						<!-- <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('') ?>">Currency Rate</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('') ?>">InQuery</a></li> -->
 					</ul>
@@ -71,6 +72,13 @@
             </li>
 
             <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('estimasi_uang') ?>">
+                <span class="icon-bg"><i class="fa fa-money menu-icon"></i></span>
+                <span class="menu-title">Estimasi Uang</span>
+              </a>
+            </li>
+
+            <!-- <li class="nav-item">
 				<a class="nav-link" data-toggle="collapse" href="#kasBank" aria-expanded="false" aria-controls="page-layouts">
 					<span class="icon-bg"> <i class="fa fa-bank menu-icon"></i> </span>
 					<span class="menu-title">Kas & Bank</span>
@@ -82,7 +90,7 @@
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">Entry Bank</a></li>
 					</ul>
 				</div>
-			</li>
+			</li> -->
 
 		</ul>
     </nav>

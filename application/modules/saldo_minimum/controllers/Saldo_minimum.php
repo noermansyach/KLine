@@ -2,20 +2,20 @@
 /**
  * 
  */
-class Kunjungan extends MX_Controller 
+class Saldo_minimum extends MX_Controller 
 {
 	
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Kunjungan_model', 'kunjungan');
+		$this->load->model('Saldo_minimum_model', 'saldoMinimum');
 		if($this->session->userdata('status') != 'isLogin') {
 			redirect('login','refresh');
 		}
 	}
 
 	public $_data = array(
-		'title' => "Kunjungan Kapal",
+		'title' => "Saldo Minimum",
 		'css' => "",
 		'js' => "",
 		'content' => ""
@@ -28,7 +28,7 @@ class Kunjungan extends MX_Controller
 		$this->_data['content'] = "index";
 
 		// get table data parameter (where = array(), orderby = "[string]")
-		$table = $this->kunjungan->readAllKunjungan(); 
+		$table = $this->saldoMinimum->readAllMinimum(); 
 		if ($table) {
 			$this->_data['table_data'] = $table;
 		}
@@ -44,18 +44,17 @@ class Kunjungan extends MX_Controller
 		// $this->_data['kodeSuplier'] = "SUP-" . date("ymdhis");
 
 		if ($_POST) {
-			$idPelabuhan = "PLB". date("yhmids");
 			$data = array(
-						'id_pelabuhan' => $idPelabuhan,
-						'nama_pelabuhan' => $_POST['namaPelabuhan'],
+						'currency' => $_POST['currency'],
+						'init' => $_POST['init'],
 						'created_time' => date('Y-m-d H:i:s'),
 						'created_by' => $this->session->userdata('nama'),
 						'updated_time' => date('Y-m-d H:i:s'),
 						'updated_by' => $this->session->userdata('nama')
 					);
 			// print_r($_POST);
-			$this->pelabuhan->insertPelabuhan($data);
-			redirect('pelabuhan','refresh');
+			$this->currency->insertCurrency($data);
+			redirect('currency','refresh');
 		}
 	}
 
@@ -64,24 +63,25 @@ class Kunjungan extends MX_Controller
 		$this->_data['css'] = "layout-part/form-css";
 		$this->_data['js'] = "layout-part/form-js";
 
-		$filter = array( 'id_pelabuhan' => $_POST['idPelabuhan']);
-		$data = array('nama_pelabuhan' => $_POST['nama_pelabuhan']);
-		$this->pelabuhan->updatePelabuhan($filter, (object) $data);
-		redirect('pelabuhan','refresh');
+		$filter = array( 'no_acc' => $_POST['noAcc']);
+		$data = array('saldo_min' => $_POST['saldoMinimum']);
+		$this->saldoMinimum->updateMinimum($filter, $data);
+		redirect('saldo_minimum','refresh');
 	}
 
 	public function delete($id) 
 	{
-		$this->pelabuhan->delete(array('id_pelabuhan' => $id));
+		$this->saldo->delete(array('id_currency' => $id));
 
-		redirect('pelabuhan');
+		redirect('currency');
 	}
 
 	public function detail($id)
 	{
-		$where = "id_pelabuhan = '" . $id ."'";
-		$pelabuhanData = $this->pelabuhan->get_where($where)->row();
-		echo json_encode($pelabuhanData);
+		$where = "no_acc = $id";
+		$saldoMinimumData = $this->saldoMinimum->getAccSaldoMinimum($id)->row();
+
+		echo json_encode($saldoMinimumData);
 	}
 
 }

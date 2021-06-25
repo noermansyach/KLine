@@ -8,16 +8,19 @@
     <!-- End custom js for this page -->
 
     <script type="text/javascript">
-    	function detail(id_currency) {
-    		$("#id_currency").val(id_currency)
+    	function detail(noAcc) {
+    		$("#noAcc").val(noAcc)
     		$.ajax({
-				url : "<?php echo base_url('currency/detail/'); ?>" + id_currency,
+				url : "<?php echo base_url('saldo_minimum/detail/'); ?>" + noAcc,
 				type : "GET",
 				success : function(result) {
-					objCurrency = JSON.parse(result);
-					$("#currency").val(objCurrency.currency);
-					$("#init").val(objCurrency.init);
-                    $("#rate").val(objCurrency.rate);
+                    var saldoMin = 0;
+                    var objSaldoMin = JSON.parse(result);
+                    if (objSaldoMin.saldo_min != null) {
+                        var saldoMin = objSaldoMin.saldo_min;
+                    }
+					$("#namaAcc").val(objSaldoMin.nama_acc);
+					$("#saldoMinimum").val(saldoMin);
 				},
 				error : function(result){
 					// $("#alert").prop("style", "display: block").text("Error koneksi mengambil data supplier");
