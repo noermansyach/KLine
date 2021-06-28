@@ -64,19 +64,30 @@ class Login extends MX_Controller
 		$dataUser = $this->login->get_data_user($where);
 		$validation = $this->form_validation->set_rules($this->rules());
 
-		if($validation->run($this)){
-			$data_session = array(
-				'id' => $dataUser->id_user,
-				'nama' => $username,
-				'employeeId' => $dataUser->id_employee,
-				'status' => 'isLogin',
-				'company' => $dataUser->id_company
-			);
- 
-			$this->session->set_userdata($data_session);
-			
-			redirect('company','refresh');
-			// echo "berhasil";
+		if($validation->run($this)) {
+			if ($dataUser->id_level == '1') {
+				$data_session = array(
+					'id' 			=> $dataUser->id_user,
+					'nama' 			=> $username,
+					'employeeId' 	=> $dataUser->id_employee,
+					'status' 		=> 'isLogin',
+					'company' 		=> $dataUser->id_company,
+					'level' 		=> $dataUser->id_level
+				);	
+				$this->session->set_userdata($data_session);
+				redirect('user','refresh');
+			} else {
+				$data_session = array(
+					'id' 			=> $dataUser->id_user,
+					'nama' 			=> $username,
+					'employeeId' 	=> $dataUser->id_employee,
+					'status' 		=> 'isLogin',
+					'company' 		=> $dataUser->id_company,
+					'level' 		=> $dataUser->id_level
+				);	
+				$this->session->set_userdata($data_session);
+				redirect('company','refresh');
+			}
 		}else{
 			// redirect('login','refresh');
 			echo "gagal";

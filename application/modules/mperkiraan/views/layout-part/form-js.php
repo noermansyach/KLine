@@ -208,41 +208,20 @@
                     $("#textLevel6").show();
                 }
             });
-            // $('').change(function() {
-            //     if (this.value == '1') {
-            //         $("#accLevel1").show();
-            //         $("#accLevel2").show();
 
-            //         $("#accLevel2").hide();
-            //         $("#accLevel3").hide();
-            //         $("#accLevel4").hide();
-            //     } 
+            $("#bankOption").hide();
+            $("#kasOption").hide();
 
-            //     if (this.value == '2') {
-            //         $("#accLevel1").show();
-            //         $("#accLevel2").show();
-
-            //         $("#accLevel3").hide();
-            //         $("#accLevel4").hide();
-            //     } 
-
-            //     if (this.value == '2') {
-            //         $("#accLevel1").show();
-            //         $("#accLevel2").show();
-            //         $("#accLevel3").show();
-
-            //         $("#accLevel4").hide();
-            //     } 
-
-            //     if (this.value == '2') {
-            //         $("#accLevel1").show();
-            //         $("#accLevel2").show();
-            //         $("#accLevel3").show();
-            //         $("#accLevel4").show();
-            //     }
-            // });
-
-            
+            $("#selectJenisJurnal").change(function() {
+                $("#bankOption").hide();
+                $("#kasOption").hide();
+                var jenisJurnal = $(this).val();
+                if (jenisJurnal == 'BANK') {
+                    $("#bankOption").show();
+                } else {
+                    $("#kasOption").show();
+                }
+            });
         });
 
     </script>

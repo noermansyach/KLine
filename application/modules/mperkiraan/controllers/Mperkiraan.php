@@ -85,29 +85,50 @@ class Mperkiraan extends MX_Controller
 					break;
 			}
 
-			$data = array(
-						'no_acc' => $noAcc,
-						'nama_acc' => $namaAcc,
-						'acc_induk' => $accInduk,
-						'level' => $level,
-						'jenis_perkiraan' => $_POST['selectJenisPerkiraan'],
-						'is_jurnal' => $_POST['isJurnal'],
-						'jenis_jurnal' => $_POST['selectJenisJurnal'],
-						'laporan_gl' => $_POST['laporanGl'],
-						'id_company' => $_POST['selectCompany'],
-						'id_bank' => $_POST['selectBank'],
-						'id_currency' => $_POST['selectCurrency'],
-						'init_kas_bank' => $_POST ['initKas'],
-						'no_rek' => $_POST['noRek'],
-						'is_budget' => $_POST['initKas'],
-						'created_time' => date('Y-m-d H:i:s'),
-						'created_by' => $this->session->userdata('nama'),
-						'updated_time' => date('Y-m-d H:i:s'),
-						'updated_by' => $this->session->userdata('nama')
-					);
-			$this->mperkiraan->insertPerkiraan($data);
+			if ($_POST['selectJenisJurnal'] == 'BANK') {
+				$data = array(
+							'no_acc' => $noAcc,
+							'nama_acc' => $namaAcc,
+							'acc_induk' => $accInduk,
+							'level' => $level,
+							'jenis_perkiraan' => $_POST['selectJenisPerkiraan'],
+							'is_jurnal' => $_POST['isJurnal'],
+							'jenis_jurnal' => $_POST['selectJenisJurnal'],
+							'id_company' => $this->session->userdata('company'),
+							'id_bank' => $_POST['selectBank'],
+							'init_kas_bank' => $_POST ['initBank'],
+							'no_rek' => $_POST['noRek'],
+							'saldo_min' => $_POST['saldoMinimum'],
+							'is_budget' => $_POST['isBudget'],
+							'created_time' => date('Y-m-d H:i:s'),
+							'created_by' => $this->session->userdata('nama'),
+							'updated_time' => date('Y-m-d H:i:s'),
+							'updated_by' => $this->session->userdata('nama')
+				);
+			} else { 
+				$data = array(
+							'no_acc' => $noAcc,
+							'nama_acc' => $namaAcc,
+							'acc_induk' => $accInduk,
+							'level' => $level,
+							'jenis_perkiraan' => $_POST['selectJenisPerkiraan'],
+							'is_jurnal' => $_POST['isJurnal'],
+							'jenis_jurnal' => $_POST['selectJenisJurnal'],
+							'id_company' => $this->session->userdata('company'),
+							'id_currency' => $_POST['selectCurrency'],
+							'init_kas_bank' => $_POST ['initKas'],
+							'is_budget' => $_POST['initKas'],
+							'created_time' => date('Y-m-d H:i:s'),
+							'created_by' => $this->session->userdata('nama'),
+							'updated_time' => date('Y-m-d H:i:s'),
+							'updated_by' => $this->session->userdata('nama')
+				);
+			}	
 
 			
+			$this->mperkiraan->insertPerkiraan($data);
+
+			// Make a bunglon account
 			if ($level == '6') {
 				if (($_POST['selectJenisPerkiraan'] == 'AKTIVA') || ($_POST['selectJenisPerkiraan'] == 'PASSIVA')) {
 					$noAccBunglon =  str_split($noAcc);
@@ -122,28 +143,47 @@ class Mperkiraan extends MX_Controller
 						$noAccBunglon[0] = '5';
 						$fixNoAccBunglon = implode('', $noAccBunglon);
 					}
-					
-					$data = array(
-						'no_acc_bunglon' => $fixNoAccBunglon,
-						'no_acc' => $noAcc,
-						'nama_acc' => $namaAcc,
-						'acc_induk' => $accInduk,
-						'level' => $level,
-						'jenis_perkiraan' => $jenisPerkiraan,
-						'is_jurnal' => $_POST['isJurnal'],
-						'jenis_jurnal' => $_POST['selectJenisJurnal'],
-						'laporan_gl' => $_POST['laporanGl'],
-						'id_company' => $_POST['selectCompany'],
-						'id_bank' => $_POST['selectBank'],
-						'id_currency' => $_POST['selectCurrency'],
-						'init_kas_bank' => $_POST ['initKas'],
-						'no_rek' => $_POST['noRek'],
-						'is_budget' => $_POST['initKas'],
-						'created_time' => date('Y-m-d H:i:s'),
-						'created_by' => $this->session->userdata('nama'),
-						'updated_time' => date('Y-m-d H:i:s'),
-						'updated_by' => $this->session->userdata('nama')
-					);
+					if ($_POST['selectJenisJurnal'] == 'BANK') {
+						$data = array(
+							'no_acc_bunglon' => $fixNoAccBunglon,
+							'no_acc' => $noAcc,
+							'nama_acc' => $namaAcc,
+							'acc_induk' => $accInduk,
+							'level' => $level,
+							'jenis_perkiraan' => $jenisPerkiraan,
+							'is_jurnal' => $_POST['isJurnal'],
+							'jenis_jurnal' => $_POST['selectJenisJurnal'],
+							'id_company' => $this->session->userdata('company'),
+							'id_bank' => $_POST['selectBank'],
+							'init_kas_bank' => $_POST ['initBank'],
+							'no_rek' => $_POST['noRek'],
+							'saldo_min' => $_POST['saldoMinimum'],
+							'is_budget' => $_POST['isBudget'],
+							'created_time' => date('Y-m-d H:i:s'),
+							'created_by' => $this->session->userdata('nama'),
+							'updated_time' => date('Y-m-d H:i:s'),
+							'updated_by' => $this->session->userdata('nama')
+						);
+					} else {
+						$data = array(
+							'no_acc_bunglon' => $fixNoAccBunglon,
+							'no_acc' => $noAcc,
+							'nama_acc' => $namaAcc,
+							'acc_induk' => $accInduk,
+							'level' => $level,
+							'jenis_perkiraan' => $_POST['selectJenisPerkiraan'],
+							'is_jurnal' => $_POST['isJurnal'],
+							'jenis_jurnal' => $_POST['selectJenisJurnal'],
+							'id_company' => $this->session->userdata('company'),
+							'id_currency' => $_POST['selectCurrency'],
+							'init_kas_bank' => $_POST ['initKas'],
+							'is_budget' => $_POST['initKas'],
+							'created_time' => date('Y-m-d H:i:s'),
+							'created_by' => $this->session->userdata('nama'),
+							'updated_time' => date('Y-m-d H:i:s'),
+							'updated_by' => $this->session->userdata('nama')
+						);
+					}
 					$this->mperkiraan->insertPerkiraanBunglon($data);
 				}
 			}

@@ -216,62 +216,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="col-form-label">Jenis Jurnal</label>
-                                <select name="selectJenisJurnal" id="selectJenisJurnal" class="js-example-basic-single" style="width:100%">
-                                    <option>- Pilih Jenis Jurnal -</option>
-                                    <option value="KAS">Kas</option>
-                                    <option value="BANK">Bank</option>
-                                    <option value="PIUTANG">Piutang</option>
-                                    <option value="HUTANG">Hutang</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-form-label">Laporan GL</label>
-                                <input type="text" name="laporanGl" id="laporanGl" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-form-label">Pilih Cabang</label>
-                                <select name="selectCompany" id="selectCompany" class="js-example-basic-single" style="width:100%">
-                                    <option>- Pilih Cabang -</option>
-                                    <?php foreach ($companyData as $value): ?>
-                                        <option value="<?php echo $value->id_company ?>"><?php echo str_replace('PT Karana Line', '', $value->company_name) . ' - ' . $value->init ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-form-label">Pilih Currency</label>
-                                <select name="selectCurrency" id="selectCurrency" class="js-example-basic-single" style="width:100%">
-                                    <option>- Pilih Currency -</option>
-                                    <?php foreach ($currencyData as $value): ?>
-                                        <option value="<?php echo $value->id_currency ?>"><?php echo $value->init . ' - ' . $value->currency; ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-form-label">Pilih Bank</label>
-                                <select name="selectBank" id="selectBank" class="js-example-basic-single" style="width:100%">
-                                    <option>- Pilih Bank -</option>
-                                    <?php foreach ($bankData as $value): ?>
-                                        <option value="<?php echo $value->id_bank ?>"><?php echo $value->initial . ' - ' . $value->nama_bank; ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-form-label">Inisial Kas</label>
-                                <input type="text" name="initKas" id="initKas" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-form-label">No. Rekening</label>
-                                <input type="text" name="noRek" id="noRek" class="form-control">
-                            </div>
-
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Budget</label>
                                 <div class="col-sm-3">
@@ -288,10 +232,82 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label class="col-form-label">Jenis Jurnal</label>
+                                <select name="selectJenisJurnal" id="selectJenisJurnal" class="js-example-basic-single" style="width:100%">
+                                    <option>- Pilih Jenis Jurnal -</option>
+                                    <option value="KAS">Kas</option>
+                                    <option value="BANK">Bank</option>
+                                    <option value="PIUTANG">Piutang</option>
+                                    <option value="HUTANG">Hutang</option>
+                                </select>
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <label class="col-form-label">Laporan GL</label>
+                                <input type="text" name="laporanGl" id="laporanGl" class="form-control">
+                            </div> -->
+
+                            <!-- <div class="form-group">
+                                <label class="col-form-label">Pilih Cabang</label>
+                                <select name="selectCompany" id="selectCompany" class="js-example-basic-single" style="width:100%">
+                                    <option>- Pilih Cabang -</option>
+                                    <?php foreach ($companyData as $value): ?>
+                                        <option value="<?php echo $value->id_company ?>"><?php echo str_replace('PT Karana Line', '', $value->company_name) . ' - ' . $value->init ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div> -->
+
+                            <div id="kasOption">
+                               <div class="form-group">
+                                  <label class="col-form-label">Pilih Currency</label>
+                                  <select name="selectCurrency" id="selectCurrency" class="js-example-basic-single" style="width:100%">
+                                      <option>- Pilih Currency -</option>
+                                      <?php foreach ($currencyData as $value): ?>
+                                          <option value="<?php echo $value->id_currency ?>"><?php echo $value->init . ' - ' . $value->currency; ?></option>
+                                      <?php endforeach ?>
+                                  </select>
+                              </div>
+
+                              <div class="form-group">
+                                  <label class="col-form-label">Inisial Kas</label>
+                                  <input type="text" name="initKas" id="initKas" class="form-control">
+                              </div>
+                            </div>
+
+                            <div id="bankOption">
+                              
+
+                              <div class="form-group">
+                                  <label class="col-form-label">Pilih Bank</label>
+                                  <select name="selectBank" id="selectBank" class="js-example-basic-single" style="width:100%">
+                                      <option>- Pilih Bank -</option>
+                                      <?php foreach ($bankData as $value): ?>
+                                          <option value="<?php echo $value->id_bank ?>"><?php echo $value->initial . ' - ' . $value->nama_bank; ?></option>
+                                      <?php endforeach ?>
+                                  </select>
+                              </div>
+
+                              <div class="form-group">
+                                  <label class="col-form-label">Inisial Bank</label>
+                                  <input type="text" name="initBank" id="initBank" class="form-control">
+                              </div>
+
+                              <div class="form-group">
+                                  <label class="col-form-label">No. Rekening</label>
+                                  <input type="text" name="noRek" id="noRek" class="form-control">
+                              </div>
+
+                              <div class="form-group">
+                                <label class="col-form-label">Saldo Minimum</label>
+                                <input type="text" name="saldoMinimum" id="saldoMinimum" class="form-control">
+                              </div>
+                            </div>
+
                             <div class="d-flex flex-row-reverse">
                                 <button type="submit" class="btn btn-outline-primary btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i> Submit </button>
                             </div>
-                            </div>
+                        </div>
 
                             </form>
                         </div>

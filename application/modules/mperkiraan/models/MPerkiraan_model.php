@@ -9,7 +9,7 @@ class MPerkiraan_model extends MY_Model
 	{
 		return $this->db->select('A.no_acc, A.nama_acc, A.acc_induk, B.company_name, A.level, C.currency, C.init')
 						->join('tb_company B', 'A.id_company = B.id_company')
-						->join('tb_currency C', 'A.id_currency = C.id_currency')
+						->join('tb_currency C', 'A.id_currency = C.id_currency', 'left')
 						->order_by('acc_induk', 'asc')
 						->get('tb_perkiraan A')->result();
 

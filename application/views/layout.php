@@ -10,7 +10,12 @@
 		<!-- navbar end -->
 		<div class="container-fluid page-body-wrapper">
 			<!-- partial:partials/_sidebar.html -->
+			<?php if ($this->session->userdata('level') == 1): ?>
+			<?php $this->load->view('layout-part/sidebar_super'); ?>
+			<?php else: ?>	
 			<?php $this->load->view('layout-part/sidebar'); ?>
+			<?php endif ?>
+			
 	        <!-- partial -->
 
 	        
