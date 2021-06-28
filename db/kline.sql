@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jun 2021 pada 10.25
+-- Waktu pembuatan: 28 Jun 2021 pada 17.24
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -100,6 +100,264 @@ INSERT INTO `tb_company` (`id_company`, `company_name`, `init`, `is_holding`, `a
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_country`
+--
+
+CREATE TABLE `tb_country` (
+  `iso_code` varchar(255) NOT NULL,
+  `country_code` varchar(255) DEFAULT NULL,
+  `country_name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_country`
+--
+
+INSERT INTO `tb_country` (`iso_code`, `country_code`, `country_name`) VALUES
+('AD / AND', '376', 'Andorra'),
+('AE / ARE', '971', 'United Arab Emirates'),
+('AF / AFG', '93', 'Afghanistan'),
+('AG / ATG', '1-268', 'Antigua and Barbuda'),
+('AI / AIA', '1-264', 'Anguilla'),
+('AL / ALB', '355', 'Albania'),
+('AM / ARM', '374', 'Armenia'),
+('AN / ANT', '599', 'Netherlands Antilles'),
+('AO / AGO', '244', 'Angola'),
+('AQ / ATA', '672', 'Antarctica'),
+('AR / ARG', '54', 'Argentina'),
+('AS / ASM', '1-684', 'American Samoa'),
+('AT / AUT', '43', 'Austria'),
+('AU / AUS', '61', 'Australia'),
+('AW / ABW', '297', 'Aruba'),
+('AZ / AZE', '994', 'Azerbaijan'),
+('BA / BIH', '387', 'Bosnia and Herzegovina'),
+('BB / BRB', '1-246', 'Barbados'),
+('BD / BGD', '880', 'Bangladesh'),
+('BE / BEL', '32', 'Belgium'),
+('BF / BFA', '226', 'Burkina Faso'),
+('BG / BGR', '359', 'Bulgaria'),
+('BH / BHR', '973', 'Bahrain'),
+('BI / BDI', '257', 'Burundi'),
+('BJ / BEN', '229', 'Benin'),
+('BL / BLM', '590', 'Saint Barthelemy'),
+('BM / BMU', '1-441', 'Bermuda'),
+('BN / BRN', '673', 'Brunei'),
+('BO / BOL', '591', 'Bolivia'),
+('BR / BRA', '55', 'Brazil'),
+('BS / BHS', '1-242', 'Bahamas'),
+('BT / BTN', '975', 'Bhutan'),
+('BW / BWA', '267', 'Botswana'),
+('BY / BLR', '375', 'Belarus'),
+('BZ / BLZ', '501', 'Belize'),
+('CA / CAN', '1', 'Canada'),
+('CC / CCK', '61', 'Cocos Islands'),
+('CD / COD', '243', 'Democratic Republic of the Congo'),
+('CF / CAF', '236', 'Central African Republic'),
+('CG / COG', '242', 'Republic of the Congo'),
+('CH / CHE', '41', 'Switzerland'),
+('CI / CIV', '225', 'Ivory Coast'),
+('CK / COK', '682', 'Cook Islands'),
+('CL / CHL', '56', 'Chile'),
+('CM / CMR', '237', 'Cameroon'),
+('CN / CHN', '86', 'China'),
+('CO / COL', '57', 'Colombia'),
+('CR / CRI', '506', 'Costa Rica'),
+('CU / CUB', '53', 'Cuba'),
+('CV / CPV', '238', 'Cape Verde'),
+('CW / CUW', '599', 'Curacao'),
+('CX / CXR', '61', 'Christmas Island'),
+('CY / CYP', '357', 'Cyprus'),
+('CZ / CZE', '420', 'Czech Republic'),
+('DE / DEU', '49', 'Germany'),
+('DJ / DJI', '253', 'Djibouti'),
+('DK / DNK', '45', 'Denmark'),
+('DM / DMA', '1-767', 'Dominica'),
+('DO / DOM', '1-809, 1-829, 1-849', 'Dominican Republic'),
+('DZ / DZA', '213', 'Algeria'),
+('EC / ECU', '593', 'Ecuador'),
+('EE / EST', '372', 'Estonia'),
+('EG / EGY', '20', 'Egypt'),
+('EH / ESH', '212', 'Western Sahara'),
+('ER / ERI', '291', 'Eritrea'),
+('ES / ESP', '34', 'Spain'),
+('ET / ETH', '251', 'Ethiopia'),
+('FI / FIN', '358', 'Finland'),
+('FJ / FJI', '679', 'Fiji'),
+('FK / FLK', '500', 'Falkland Islands'),
+('FM / FSM', '691', 'Micronesia'),
+('FO / FRO', '298', 'Faroe Islands'),
+('FR / FRA', '33', 'France'),
+('GA / GAB', '241', 'Gabon'),
+('GB / GBR', '44', 'United Kingdom'),
+('GD / GRD', '1-473', 'Grenada'),
+('GE / GEO', '995', 'Georgia'),
+('GG / GGY', '44-1481', 'Guernsey'),
+('GH / GHA', '233', 'Ghana'),
+('GI / GIB', '350', 'Gibraltar'),
+('GL / GRL', '299', 'Greenland'),
+('GM / GMB', '220', 'Gambia'),
+('GN / GIN', '224', 'Guinea'),
+('GQ / GNQ', '240', 'Equatorial Guinea'),
+('GR / GRC', '30', 'Greece'),
+('GT / GTM', '502', 'Guatemala'),
+('GU / GUM', '1-671', 'Guam'),
+('GW / GNB', '245', 'Guinea-Bissau'),
+('GY / GUY', '592', 'Guyana'),
+('HK / HKG', '852', 'Hong Kong'),
+('HN / HND', '504', 'Honduras'),
+('HR / HRV', '385', 'Croatia'),
+('HT / HTI', '509', 'Haiti'),
+('HU / HUN', '36', 'Hungary'),
+('ID / IDN', '62', 'Indonesia'),
+('IE / IRL', '353', 'Ireland'),
+('IL / ISR', '972', 'Israel'),
+('IM / IMN', '44-1624', 'Isle of Man'),
+('IN / IND', '91', 'India'),
+('IO / IOT', '246', 'British Indian Ocean Territory'),
+('IQ / IRQ', '964', 'Iraq'),
+('IR / IRN', '98', 'Iran'),
+('IS / ISL', '354', 'Iceland'),
+('IT / ITA', '39', 'Italy'),
+('JE / JEY', '44-1534', 'Jersey'),
+('JM / JAM', '1-876', 'Jamaica'),
+('JO / JOR', '962', 'Jordan'),
+('JP / JPN', '81', 'Japan'),
+('KE / KEN', '254', 'Kenya'),
+('KG / KGZ', '996', 'Kyrgyzstan'),
+('KH / KHM', '855', 'Cambodia'),
+('KI / KIR', '686', 'Kiribati'),
+('KM / COM', '269', 'Comoros'),
+('KN / KNA', '1-869', 'Saint Kitts and Nevis'),
+('KP / PRK', '850', 'North Korea'),
+('KR / KOR', '82', 'South Korea'),
+('KW / KWT', '965', 'Kuwait'),
+('KY / CYM', '1-345', 'Cayman Islands'),
+('KZ / KAZ', '7', 'Kazakhstan'),
+('LA / LAO', '856', 'Laos'),
+('LB / LBN', '961', 'Lebanon'),
+('LC / LCA', '1-758', 'Saint Lucia'),
+('LI / LIE', '423', 'Liechtenstein'),
+('LK / LKA', '94', 'Sri Lanka'),
+('LR / LBR', '231', 'Liberia'),
+('LS / LSO', '266', 'Lesotho'),
+('LT / LTU', '370', 'Lithuania'),
+('LU / LUX', '352', 'Luxembourg'),
+('LV / LVA', '371', 'Latvia'),
+('LY / LBY', '218', 'Libya'),
+('MA / MAR', '212', 'Morocco'),
+('MC / MCO', '377', 'Monaco'),
+('MD / MDA', '373', 'Moldova'),
+('ME / MNE', '382', 'Montenegro'),
+('MF / MAF', '590', 'Saint Martin'),
+('MG / MDG', '261', 'Madagascar'),
+('MH / MHL', '692', 'Marshall Islands'),
+('MK / MKD', '389', 'Macedonia'),
+('ML / MLI', '223', 'Mali'),
+('MM / MMR', '95', 'Myanmar'),
+('MN / MNG', '976', 'Mongolia'),
+('MO / MAC', '853', 'Macau'),
+('MP / MNP', '1-670', 'Northern Mariana Islands'),
+('MR / MRT', '222', 'Mauritania'),
+('MS / MSR', '1-664', 'Montserrat'),
+('MT / MLT', '356', 'Malta'),
+('MU / MUS', '230', 'Mauritius'),
+('MV / MDV', '960', 'Maldives'),
+('MW / MWI', '265', 'Malawi'),
+('MX / MEX', '52', 'Mexico'),
+('MY / MYS', '60', 'Malaysia'),
+('MZ / MOZ', '258', 'Mozambique'),
+('NA / NAM', '264', 'Namibia'),
+('NC / NCL', '687', 'New Caledonia'),
+('NE / NER', '227', 'Niger'),
+('NG / NGA', '234', 'Nigeria'),
+('NI / NIC', '505', 'Nicaragua'),
+('NL / NLD', '31', 'Netherlands'),
+('NO / NOR', '47', 'Norway'),
+('NP / NPL', '977', 'Nepal'),
+('NR / NRU', '674', 'Nauru'),
+('NU / NIU', '683', 'Niue'),
+('NZ / NZL', '64', 'New Zealand'),
+('OM / OMN', '968', 'Oman'),
+('PA / PAN', '507', 'Panama'),
+('PE / PER', '51', 'Peru'),
+('PF / PYF', '689', 'French Polynesia'),
+('PG / PNG', '675', 'Papua New Guinea'),
+('PH / PHL', '63', 'Philippines'),
+('PK / PAK', '92', 'Pakistan'),
+('PL / POL', '48', 'Poland'),
+('PM / SPM', '508', 'Saint Pierre and Miquelon'),
+('PN / PCN', '64', 'Pitcairn'),
+('PR / PRI', '1-787, 1-939', 'Puerto Rico'),
+('PS / PSE', '970', 'Palestine'),
+('PT / PRT', '351', 'Portugal'),
+('PW / PLW', '680', 'Palau'),
+('PY / PRY', '595', 'Paraguay'),
+('QA / QAT', '974', 'Qatar'),
+('RE / REU', '262', 'Reunion'),
+('RO / ROU', '40', 'Romania'),
+('RS / SRB', '381', 'Serbia'),
+('RU / RUS', '7', 'Russia'),
+('RW / RWA', '250', 'Rwanda'),
+('SA / SAU', '966', 'Saudi Arabia'),
+('SB / SLB', '677', 'Solomon Islands'),
+('SC / SYC', '248', 'Seychelles'),
+('SD / SDN', '249', 'Sudan'),
+('SE / SWE', '46', 'Sweden'),
+('SG / SGP', '65', 'Singapore'),
+('SH / SHN', '290', 'Saint Helena'),
+('SI / SVN', '386', 'Slovenia'),
+('SJ / SJM', '47', 'Svalbard and Jan Mayen'),
+('SK / SVK', '421', 'Slovakia'),
+('SL / SLE', '232', 'Sierra Leone'),
+('SM / SMR', '378', 'San Marino'),
+('SN / SEN', '221', 'Senegal'),
+('SO / SOM', '252', 'Somalia'),
+('SR / SUR', '597', 'Suriname'),
+('SS / SSD', '211', 'South Sudan'),
+('ST / STP', '239', 'Sao Tome and Principe'),
+('SV / SLV', '503', 'El Salvador'),
+('SX / SXM', '1-721', 'Sint Maarten'),
+('SY / SYR', '963', 'Syria'),
+('SZ / SWZ', '268', 'Swaziland'),
+('TC / TCA', '1-649', 'Turks and Caicos Islands'),
+('TD / TCD', '235', 'Chad'),
+('TG / TGO', '228', 'Togo'),
+('TH / THA', '66', 'Thailand'),
+('TJ / TJK', '992', 'Tajikistan'),
+('TK / TKL', '690', 'Tokelau'),
+('TL / TLS', '670', 'East Timor'),
+('TM / TKM', '993', 'Turkmenistan'),
+('TN / TUN', '216', 'Tunisia'),
+('TO / TON', '676', 'Tonga'),
+('TR / TUR', '90', 'Turkey'),
+('TT / TTO', '1-868', 'Trinidad and Tobago'),
+('TV / TUV', '688', 'Tuvalu'),
+('TW / TWN', '886', 'Taiwan'),
+('TZ / TZA', '255', 'Tanzania'),
+('UA / UKR', '380', 'Ukraine'),
+('UG / UGA', '256', 'Uganda'),
+('US / USA', '1', 'United States'),
+('UY / URY', '598', 'Uruguay'),
+('UZ / UZB', '998', 'Uzbekistan'),
+('VA / VAT', '379', 'Vatican'),
+('VC / VCT', '1-784', 'Saint Vincent and the Grenadines'),
+('VE / VEN', '58', 'Venezuela'),
+('VG / VGB', '1-284', 'British Virgin Islands'),
+('VI / VIR', '1-340', 'U.S. Virgin Islands'),
+('VN / VNM', '84', 'Vietnam'),
+('VU / VUT', '678', 'Vanuatu'),
+('WF / WLF', '681', 'Wallis and Futuna'),
+('WS / WSM', '685', 'Samoa'),
+('XK / XKX', '383', 'Kosovo'),
+('YE / YEM', '967', 'Yemen'),
+('YT / MYT', '262', 'Mayotte'),
+('ZA / ZAF', '27', 'South Africa'),
+('ZM / ZMB', '260', 'Zambia'),
+('ZW / ZWE', '263', 'Zimbabwe');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_currency`
 --
 
@@ -153,47 +411,6 @@ INSERT INTO `tb_department` (`id_department`, `department_name`, `init`, `id_com
 (2, 'FINANCE & ADMIN', 'FADM', '2', '2021-06-15 08:51:16', 'nurman', '2021-06-15 08:51:16', 'nurman'),
 (6, 'Agency 1', 'AGN 1', '5', '2021-06-16 14:13:09', 'nurman', '2021-06-16 14:13:09', 'nurman'),
 (7, 'Agency 2', 'AGN 2', '5', '2021-06-16 14:17:44', 'nurman', '2021-06-16 14:17:44', 'nurman');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_employee`
---
-
-CREATE TABLE `tb_employee` (
-  `id_employee` varchar(255) NOT NULL,
-  `employee_name` varchar(255) DEFAULT NULL,
-  `place_of_birth` varchar(255) DEFAULT NULL,
-  `date_of_birth` date DEFAULT NULL,
-  `gender` enum('male','female') DEFAULT NULL,
-  `religion` varchar(255) DEFAULT NULL,
-  `marital_status` enum('single','married') DEFAULT NULL,
-  `last_education` varchar(255) DEFAULT NULL,
-  `citizenship` varchar(255) DEFAULT NULL,
-  `nik` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `postal_code` varchar(255) DEFAULT NULL,
-  `phone_number` int(15) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `npwp` varchar(255) DEFAULT NULL,
-  `ptkp` varchar(255) DEFAULT NULL,
-  `join_date` date DEFAULT NULL,
-  `out_date` date DEFAULT NULL,
-  `id_department` varchar(255) DEFAULT NULL,
-  `id_position` varchar(255) DEFAULT NULL,
-  `id_company` varchar(255) DEFAULT NULL,
-  `created_time` datetime DEFAULT NULL,
-  `created_by` varchar(255) DEFAULT NULL,
-  `updated_time` datetime DEFAULT NULL,
-  `updated_by` varchar(0) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `tb_employee`
---
-
-INSERT INTO `tb_employee` (`id_employee`, `employee_name`, `place_of_birth`, `date_of_birth`, `gender`, `religion`, `marital_status`, `last_education`, `citizenship`, `nik`, `address`, `postal_code`, `phone_number`, `email`, `npwp`, `ptkp`, `join_date`, `out_date`, `id_department`, `id_position`, `id_company`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-('210614124636', 'WAHYU TRISNADI', NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -270,6 +487,50 @@ CREATE TABLE `tb_kapal` (
 INSERT INTO `tb_kapal` (`id_kapal`, `nama_kapal`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
 ('KPL210706012218', 'GULF JASH', '2021-06-22 07:01:18', 'nurman', '2021-06-22 07:01:18', 'nurman'),
 ('KPL210706072239', 'LOK PRATAP', '2021-06-22 07:07:39', 'nurman', '2021-06-22 07:07:39', 'nurman');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_karyawan`
+--
+
+CREATE TABLE `tb_karyawan` (
+  `id_employee` varchar(255) NOT NULL,
+  `employee_name` varchar(255) DEFAULT NULL,
+  `place_of_birth` varchar(255) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `gender` enum('PRIA','WANITA') DEFAULT NULL,
+  `religion` enum('ISLAM','PROTESTAN','KATOLIK','HINDU','BUDHA','KONG HU CHU') DEFAULT NULL,
+  `marital_status` enum('KAWIN','BELUM KAWIN','CERAI') DEFAULT NULL,
+  `last_education` varchar(255) DEFAULT NULL,
+  `citizenship` varchar(255) DEFAULT NULL,
+  `nik` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `postal_code` varchar(255) DEFAULT NULL,
+  `phone_number` varchar(15) DEFAULT NULL,
+  `home_phone_number` varchar(15) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `npwp` varchar(255) DEFAULT NULL,
+  `ptkp` varchar(255) DEFAULT NULL,
+  `join_date` date DEFAULT NULL,
+  `out_date` date DEFAULT NULL,
+  `id_department` varchar(255) DEFAULT NULL,
+  `id_position` varchar(255) DEFAULT NULL,
+  `id_company` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_karyawan`
+--
+
+INSERT INTO `tb_karyawan` (`id_employee`, `employee_name`, `place_of_birth`, `date_of_birth`, `gender`, `religion`, `marital_status`, `last_education`, `citizenship`, `nik`, `address`, `postal_code`, `phone_number`, `home_phone_number`, `email`, `npwp`, `ptkp`, `join_date`, `out_date`, `id_department`, `id_position`, `id_company`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('210614124636', 'WAHYU TRISNADI', NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('210627030527', 'Aina Sophia ', 'Jakarta', '1995-05-18', 'WANITA', 'PROTESTAN', 'CERAI', 'S2', 'Indonesia', '3201251293184', 'Tanjung Priook', '82818', '082188877710', '021849271', 'sophia.aina@gmail.com', '1298104810000', '1000000921', '2020-05-19', '2021-06-25', '2', '4', '2', '2021-06-28 05:45:28', 'admin', '2021-06-28 05:45:28', 'admin'),
+('210627122805', 'Nurmansyah', 'Bogor', '1995-09-12', 'PRIA', 'ISLAM', '', 'SMA - SETARA SMA', 'Indonesia', '3201230888216419', 'Jalan Kampung Jogjogan RT. 003 / RW. 001 Desa Jogjogan Kecamatan Cisarua Kabupaten Bogor', '16750', '085717364016', '0218256025', 'xandermand.xander@gmail.com', '12974891279', '27429172489', '2020-06-24', '2021-06-27', NULL, '4', '2', '2021-06-27 12:30:19', 'admin', '2021-06-27 12:30:19', '');
 
 -- --------------------------------------------------------
 
@@ -414,6 +675,26 @@ INSERT INTO `tb_kunjungan` (`id_kunjungan`, `id_company`, `tgl_transaksi`, `id_k
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_level_user`
+--
+
+CREATE TABLE `tb_level_user` (
+  `id_level` int(5) NOT NULL,
+  `level` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_level_user`
+--
+
+INSERT INTO `tb_level_user` (`id_level`, `level`) VALUES
+(1, 'IT Admin'),
+(2, 'Read Only'),
+(3, 'Add, Modif');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_modul`
 --
 
@@ -501,7 +782,7 @@ CREATE TABLE `tb_perkiraan` (
   `is_jurnal` enum('YES','NO') DEFAULT NULL,
   `jenis_jurnal` enum('KAS','BANK','PIUTANG','HUTANG') DEFAULT NULL,
   `laporan_gl` varchar(254) DEFAULT NULL,
-  `saldo_min` double DEFAULT NULL,
+  `saldo_min` bigint(20) DEFAULT NULL,
   `is_budget` enum('YES','NO') DEFAULT NULL,
   `is_disb` enum('YES','NO') DEFAULT NULL,
   `id_company` varchar(254) DEFAULT NULL,
@@ -529,7 +810,9 @@ INSERT INTO `tb_perkiraan` (`no_acc`, `nama_acc`, `acc_induk`, `level`, `jenis_p
 ('1001.02', 'KAS BESAR', '1000.01', '6', 'PASSIVA', 'YES', '', '', 2000000, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:50:06', 'nurman', '2021-06-20 15:50:06', 'nurman'),
 ('1001.03', 'TES', '1000.01', '6', 'BIAYA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:12', 'nurman', '2021-06-20 15:51:12', 'nurman'),
 ('1001.04', 'TES 2', '1000.01', '6', 'AKTIVA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:42', 'nurman', '2021-06-20 15:51:42', 'nurman'),
-('1000.01', 'Bank Mandiri Tebet', '1000.01', '6', 'AKTIVA', 'YES', 'KAS', 'TES', NULL, '', NULL, '2', 'MDR TEBET', '123 12312 123112', '7', '1', '2021-06-24 12:00:50', 'admin', '2021-06-24 12:00:50', 'admin');
+('1000.01', 'Bank Mandiri Tebet', '1000.01', '6', 'AKTIVA', 'YES', 'KAS', 'TES', NULL, '', NULL, '2', 'MDR TEBET', '123 12312 123112', '7', '1', '2021-06-24 12:00:50', 'admin', '2021-06-24 12:00:50', 'admin'),
+('1001.01', 'TES LAGI', '1000.01', '6', 'AKTIVA', 'NO', 'BANK', NULL, 800000000, 'NO', NULL, '2', 'MDR - TEBET', '321214142131', '7', NULL, '2021-06-28 12:30:20', 'admin', '2021-06-28 12:30:20', 'admin'),
+('1001.05', 'TES LAGI 2', '1000.01', '6', 'PASSIVA', 'NO', 'KAS', NULL, NULL, '', NULL, '2', 'KAS 111', NULL, NULL, '2', '2021-06-28 12:34:11', 'admin', '2021-06-28 12:34:11', 'admin');
 
 -- --------------------------------------------------------
 
@@ -569,7 +852,9 @@ INSERT INTO `tb_perkiraan_bunglon` (`no_acc_bunglon`, `no_acc`, `nama_acc`, `acc
 ('6001.01', '1001.01', 'KAS BESAR RUPIAH SEMARANG', '1000.01', '6', 'PASSIVABY', 'YES', '', '', 1500000, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:48:58', 'nurman', '2021-06-20 15:48:58', 'nurman'),
 ('5001.02', '1001.02', 'KAS BESAR', '1000.01', '6', 'AKTIVABY', 'YES', '', '', 2000000, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:50:06', 'nurman', '2021-06-20 15:50:06', 'nurman'),
 ('6001.04', '1001.04', 'TES 2', '1000.01', '6', 'PASSIVABY', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:42', 'nurman', '2021-06-20 15:51:42', 'nurman'),
-('6000.01', '1000.01', 'Bank Mandiri Tebet', '1000.01', '6', 'PASSIVABY', 'YES', 'KAS', 'TES', NULL, '', NULL, '2', 'MDR TEBET', '123 12312 123112', '7', '1', '2021-06-24 12:00:50', 'admin', '2021-06-24 12:00:50', 'admin');
+('6000.01', '1000.01', 'Bank Mandiri Tebet', '1000.01', '6', 'PASSIVABY', 'YES', 'KAS', 'TES', NULL, '', NULL, '2', 'MDR TEBET', '123 12312 123112', '7', '1', '2021-06-24 12:00:50', 'admin', '2021-06-24 12:00:50', 'admin'),
+('6001.01', '1001.01', 'TES LAGI', '1000.01', '6', 'PASSIVABY', 'NO', 'BANK', NULL, 800000000, 'NO', NULL, '2', 'MDR - TEBET', '321214142131', '7', NULL, '2021-06-28 12:30:20', 'admin', '2021-06-28 12:30:20', 'admin'),
+('5001.05', '1001.05', 'TES LAGI 2', '1000.01', '6', 'PASSIVA', 'NO', 'KAS', NULL, NULL, '', NULL, '2', 'KAS 111', NULL, NULL, '2', '2021-06-28 12:34:11', 'admin', '2021-06-28 12:34:11', 'admin');
 
 -- --------------------------------------------------------
 
@@ -581,6 +866,7 @@ CREATE TABLE `tb_position` (
   `id_position` int(5) NOT NULL,
   `position` varchar(255) DEFAULT NULL,
   `init` varchar(255) DEFAULT NULL,
+  `id_company` varchar(255) DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `updated_time` datetime DEFAULT NULL,
@@ -591,8 +877,44 @@ CREATE TABLE `tb_position` (
 -- Dumping data untuk tabel `tb_position`
 --
 
-INSERT INTO `tb_position` (`id_position`, `position`, `init`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(4, 'DIREKTUR', 'DIR', '2021-06-15 09:36:03', 'nurman', '2021-06-15 09:36:03', 'nurman');
+INSERT INTO `tb_position` (`id_position`, `position`, `init`, `id_company`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+(4, 'DIREKTUR', 'DIR', '2', '2021-06-15 09:36:03', 'nurman', '2021-06-15 09:36:03', 'nurman');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_principal`
+--
+
+CREATE TABLE `tb_principal` (
+  `id_principal` varchar(254) NOT NULL,
+  `nama_principal` varchar(254) DEFAULT NULL,
+  `inisial_nama` varchar(254) DEFAULT NULL,
+  `is_dk_note` enum('Y','N') DEFAULT NULL,
+  `alamat` varchar(254) DEFAULT NULL,
+  `alamat_kedua` varchar(254) DEFAULT NULL,
+  `kode_pos` varchar(254) DEFAULT NULL,
+  `iso_code` varchar(254) DEFAULT NULL,
+  `kode_area_telp_satu` varchar(254) DEFAULT NULL,
+  `telepon_satu` varchar(254) DEFAULT NULL,
+  `kode_area_telp_dua` varchar(254) DEFAULT NULL,
+  `telepon_dua` varchar(254) DEFAULT NULL,
+  `kode_area_fax` varchar(254) DEFAULT NULL,
+  `fax` varchar(254) DEFAULT NULL,
+  `contact_person` varchar(254) DEFAULT NULL,
+  `no_acc` varchar(254) DEFAULT NULL,
+  `created_time` date DEFAULT NULL,
+  `created_by` varchar(254) DEFAULT NULL,
+  `updated_time` date DEFAULT NULL,
+  `updated_by` varchar(254) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_principal`
+--
+
+INSERT INTO `tb_principal` (`id_principal`, `nama_principal`, `inisial_nama`, `is_dk_note`, `alamat`, `alamat_kedua`, `kode_pos`, `iso_code`, `kode_area_telp_satu`, `telepon_satu`, `kode_area_telp_dua`, `telepon_dua`, `kode_area_fax`, `fax`, `contact_person`, `no_acc`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('280608335930', 'GLOBAL MARINE SERVIS', 'GHS', 'N', 'GMS BUILDING, 9-9 IRIFUNE 3 CHOME, ', 'TOKYO, 100-', '104042', 'JP / JPN', '+81', '12891279', '+81', '8491712', '+81', '2749817', 'KOTARO FUMA', '1001.03', '2021-06-28', 'admin', '2021-06-28', 'admin');
 
 -- --------------------------------------------------------
 
@@ -606,8 +928,10 @@ CREATE TABLE `tb_user` (
   `password` varchar(32) DEFAULT NULL,
   `is_active` enum('0','1') DEFAULT NULL,
   `id_department` varchar(255) DEFAULT NULL,
+  `id_position` varchar(255) DEFAULT NULL,
   `id_company` varchar(255) DEFAULT NULL,
   `id_employee` varchar(255) DEFAULT NULL,
+  `id_level` int(5) DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `updated_time` datetime DEFAULT NULL,
@@ -618,9 +942,10 @@ CREATE TABLE `tb_user` (
 -- Dumping data untuk tabel `tb_user`
 --
 
-INSERT INTO `tb_user` (`id_user`, `username`, `password`, `is_active`, `id_department`, `id_company`, `id_employee`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-('210613154321', 'nurman', '202cb962ac59075b964b07152d234b70', '1', '1', '1', '0', '2021-06-13 15:44:11', NULL, '2021-06-13 15:44:17', NULL),
-('210614124944', 'admin', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL, '2', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_user` (`id_user`, `username`, `password`, `is_active`, `id_department`, `id_position`, `id_company`, `id_employee`, `id_level`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('210613154321', 'IT', '202cb962ac59075b964b07152d234b70', '1', '1', NULL, '1', '0', 1, '2021-06-13 15:44:11', NULL, '2021-06-13 15:44:17', NULL),
+('210614124944', 'admin', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL, NULL, '2', NULL, NULL, NULL, NULL, NULL, NULL),
+('2806210514191', 'AINA SOPHIA', 'e10adc3949ba59abbe56e057f20f883e', '1', '2', '4', '2', '210627030527', 3, '2021-06-28 17:19:20', 'IT', '2021-06-28 17:19:20', '');
 
 -- --------------------------------------------------------
 
@@ -668,6 +993,12 @@ ALTER TABLE `tb_company`
   ADD PRIMARY KEY (`id_company`);
 
 --
+-- Indeks untuk tabel `tb_country`
+--
+ALTER TABLE `tb_country`
+  ADD PRIMARY KEY (`iso_code`);
+
+--
 -- Indeks untuk tabel `tb_currency`
 --
 ALTER TABLE `tb_currency`
@@ -678,12 +1009,6 @@ ALTER TABLE `tb_currency`
 --
 ALTER TABLE `tb_department`
   ADD PRIMARY KEY (`id_department`);
-
---
--- Indeks untuk tabel `tb_employee`
---
-ALTER TABLE `tb_employee`
-  ADD PRIMARY KEY (`id_employee`);
 
 --
 -- Indeks untuk tabel `tb_jenis_jurnal`
@@ -698,6 +1023,12 @@ ALTER TABLE `tb_kapal`
   ADD PRIMARY KEY (`id_kapal`);
 
 --
+-- Indeks untuk tabel `tb_karyawan`
+--
+ALTER TABLE `tb_karyawan`
+  ADD PRIMARY KEY (`id_employee`);
+
+--
 -- Indeks untuk tabel `tb_kas_bank`
 --
 ALTER TABLE `tb_kas_bank`
@@ -708,6 +1039,12 @@ ALTER TABLE `tb_kas_bank`
 --
 ALTER TABLE `tb_kunjungan`
   ADD PRIMARY KEY (`id_kunjungan`) USING BTREE;
+
+--
+-- Indeks untuk tabel `tb_level_user`
+--
+ALTER TABLE `tb_level_user`
+  ADD PRIMARY KEY (`id_level`);
 
 --
 -- Indeks untuk tabel `tb_modul`
@@ -732,6 +1069,12 @@ ALTER TABLE `tb_pelabuhan`
 --
 ALTER TABLE `tb_position`
   ADD PRIMARY KEY (`id_position`);
+
+--
+-- Indeks untuk tabel `tb_principal`
+--
+ALTER TABLE `tb_principal`
+  ADD PRIMARY KEY (`id_principal`);
 
 --
 -- Indeks untuk tabel `tb_user`
@@ -778,6 +1121,12 @@ ALTER TABLE `tb_jenis_jurnal`
 --
 ALTER TABLE `tb_kas_bank`
   MODIFY `id_kas_bank` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_level_user`
+--
+ALTER TABLE `tb_level_user`
+  MODIFY `id_level` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_modul`
