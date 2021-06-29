@@ -5,6 +5,8 @@
 class Department extends MX_Controller 
 {
 	
+	public $_company = "";
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -13,6 +15,7 @@ class Department extends MX_Controller
 		if($this->session->userdata('status') != 'isLogin') {
 			redirect('login','refresh');
 		}
+		$this->_company = $this->session->userdata('company');
 	}
 
 	public $_data = array(
@@ -29,7 +32,7 @@ class Department extends MX_Controller
 		$this->_data['content'] = "index";
 
 
-		$table = $this->department->readAllDepartment(); 
+		$table = $this->department->readAllDepartment($this->_company); 
 		$this->_data['dataCompany'] = $this->company->readAllCompany();
 		if ($table) {
 			$this->_data['table_data'] = $table;
@@ -47,7 +50,7 @@ class Department extends MX_Controller
 
 		if ($_POST) {
 			$data = array(
-						'id_company' => $_POST['id_company'],
+						'id_company' => $this->_company,
 						'department_name' => $_POST['currency'],
 						'init' => $_POST['init'],
 						'created_time' => date('Y-m-d H:i:s'),
@@ -65,11 +68,15 @@ class Department extends MX_Controller
 		$this->_data['css'] = "layout-part/form-css";
 		$this->_data['js'] = "layout-part/form-js";
 
-		$filter = array( 'id_department' => $_POST['id_department']);
-		$data = array('department_name' => $_POST['department_name'],
-					  'init' => $_POST['init']);
-		$this->department->updateDepartment($filter, (object) $data);
-		redirect('department','refresh');
+		if ($_POST) {
+			$filter = array( 'id_department' => $_POST['id_department']);
+			$data = array(
+							'department_name' => $_POST['department_name'],
+						  	'init' => $_POST['init']
+						);
+			$this->department->updateDepartment($_POST['departmentId'], $data);
+			redirect('department','refresh');	
+		}
 	}
 
 	public function delete($id) 
@@ -82,7 +89,7 @@ class Department extends MX_Controller
 	public function detail($id)
 	{
 		// $where = "id_department = $id";
-		$departmentData = $this->department->getDepartment($id)->row();
+		$departmentData = $this->department->getDepartment($id);
 		echo json_encode($departmentData);
 	}
 }

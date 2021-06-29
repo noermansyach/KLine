@@ -19,12 +19,12 @@
 						          <h4 class="mb-0 mr-3"><?php echo ucfirst($title) ?></h4>
 						        </div>
 						        <div class="ml-lg-auto d-flex align-items-stretch justify-content-end">
-						            <button type="button" class="btn btn-success no-wrap ml-0" data-toggle="modal" data-target="#add" title="Detail" onclick="getCompany()">+ add department</button>
+						            <a href="<?php echo base_url('principal/add/') ?>" class="btn btn-success no-wrap ml-0" title="add">+ add principal</a>
 						        </div>
 						    </div>
 
-						    <?php $this->load->view('add'); ?>
-						    <?php $this->load->view('edit'); ?>
+						    
+						    
 
 						    <br>
 						    <div class="row">
@@ -33,34 +33,38 @@
 										<table id="order-listing" class="table">
 											<thead>
 												<tr>
-													<th>No.</th>
-													<!-- <th>Company</th> -->
-													<th>Department</th>
-													<th>Initial</th>
+													<th>No</th>
+													<th>Nama Principal</th>
+													<th>Contact Person</th>
+													<th>Kode Pos</th>
+													<th>Telepon 1</th>
+													<th>Telepon 2</th>
+													<th>Fax</th>
 													<th class="text-center">Actions</th>
 												</tr>
 											</thead>
 											<tbody>
-												<?php
+												<?php 
+													$no = 1;
 													if (!empty($table_data)) {
-														$no = 1;
 														foreach ($table_data as $value) {
 												?>
 														<tr>
 															<td><?php echo $no++; ?></td>
-															<!-- <td><?php echo $value->company_name . ' - '. $value->init_company; ?></td> -->
-															<td><?php echo $value->department_name ?></td>
-															<td><?php echo $value->init ?></td>
+															<td><?php echo strtoupper($value->nama_principal . ' - '. $value->inisial_nama); ?></td>
+															<td><?php echo strtoupper($value->contact_person); ?></td>
+															<td><?php echo strtoupper($value->kode_pos); ?></td>
+															<td><?php echo strtoupper($value->telepon_satu); ?></td>
+															<td><?php echo strtoupper($value->telepon_dua); ?></td>
+															<td><?php echo strtoupper($value->fax); ?></td>
 															<td class="text-center">
-																<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit" onclick="detail('<?php echo $value->id_department; ?>')" title="edit"><i class="mdi mdi-pencil"></i> </button>
-
-																<a href="<?php echo base_url('department/delete/' . $value->id_department) ?>" class="btn btn-danger tombol-hapus" title="Delete"><i class="fa fa-trash-o"></i> </a>
+																<a href="<?php echo base_url('principal/edit/'.$value->id_principal); ?>" class="btn btn-warning" title="edit"><i class="mdi mdi-pencil"></i> </a>
 															</td>
 														</tr>
 												<?php 
 														}
 													}
-												?>	
+												?>
 											</tbody>
 										</table>
 							        </div>

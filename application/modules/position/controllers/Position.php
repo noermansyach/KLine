@@ -4,6 +4,7 @@
  */
 class Position extends MX_Controller 
 {
+	public $_company = "";
 	
 	public function __construct()
 	{
@@ -12,6 +13,7 @@ class Position extends MX_Controller
 		if($this->session->userdata('status') != 'isLogin') {
 			redirect('login','refresh');
 		}
+		$this->_company = $this->session->userdata('company');
 	}
 
 	public $_data = array(
@@ -27,7 +29,7 @@ class Position extends MX_Controller
 		$this->_data['js'] = "layout-part/index-js";
 		$this->_data['content'] = "index";
 
-		$table = $this->position->readAllPosition(); 
+		$table = $this->position->readAllPosition($this->_company); 
 		if ($table) {
 			$this->_data['tableData'] = $table;
 		}
@@ -43,14 +45,14 @@ class Position extends MX_Controller
 
 		if ($_POST) {
 			$data = array(
-						'position' => $_POST['position'],
-						'init' => $_POST['init'],
+						'position' => $_POST['positionName'],
+						'init' => $_POST['initName'],
+						'id_company' => $this->_company,
 						'created_time' => date('Y-m-d H:i:s'),
 						'created_by' => $this->session->userdata('nama'),
 						'updated_time' => date('Y-m-d H:i:s'),
 						'updated_by' => $this->session->userdata('nama')
 					);
-			// print_r($_POST);
 			$this->position->insertPosition($data);
 			redirect('position','refresh');
 		}
@@ -61,11 +63,14 @@ class Position extends MX_Controller
 		$this->_data['css'] = "layout-part/form-css";
 		$this->_data['js'] = "layout-part/form-js";
 
-		$filter = array( 'id_position' => $_POST['id_position']);
-		$data = array('position' => $_POST['position'],
-					  'init' => $_POST['init']);
-		$this->position->updatePosition($filter, (object) $data);
-		redirect('position','refresh');
+		if ($_POST) {
+			$data = array(
+							'position' 	=> $_POST['position'],
+						  	'init' 		=> $_POST['init']
+			);
+			$this->position->updatePosition($_POST['positionId'], $data);
+			redirect('position','refresh');
+		}
 	}
 
 	public function delete($id) 
@@ -78,8 +83,7 @@ class Position extends MX_Controller
 	public function detail($id)
 	{
 		$where = "id_position = $id";
-		$positionData = $this->position->get_where($where)->row();
-
+		$positionData = $this->position->getPosition($id);
 		echo json_encode($positionData);
 	}
 

@@ -74,6 +74,21 @@
               </a>
             </li>
 
+            <li class="nav-item">
+				<a class="nav-link" data-toggle="collapse" href="#rp" aria-expanded="false" aria-controls="page-layouts">
+					<span class="icon-bg">&nbsp; <i class="mdi mdi-cash menu-icon"></i> &nbsp;</span>
+					<span class="menu-title">Receive & Payment</span>
+					<i class="menu-arrow"></i>
+				</a>
+				<div class="collapse" id="rp">
+					<ul class="nav flex-column sub-menu">
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('') ?>">Operasional</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('non_operational') ?>">Non Operasional</a></li>
+						
+					</ul>
+				</div>
+			</li>
+
             <!-- <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url('estimasi_uang') ?>">
                 <span class="icon-bg"><i class="fa fa-money menu-icon"></i></span>

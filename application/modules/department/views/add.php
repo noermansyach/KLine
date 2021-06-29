@@ -11,7 +11,7 @@
 
 	            <div class="modal-body">
 	                <table class="table table-modal" width="500px" style="table-layout: fixed;"> 
-	                	<tr>
+	                	<!-- <tr>
 	                		<td width="150px">Company</td>
 	                		<td><div class="nama_suplier">
 	                			<select name="id_company" class="js-example-basic-single" style="width:100%">
@@ -28,7 +28,7 @@
                  				</select>
 	                		</div></td>
 
-	                	</tr>
+	                	</tr> -->
 	                	<tr>
 	                		<td width="200px">Department Name</td>
 	                		<td><div class="nama_suplier"><input type="text" name="currency" class="form-control form-control-sm"></div></td>
@@ -36,7 +36,7 @@
 
 	                	<tr>
 	                		<td>Initial</td>
-	                		<td><div class="pic"><input type="text" name="init" class="form-control form-control-sm"></div></td>
+	                		<td><div class="pic"><input type="text" name="init" class="form-control form-control-sm" maxlength="3"></div></td>
 	                	</tr>
 	                </table>
 	            </div>

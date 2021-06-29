@@ -4,7 +4,7 @@
       		<form method="post" action="<?php echo base_url("department/edit") ?>">
       			<input type="hidden" name="id_department" id="idDepartment">
 	            <div class="modal-header">
-	                <h5 class="modal-title" id="exampleModalLabel">Add Department</h5>
+	                <h5 class="modal-title" id="exampleModalLabel">Edit Department</h5>
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	                    <span aria-hidden="true">&times;</span>
 	                </button>
@@ -13,7 +13,7 @@
 	            <div class="modal-body">
 	                <table class="table table-modal" width="500px" style="table-layout: fixed;"> 
 
-	                	<tr>
+	                	<!-- <tr>
 	                		<td width="150px">Company</td>
 	                		<td><div class="nama_suplier">
 	                			<select name="id_company" id="idCompany" class="js-example-basic-single" style="width:100%">
@@ -30,12 +30,13 @@
                  				</select>
 	                		</div></td>
 
-	                	</tr>
+	                	</tr> -->
 
 	                	<tr>
 	                		<td width="200px">Department Name</td>
 	                		<td>
 	                			<div>
+	                				<input type="hidden" name="departmentId" id="departmentId">
 	                				<input type="text" name="department_name" id="departmentName" class="form-control form-control-sm">
 	                			</div>
 	                		</td>
@@ -45,7 +46,7 @@
 	                		<td>Initial</td>
 	                		<td>
 	                			<div class="pic">
-	                				<input type="text" name="init" id="init" class="form-control form-control-sm">
+	                				<input type="text" name="init" id="init" class="form-control form-control-sm" maxlength="3">
 	                			</div>
 	                		</td>
 	                	</tr>

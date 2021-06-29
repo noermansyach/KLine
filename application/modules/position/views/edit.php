@@ -16,6 +16,7 @@
 	                		<td width="200px">Position Name</td>
 	                		<td>
 	                			<div>
+	                				<input type="hidden" name="positionId" id="positionId">
 	                				<input type="text" name="position" id="position" class="form-control form-control-sm">
 	                			</div>
 	                		</td>

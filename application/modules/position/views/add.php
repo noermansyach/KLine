@@ -15,7 +15,7 @@
 	                		<td width="200px">Position Name</td>
 	                		<td>
 	                			<div>
-	                				<input type="text" name="position" class="form-control form-control-sm">
+	                				<input type="text" name="positionName" class="form-control form-control-sm">
 	                			</div>
 	                		</td>
 	                	</tr>
@@ -24,7 +24,7 @@
 	                		<td>Initial</td>
 	                		<td>
 	                			<div>
-	                				<input type="text" name="init" class="form-control form-control-sm">
+	                				<input type="text" name="initName" class="form-control form-control-sm">
 	                			</div>
 	                		</td>
 	                	</tr>

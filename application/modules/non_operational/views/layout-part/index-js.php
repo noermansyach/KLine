@@ -8,16 +8,14 @@
     <!-- End custom js for this page -->
 
     <script type="text/javascript">
-    	function detail(id_position) {
-    		$("#idPosition").val(id_position)
+    	function detail(idPelabuhan) {
+    		$("#idPelabuhan").val(idPelabuhan)
     		$.ajax({
-				url : "<?php echo base_url('position/detail/'); ?>" + id_position,
+				url : "<?php echo base_url('pelabuhan/detail/'); ?>" + idPelabuhan,
 				type : "GET",
 				success : function(result) {
-					objPosition = JSON.parse(result);
-                    $("#positionId").val(objPosition.id_position);
-					$("#position").val(objPosition.position);
-					$("#init").val(objPosition.init);
+					objPelabuhan = JSON.parse(result);
+                    $("#namaPelabuhan").val(objPelabuhan.nama_pelabuhan);
 				},
 				error : function(result){
 					// $("#alert").prop("style", "display: block").text("Error koneksi mengambil data supplier");

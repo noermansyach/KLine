@@ -17,6 +17,7 @@
 				type : "GET",
 				success : function(result) {
 					objDepartment = JSON.parse(result);
+                    $("#departmentId").val(objDepartment.id_department);
 					$("#departmentName").val(objDepartment.department_name);
 					$("#init").val(objDepartment.init);
 				},
