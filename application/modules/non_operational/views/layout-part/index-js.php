@@ -8,14 +8,12 @@
     <!-- End custom js for this page -->
 
     <script type="text/javascript">
-    	function detail(idPelabuhan) {
-    		$("#idPelabuhan").val(idPelabuhan)
+    	function generateBarcode(noBukti) {
     		$.ajax({
-				url : "<?php echo base_url('pelabuhan/detail/'); ?>" + idPelabuhan,
+				url : "<?php echo base_url('non_operational/generateReportPPU/'); ?>" + noBukti,
 				type : "GET",
 				success : function(result) {
-					objPelabuhan = JSON.parse(result);
-                    $("#namaPelabuhan").val(objPelabuhan.nama_pelabuhan);
+					
 				},
 				error : function(result){
 					// $("#alert").prop("style", "display: block").text("Error koneksi mengambil data supplier");

@@ -56,7 +56,8 @@
 															<td><?php echo strtoupper($value->dibayar_kepada); ?></td>
 															<td><?php echo date('d-m-Y', strtotime($value->created_time)) ?></td>
 															<td class="text-center">
-																<a href="<?php echo base_url('non_operational/generateReportPPU/'.$value->no_bukti); ?>" class="btn btn-outline-dark" title="print"><i class="mdi mdi-clipboard-text"></i> </a>
+																<button class="btn btn-outline-dark" onclick="generateBarcode(<?php echo $value->no_bukti; ?>)" title="Generate Barcode"> <i class="mdi mdi-clipboard-text"></i> </button>
+																<!-- <a href="<?php echo base_url('non_operational/generateReportPPU/'.$value->no_bukti); ?>" class="btn btn-outline-dark" title="print"><i class="mdi mdi-clipboard-text"></i> </a> -->
 															</td>
 														</tr>
 												<?php 

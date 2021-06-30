@@ -149,7 +149,6 @@ class Non_operational extends MX_Controller
 	public function generateReportPPU($noBukti) 
 	{
 		$dataPdf = $this->nonOperational->getDataPPU($noBukti);
-		
 
 		$pdf = new FPDF('l','mm','A5');
         // membuat halaman baru
