@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jun 2021 pada 17.24
+-- Waktu pembuatan: 30 Jun 2021 pada 04.11
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -408,9 +408,10 @@ CREATE TABLE `tb_department` (
 --
 
 INSERT INTO `tb_department` (`id_department`, `department_name`, `init`, `id_company`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(2, 'FINANCE & ADMIN', 'FADM', '2', '2021-06-15 08:51:16', 'nurman', '2021-06-15 08:51:16', 'nurman'),
+(2, 'FINANCE', 'FIN', '2', '2021-06-15 08:51:16', 'nurman', '2021-06-15 08:51:16', 'nurman'),
 (6, 'Agency 1', 'AGN 1', '5', '2021-06-16 14:13:09', 'nurman', '2021-06-16 14:13:09', 'nurman'),
-(7, 'Agency 2', 'AGN 2', '5', '2021-06-16 14:17:44', 'nurman', '2021-06-16 14:17:44', 'nurman');
+(7, 'Agency 2', 'AGN 2', '5', '2021-06-16 14:17:44', 'nurman', '2021-06-16 14:17:44', 'nurman'),
+(8, 'OPERATIONAL', 'OPR', '2', '2021-06-29 06:22:03', 'AINA SOPHIA', '2021-06-29 06:22:03', 'AINA SOPHIA');
 
 -- --------------------------------------------------------
 
@@ -530,7 +531,8 @@ CREATE TABLE `tb_karyawan` (
 INSERT INTO `tb_karyawan` (`id_employee`, `employee_name`, `place_of_birth`, `date_of_birth`, `gender`, `religion`, `marital_status`, `last_education`, `citizenship`, `nik`, `address`, `postal_code`, `phone_number`, `home_phone_number`, `email`, `npwp`, `ptkp`, `join_date`, `out_date`, `id_department`, `id_position`, `id_company`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
 ('210614124636', 'WAHYU TRISNADI', NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('210627030527', 'Aina Sophia ', 'Jakarta', '1995-05-18', 'WANITA', 'PROTESTAN', 'CERAI', 'S2', 'Indonesia', '3201251293184', 'Tanjung Priook', '82818', '082188877710', '021849271', 'sophia.aina@gmail.com', '1298104810000', '1000000921', '2020-05-19', '2021-06-25', '2', '4', '2', '2021-06-28 05:45:28', 'admin', '2021-06-28 05:45:28', 'admin'),
-('210627122805', 'Nurmansyah', 'Bogor', '1995-09-12', 'PRIA', 'ISLAM', '', 'SMA - SETARA SMA', 'Indonesia', '3201230888216419', 'Jalan Kampung Jogjogan RT. 003 / RW. 001 Desa Jogjogan Kecamatan Cisarua Kabupaten Bogor', '16750', '085717364016', '0218256025', 'xandermand.xander@gmail.com', '12974891279', '27429172489', '2020-06-24', '2021-06-27', NULL, '4', '2', '2021-06-27 12:30:19', 'admin', '2021-06-27 12:30:19', '');
+('210627122805', 'Nurmansyah', 'Bogor', '1995-09-12', 'PRIA', 'ISLAM', '', 'SMA - SETARA SMA', 'Indonesia', '3201230888216419', 'Jalan Kampung Jogjogan RT. 003 / RW. 001 Desa Jogjogan Kecamatan Cisarua Kabupaten Bogor', '16750', '085717364016', '0218256025', 'xandermand.xander@gmail.com', '12974891279', '27429172489', '2020-06-24', '2021-06-27', NULL, '4', '2', '2021-06-27 12:30:19', 'admin', '2021-06-27 12:30:19', ''),
+('210630040849', 'TEAM GEMEZ WHY119', 'Bogor', '1993-08-12', 'PRIA', 'ISLAM', 'BELUM KAWIN', 'S1', 'Indonesia', '3201231827879', 'Malang', '17654', '99127977', '28716487687', 'team.gmez@gmail.com', '1214214124', '1212412', '2020-01-12', '0000-00-00', '2', '8', '2', '2021-06-30 04:10:06', 'AINA SOPHIA', '2021-06-30 04:10:06', 'AINA SOPHIA');
 
 -- --------------------------------------------------------
 
@@ -747,6 +749,51 @@ INSERT INTO `tb_modul_action` (`id_modul_action`, `name`, `id_modul`, `created_t
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_non_operational`
+--
+
+CREATE TABLE `tb_non_operational` (
+  `no_bukti` varchar(255) NOT NULL,
+  `status` enum('R','P') DEFAULT NULL,
+  `id_department` varchar(255) DEFAULT NULL,
+  `no_ppu` varchar(255) DEFAULT NULL,
+  `id_principal` varchar(255) DEFAULT NULL,
+  `jumlah` varchar(255) DEFAULT NULL,
+  `terbilang` varchar(255) DEFAULT NULL,
+  `ket_1` varchar(255) DEFAULT NULL,
+  `ket_2` varchar(255) DEFAULT NULL,
+  `ket_3` varchar(255) DEFAULT NULL,
+  `requested_by` varchar(255) DEFAULT NULL,
+  `approved_by` varchar(255) DEFAULT NULL,
+  `acknowledge_by` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_non_operational`
+--
+
+INSERT INTO `tb_non_operational` (`no_bukti`, `status`, `id_department`, `no_ppu`, `id_principal`, `jumlah`, `terbilang`, `ket_1`, `ket_2`, `ket_3`, `requested_by`, `approved_by`, `acknowledge_by`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('', NULL, NULL, 'OPR/P/21/06/0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('1', 'P', 'OPR', 'OPR/P/21/06/0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('10', 'P', 'OPR', 'OPR/R/21/06/0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('21062911331920', 'P', 'OPR', 'OPR/P/21/06/0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('21062911331928', 'R', 'OPR', 'OPR/R/21/06/0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('21062911331929', 'R', 'OPR', 'OPR/R/21/06/0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('3', 'R', 'FIN', 'FIN/R/21/06/0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('4', 'R', 'FIN', 'FIN/R/21/06/0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('5', 'R', 'OPR', 'OPR/R/21/06/0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('6', 'R', 'OPR', 'OPR/R/21/06/0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('7', 'P', 'FIN', 'FIN/P/21/06/0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('8', 'P', 'FIN', 'FIN/P/21/06/0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('9', 'R', 'OPR', 'OPR/R/21/06/0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_pelabuhan`
 --
 
@@ -878,7 +925,9 @@ CREATE TABLE `tb_position` (
 --
 
 INSERT INTO `tb_position` (`id_position`, `position`, `init`, `id_company`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-(4, 'DIREKTUR', 'DIR', '2', '2021-06-15 09:36:03', 'nurman', '2021-06-15 09:36:03', 'nurman');
+(4, 'DIREKTUR', 'DIR', '2', '2021-06-15 09:36:03', 'nurman', '2021-06-15 09:36:03', 'nurman'),
+(7, 'DIREKTUR UTAMA', 'DIRUT', '2', '2021-06-29 07:10:23', 'AINA SOPHIA', '2021-06-29 07:10:23', 'AINA SOPHIA'),
+(8, 'STAFF UMUM', 'STA', '2', '2021-06-29 07:11:13', 'AINA SOPHIA', '2021-06-29 07:11:13', 'AINA SOPHIA');
 
 -- --------------------------------------------------------
 
@@ -945,7 +994,8 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id_user`, `username`, `password`, `is_active`, `id_department`, `id_position`, `id_company`, `id_employee`, `id_level`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
 ('210613154321', 'IT', '202cb962ac59075b964b07152d234b70', '1', '1', NULL, '1', '0', 1, '2021-06-13 15:44:11', NULL, '2021-06-13 15:44:17', NULL),
 ('210614124944', 'admin', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL, NULL, '2', NULL, NULL, NULL, NULL, NULL, NULL),
-('2806210514191', 'AINA SOPHIA', 'e10adc3949ba59abbe56e057f20f883e', '1', '2', '4', '2', '210627030527', 3, '2021-06-28 17:19:20', 'IT', '2021-06-28 17:19:20', '');
+('2806210514191', 'AINA SOPHIA', 'e10adc3949ba59abbe56e057f20f883e', '1', '2', '4', '2', '210627030527', 3, '2021-06-28 17:19:20', 'IT', '2021-06-28 17:19:20', ''),
+('300621043610100', 'TEAM GEMEZ WHY119', 'e10adc3949ba59abbe56e057f20f883e', '1', '2', '8', '2', '210630040849', 3, '2021-06-30 04:10:36', 'IT', '2021-06-30 04:10:36', '');
 
 -- --------------------------------------------------------
 
@@ -1059,6 +1109,12 @@ ALTER TABLE `tb_modul_action`
   ADD PRIMARY KEY (`id_modul_action`);
 
 --
+-- Indeks untuk tabel `tb_non_operational`
+--
+ALTER TABLE `tb_non_operational`
+  ADD PRIMARY KEY (`no_bukti`);
+
+--
 -- Indeks untuk tabel `tb_pelabuhan`
 --
 ALTER TABLE `tb_pelabuhan`
@@ -1108,7 +1164,7 @@ ALTER TABLE `tb_currency`
 -- AUTO_INCREMENT untuk tabel `tb_department`
 --
 ALTER TABLE `tb_department`
-  MODIFY `id_department` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_department` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_jenis_jurnal`
@@ -1138,7 +1194,7 @@ ALTER TABLE `tb_modul`
 -- AUTO_INCREMENT untuk tabel `tb_position`
 --
 ALTER TABLE `tb_position`
-  MODIFY `id_position` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_position` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
