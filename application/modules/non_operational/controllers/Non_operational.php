@@ -47,30 +47,24 @@ class Non_operational extends MX_Controller
 		$this->_data['tanggalBuat'] = date('d-m-Y');
 
 		if ($_POST) {
-			// $dataPrincipal = array(
-			// 	'id_principal' => $_POST['idPrincipal'],
-			// 	'nama_principal' => $_POST['namaPrincipal'],
-			// 	'inisial_nama' => $_POST['initPrincipal'],
-			// 	'is_dk_note' => $_POST['dkNote'],
-			// 	'alamat' => $_POST['alamatSatu'],
-			// 	'alamat_kedua' => $_POST['alamatDua'],
-			// 	'kode_pos' => $_POST['kodePos'], 
-			// 	'iso_code' => $_POST['selectCountry'],
-			// 	'kode_area_telp_satu' => $_POST['areaTelpSatu'],
-			// 	'telepon_satu' => $_POST['teleponSatu'], 
-			// 	'kode_area_telp_dua' => $_POST['areaTelpDua'],
-			// 	'telepon_dua' => $_POST['teleponDua'],
-			// 	'kode_area_fax' => $_POST['areaFax'],
-			// 	'fax' => $_POST['fax'],
-			// 	'contact_person' => $_POST['contactPerson'],
-			// 	'no_acc' => $_POST['selectAccount'],
-			// 	'created_time' => date('Y-m-d H:i:s'),
-			// 	'created_by' => $this->session->userdata('nama'),
-			// 	'updated_time' => date('Y-m-d H:i:s'),
-			// 	'updated_by' => $this->session->userdata('nama')
-			// );
-			// $this->principal->insertPrincipal($dataPrincipal);
-			// redirect('principal','refresh');
+			$dataPrincipal = array(
+				'no_bukti' => $_POST['idPrincipal'],
+				'status' => $_POST['namaPrincipal'],
+				'id_department' => $_POST['initPrincipal'],
+				'no_ppu' => $_POST['dkNote'],
+				'id_principal' => $_POST['alamatSatu'],
+				'jumlah' => $_POST['alamatDua'],
+				'ket_1' => $_POST['kodePos'], 
+				'ket_2' => $_POST['selectCountry'],
+				'ket_3' => $_POST['areaTelpSatu'],
+				'requested_by' => ,
+				'created_time' => date('Y-m-d H:i:s'),
+				'created_by' => $this->session->userdata('nama'),
+				'updated_time' => date('Y-m-d H:i:s'),
+				'updated_by' => $this->session->userdata('nama')
+			);
+			$this->principal->insertPrincipal($dataPrincipal);
+			redirect('principal','refresh');
 		} else {
 			$this->load->view('layout', $this->_data);
 		}
