@@ -7,15 +7,18 @@ class Non_operational_model extends MY_Model
 
 	public function readAllNonOPerational()
 	{
-		return $this->db->select('B.nama_acc, A.*')
-						->join('tb_perkiraan B', 'A.no_acc = B.no_acc')
-						->get('tb_principal A')
+		return $this->db->select('A.no_bukti, A.no_ppu, B.department_name, A.status as jenis_transaksi, A.created_time, C.nama_principal as 
+								  dibayar_kepada')
+						->join('tb_department B', 'A.id_department = B.id_department')
+						->join('tb_principal C', 'A.id_principal = C.id_principal')
+						->order_by('A.no_ppu')
+						->get('tb_non_operational A')
 						->result();
 	}
 	
-	public function insertPrincipal($data) 
+	public function insertNonOperational($data) 
 	{
-		return $this->db->insert('tb_principal', $data);
+		return $this->db->insert('tb_non_operational', $data);
 	}
 
 	public function updatePrincipal($data, $idPrincipal) {
@@ -47,6 +50,18 @@ class Non_operational_model extends MY_Model
 						->order_by('id_principal', 'asc')
 						->get('tb_principal')
 						->result();
+	}
+
+	public function getDataPPU($noBukti)
+	{
+		return $this->db->select('A.no_bukti, A.no_ppu, B.department_name, A.status as jenis_transaksi, A.created_time, C.nama_principal as 
+								  dibayar_kepada, A.jumlah, A.terbilang, A.ket_1, A.ket_2, A.ket_3, A.created_by')
+						->join('tb_department B', 'A.id_department = B.id_department')
+						->join('tb_principal C', 'A.id_principal = C.id_principal')
+						->where('A.no_bukti', $noBukti)
+						->order_by('A.no_ppu')
+						->get('tb_non_operational A')
+						->row();
 	}
 
 }

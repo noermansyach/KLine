@@ -23,17 +23,14 @@
             $("#selectDepartment").change(function() {
                 var idDepartment = $("#selectDepartment option:selected").text() + "";
                 var tanggal = $("#tanggal").val();
-                var status = $("#receivePayment").val();
+                var status = $("#receivePayment:checked").val();
                 var tahun = tanggal.substr(8,2);    
-                var bulan = tanggal.substr(3,2);    
-                console.log(tanggal);
+                var bulan = tanggal.substr(3,2);
                 var noPPU = idDepartment.substring(0, 3) + "-" + status + "-" + tahun + "-" + bulan + "-";
-                console.log(noPPU);
                 $.ajax({
                     url: "<?php echo base_url('non_operational/generatePpuNumber/'); ?>" + noPPU,
                     type: "GET",
                     success: function(result) {
-                        // console.log(result);
                         var hasil = result;
                         noPPU = hasil.replace(/['"]+/g, '');
                         noPPU = noPPU.replace(/[-]+/g, '/');

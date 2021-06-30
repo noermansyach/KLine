@@ -68,7 +68,7 @@
                                                 <select name="selectDepartment" id="selectDepartment" class="js-example-basic-single col-sm-11">
                                                     <option value="">- Pilih Departemen -</option>
                                                     <?php foreach ($departementList as $value): ?>
-                                                        <option value="$value->id_department"><?php echo $value->init . ' - ' . $value->department_name;  ?></option>
+                                                        <option value="<?php echo $value->id_department; ?>"><?php echo $value->init . ' - ' . $value->department_name;  ?></option>
                                                     <?php endforeach ?>
                                                 </select>
                                             </div>

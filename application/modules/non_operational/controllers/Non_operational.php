@@ -27,17 +27,21 @@ class Non_operational extends MX_Controller
 
 	public function index() 
 	{
-		// $this->_data['css'] = "layout-part/index-css";
-		// $this->_data['js'] = "layout-part/index-js";
-		// $this->_data['content'] = "index";
+		$this->_data['css'] = "layout-part/index-css";
+		$this->_data['js'] = "layout-part/index-js";
+		$this->_data['content'] = "index";
 
-		// $table = $this->principal->readAllPrincipal();
+		$table = $this->nonOperational->readAllNonOPerational();
 
-		// if ($table) {
-		// 	$this->_data['table_data'] = $table;
-		// }
+		if ($table) {
+			$this->_data['table_data'] = $table;
+		}
 
-		// $this->load->view('layout', $this->_data);
+		$this->load->view('layout', $this->_data);
+	}
+
+	public function add() 
+	{
 		$this->_data['css'] = "layout-part/form-css";
 		$this->_data['js'] = "layout-part/form-js";
 		$this->_data['content'] = "add";
@@ -48,61 +52,24 @@ class Non_operational extends MX_Controller
 
 		if ($_POST) {
 			$dataPrincipal = array(
-				'no_bukti' => $_POST['idPrincipal'],
-				'status' => $_POST['namaPrincipal'],
-				'id_department' => $_POST['initPrincipal'],
-				'no_ppu' => $_POST['dkNote'],
-				'id_principal' => $_POST['alamatSatu'],
-				'jumlah' => $_POST['alamatDua'],
-				'ket_1' => $_POST['kodePos'], 
-				'ket_2' => $_POST['selectCountry'],
-				'ket_3' => $_POST['areaTelpSatu'],
-				'requested_by' => ,
+				'no_bukti' => $_POST['noBukti'],
+				'status' => $_POST['receivePayment'],
+				'id_department' => $_POST['selectDepartment'],
+				'no_ppu' => $_POST['noPPU'],
+				'id_principal' => $_POST['selectPrincipal'],
+				'jumlah' => $_POST['jumlah'],
+				'terbilang' => $_POST['terbilang'],
+				'ket_1' => $_POST['ketSatu'], 
+				'ket_2' => $_POST['ketDua'],
+				'ket_3' => $_POST['ketTiga'],
+				'requested_by' => $this->session->userdata('nama'),
 				'created_time' => date('Y-m-d H:i:s'),
 				'created_by' => $this->session->userdata('nama'),
 				'updated_time' => date('Y-m-d H:i:s'),
 				'updated_by' => $this->session->userdata('nama')
 			);
-			$this->principal->insertPrincipal($dataPrincipal);
-			redirect('principal','refresh');
-		} else {
-			$this->load->view('layout', $this->_data);
-		}
-	}
-
-	public function add() 
-	{
-		
-		$this->_data['css'] = "layout-part/form-css";
-		$this->_data['js'] = "layout-part/form-js";
-		$this->_data['content'] = "add";
-		$this->_data['noBukti'] = date("ymdhsi") . rand(1, 100);
-
-		if ($_POST) {
-			$dataPrincipal = array(
-				'id_principal' => $_POST['idPrincipal'],
-				'nama_principal' => $_POST['namaPrincipal'],
-				'inisial_nama' => $_POST['initPrincipal'],
-				'is_dk_note' => $_POST['dkNote'],
-				'alamat' => $_POST['alamatSatu'],
-				'alamat_kedua' => $_POST['alamatDua'],
-				'kode_pos' => $_POST['kodePos'], 
-				'iso_code' => $_POST['selectCountry'],
-				'kode_area_telp_satu' => $_POST['areaTelpSatu'],
-				'telepon_satu' => $_POST['teleponSatu'], 
-				'kode_area_telp_dua' => $_POST['areaTelpDua'],
-				'telepon_dua' => $_POST['teleponDua'],
-				'kode_area_fax' => $_POST['areaFax'],
-				'fax' => $_POST['fax'],
-				'contact_person' => $_POST['contactPerson'],
-				'no_acc' => $_POST['selectAccount'],
-				'created_time' => date('Y-m-d H:i:s'),
-				'created_by' => $this->session->userdata('nama'),
-				'updated_time' => date('Y-m-d H:i:s'),
-				'updated_by' => $this->session->userdata('nama')
-			);
-			$this->principal->insertPrincipal($dataPrincipal);
-			redirect('principal','refresh');
+			$this->nonOperational->insertNonOperational($dataPrincipal);
+			redirect('non_operational','refresh');
 		} else {
 			$this->load->view('layout', $this->_data);
 		}
@@ -179,6 +146,92 @@ class Non_operational extends MX_Controller
 		echo json_encode($noPPU);
 	}
 
-	
+	public function generateReportPPU($noBukti) 
+	{
+		$dataPdf = $this->nonOperational->getDataPPU($noBukti);
+		
+
+		$pdf = new FPDF('l','mm','A5');
+        // membuat halaman baru
+        $pdf->AddPage();
+
+        $pdf->SetAutoPageBreak(true, 0.5);
+        // Logo
+    	$pdf->Image(base_url('assets/images/KARANA.png'),10,6,15);
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Times','B',14);
+        // mencetak string 
+        $pdf->Cell(110,7,'PERMOHONAN PERMINTAAN UANG',0,0,'R');
+        $pdf->ln();
+        $pdf->SetFont('Helvetica','B',9);
+
+        for ($i=0; $i < 7; $i++) { 
+        	$pdf->Cell(20,5,'',0,0);
+        }
+
+        $pdf->Cell(20,5,'NO. PPU ',0,0, 'L');
+        $pdf->Cell(30,5,': '. $dataPdf->no_ppu,0,0);
+        $pdf->ln();
+        for ($i=0; $i < 7; $i++) { 
+        	$pdf->Cell(20,5,'',0,0);
+        }
+        $pdf->Cell(20,5,'DATE',0,0, 'L');
+        $pdf->Cell(30,5,': '. date('d-m-Y', strtotime($dataPdf->created_time)),0,0);
+
+        $pdf->SetFont('Helvetica','B',8);
+        $pdf->Ln(10);
+        $pdf->cell(35,7,'DARI DEPARTEMEN',0,0);
+        $pdf->cell(90,7,': '. $dataPdf->department_name,0,0);
+        $pdf->Ln();
+        $pdf->cell(35,7,'DIBAYAR KEPADA',0,0);
+        $pdf->cell(90,7,': ' . $dataPdf->dibayar_kepada,0,0);
+        $pdf->Ln();
+        $pdf->cell(35,7,'JUMLAH',0,0);
+        $pdf->cell(90,7,': ' . $dataPdf->jumlah,0,0);
+        $pdf->Ln();
+        $pdf->cell(35,7,'TERBILANG',0,0);
+        $pdf->cell(90,7,': '. $dataPdf->terbilang,0,0);
+        $pdf->Ln();
+        $pdf->cell(35,7,'UNTUK',0,0);
+        $pdf->cell(130,7,': 1. '. $dataPdf->ket_1,0,0);
+        $pdf->Ln();
+        $pdf->cell(35,7,'',0,0);
+        $pdf->cell(130,7,'  2. '. $dataPdf->ket_2,0,0);
+        $pdf->Ln();
+        $pdf->cell(35,7,'',0,0);
+        $pdf->cell(130,7,'  3. '. $dataPdf->ket_3,0,0);
+
+        for ($i=0; $i < 2; $i++) { 
+        	$pdf->Ln();
+        	$pdf->Cell(20,5,'',0,0);
+        	
+        }
+        $pdf->Ln();
+		for ($i=0; $i < 4; $i++) { 
+        	$pdf->Cell(20,5,'',0,0);
+        }        
+        $pdf->Cell(25, 5, 'Cabang,', 0, 0, 'R');
+       	$pdf->Cell(35, 5, '.....................................................', 0, 0);
+
+       	$pdf->Ln();
+       	$pdf->Ln();
+       	$pdf->Cell(50,5,'APPROVED BY',0,0,'C');
+       	$pdf->Cell(50,5,'ACKNOWLEDGE BY',0,0,'C');
+       	$pdf->Cell(50,5,'REQUESTED BY',0,0,'C');
+       	for ($i=0; $i < 5; $i++) { 
+        	$pdf->Ln();
+        	$pdf->Cell(20,5,'',0,0);
+        }
+        $pdf->Ln();
+        $pdf->Cell(50,5,'________________________',0,0,'C');
+       	// $pdf->Cell(50,5,'________________________',0,0,'C');
+       	$pdf->Cell(50,5,$dataPdf->created_by,0,0,'C');
+       	$pdf->Cell(50,5,'________________________',0,0,'C');
+        
+
+        $filename= 'report/ppu/' . $dataPdf->no_bukti .'.pdf';
+		$pdf->Output($filename,'F');
+		redirect('non_operational','refresh');
+	}	
 
 }

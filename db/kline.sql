@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jun 2021 pada 04.11
+-- Waktu pembuatan: 30 Jun 2021 pada 10.57
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -777,19 +777,8 @@ CREATE TABLE `tb_non_operational` (
 --
 
 INSERT INTO `tb_non_operational` (`no_bukti`, `status`, `id_department`, `no_ppu`, `id_principal`, `jumlah`, `terbilang`, `ket_1`, `ket_2`, `ket_3`, `requested_by`, `approved_by`, `acknowledge_by`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-('', NULL, NULL, 'OPR/P/21/06/0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('1', 'P', 'OPR', 'OPR/P/21/06/0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('10', 'P', 'OPR', 'OPR/R/21/06/0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('21062911331920', 'P', 'OPR', 'OPR/P/21/06/0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('21062911331928', 'R', 'OPR', 'OPR/R/21/06/0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('21062911331929', 'R', 'OPR', 'OPR/R/21/06/0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('3', 'R', 'FIN', 'FIN/R/21/06/0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('4', 'R', 'FIN', 'FIN/R/21/06/0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('5', 'R', 'OPR', 'OPR/R/21/06/0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('6', 'R', 'OPR', 'OPR/R/21/06/0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('7', 'P', 'FIN', 'FIN/P/21/06/0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('8', 'P', 'FIN', 'FIN/P/21/06/0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('9', 'R', 'OPR', 'OPR/R/21/06/0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+('21063004054098', 'P', '2', 'FIN/P/21/06/0001', '280608335930', '32000000', 'Tiga Puluh Dua Juta Rupiah', 'tes 1', 'tes 2 ', 'tes 3', 'TEAM GEMEZ WHY119', NULL, NULL, '2021-06-30 04:40:34', 'TEAM GEMEZ WHY119', '2021-06-30 04:40:34', 'TEAM GEMEZ WHY119'),
+('21063004283651', 'R', '2', 'FIN/R/21/06/0001', '280608335930', '50000000', 'Lima Puluh Juta Rupiah', 'Keterangan Satu', 'Keterangan 2', 'Keterangan Tiga', 'TEAM GEMEZ WHY119', NULL, NULL, '2021-06-30 04:37:02', 'TEAM GEMEZ WHY119', '2021-06-30 04:37:02', 'TEAM GEMEZ WHY119');
 
 -- --------------------------------------------------------
 

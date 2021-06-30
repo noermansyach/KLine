@@ -19,7 +19,7 @@
 						          <h4 class="mb-0 mr-3"><?php echo ucfirst($title) ?></h4>
 						        </div>
 						        <div class="ml-lg-auto d-flex align-items-stretch justify-content-end">
-						            <a href="<?php echo base_url('principal/add/') ?>" class="btn btn-success no-wrap ml-0" title="add">+ add principal</a>
+						            <a href="<?php echo base_url('non_operational/add/') ?>" class="btn btn-success no-wrap ml-0" title="add">+ add transaksi</a>
 						        </div>
 						    </div>
 
@@ -34,13 +34,12 @@
 											<thead>
 												<tr>
 													<th>No</th>
-													<th>Nama Principal</th>
-													<th>Contact Person</th>
-													<th>Kode Pos</th>
-													<th>Telepon 1</th>
-													<th>Telepon 2</th>
-													<th>Fax</th>
-													<th class="text-center">Actions</th>
+													<th>No. PPU</th>
+													<th>Departemen</th>
+													<th>Jenis Transaksi</th>
+													<th>Dibayar Kepada</th>
+													<th>Tanggal</th>
+													<th class="text-center">Aksi</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -51,14 +50,13 @@
 												?>
 														<tr>
 															<td><?php echo $no++; ?></td>
-															<td><?php echo strtoupper($value->nama_principal . ' - '. $value->inisial_nama); ?></td>
-															<td><?php echo strtoupper($value->contact_person); ?></td>
-															<td><?php echo strtoupper($value->kode_pos); ?></td>
-															<td><?php echo strtoupper($value->telepon_satu); ?></td>
-															<td><?php echo strtoupper($value->telepon_dua); ?></td>
-															<td><?php echo strtoupper($value->fax); ?></td>
+															<td><?php echo strtoupper($value->no_ppu); ?></td>
+															<td><?php echo strtoupper($value->department_name); ?></td>
+															<td><?php echo ($value->jenis_transaksi == 'P') ? 'MASUK' : 'KELUAR'; ?></td>
+															<td><?php echo strtoupper($value->dibayar_kepada); ?></td>
+															<td><?php echo date('d-m-Y', strtotime($value->created_time)) ?></td>
 															<td class="text-center">
-																<a href="<?php echo base_url('principal/edit/'.$value->id_principal); ?>" class="btn btn-warning" title="edit"><i class="mdi mdi-pencil"></i> </a>
+																<a href="<?php echo base_url('non_operational/generateReportPPU/'.$value->no_bukti); ?>" class="btn btn-outline-dark" title="print"><i class="mdi mdi-clipboard-text"></i> </a>
 															</td>
 														</tr>
 												<?php 
