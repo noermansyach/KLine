@@ -23,8 +23,7 @@
 						        </div>
 						    </div>
 
-						    
-						    
+						    <?php $this->load->view('detail'); ?>
 
 						    <br>
 						    <div class="row">
@@ -39,7 +38,8 @@
 													<th>Jenis Transaksi</th>
 													<th>Dibayar Kepada</th>
 													<th>Tanggal</th>
-													<th class="text-center">Aksi</th>
+													<th class="text-center">Generate</th>
+													<th class="text-center">Detail</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -52,12 +52,14 @@
 															<td><?php echo $no++; ?></td>
 															<td><?php echo strtoupper($value->no_ppu); ?></td>
 															<td><?php echo strtoupper($value->department_name); ?></td>
-															<td><?php echo ($value->jenis_transaksi == 'P') ? 'MASUK' : 'KELUAR'; ?></td>
+															<td><?php echo ($value->jenis_transaksi == 'P') ? 'KELUAR' : 'MASUK'; ?></td>
 															<td><?php echo strtoupper($value->dibayar_kepada); ?></td>
 															<td><?php echo date('d-m-Y', strtotime($value->created_time)) ?></td>
 															<td class="text-center">
-																<button class="btn btn-outline-dark" onclick="generateBarcode(<?php echo $value->no_bukti; ?>)" title="Generate Barcode"> <i class="mdi mdi-clipboard-text"></i> </button>
-																<!-- <a href="<?php echo base_url('non_operational/generateReportPPU/'.$value->no_bukti); ?>" class="btn btn-outline-dark" title="print"><i class="mdi mdi-clipboard-text"></i> </a> -->
+																<button id="genQr" name="genQr" class="btn btn-outline-dark" onclick="generateBarcode(<?php echo $value->no_bukti; ?>)" title="Generate Barcode"> <i class="mdi mdi-clipboard-text"></i> </button>
+															</td>
+															<td class="text-center">
+																<button data-toggle="modal" name="viewQr" id="viewQr" data-target="#detail" class="btn btn-outline-warning" title="View Barcode" onclick="viewBarcode(<?php echo $value->no_bukti; ?>)"> <i class="mdi mdi-eye"></i> </button>
 															</td>
 														</tr>
 												<?php 

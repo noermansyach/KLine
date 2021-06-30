@@ -27,6 +27,18 @@ class Non_operational_model extends MY_Model
 		
 	}
 
+	public function saveQrCode($data, $noBukti) {
+		return $this->db->where('no_bukti', $noBukti)
+				    	->update('tb_non_operational', $data);
+	}
+
+	public function getBarCodeData($noBukti) 
+	{
+		return $this->db->where('no_bukti', $noBukti)
+						->get('tb_non_operational')
+						->row();
+	}
+
 	public function getDepartment($idCompany)
 	{
 		return $this->db->where('id_company', $idCompany)

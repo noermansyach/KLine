@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jun 2021 pada 10.57
+-- Waktu pembuatan: 30 Jun 2021 pada 13.12
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -766,6 +766,8 @@ CREATE TABLE `tb_non_operational` (
   `requested_by` varchar(255) DEFAULT NULL,
   `approved_by` varchar(255) DEFAULT NULL,
   `acknowledge_by` varchar(255) DEFAULT NULL,
+  `qr_code_add` varchar(255) DEFAULT NULL,
+  `link_report` varchar(255) DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `updated_time` datetime DEFAULT NULL,
@@ -776,9 +778,11 @@ CREATE TABLE `tb_non_operational` (
 -- Dumping data untuk tabel `tb_non_operational`
 --
 
-INSERT INTO `tb_non_operational` (`no_bukti`, `status`, `id_department`, `no_ppu`, `id_principal`, `jumlah`, `terbilang`, `ket_1`, `ket_2`, `ket_3`, `requested_by`, `approved_by`, `acknowledge_by`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-('21063004054098', 'P', '2', 'FIN/P/21/06/0001', '280608335930', '32000000', 'Tiga Puluh Dua Juta Rupiah', 'tes 1', 'tes 2 ', 'tes 3', 'TEAM GEMEZ WHY119', NULL, NULL, '2021-06-30 04:40:34', 'TEAM GEMEZ WHY119', '2021-06-30 04:40:34', 'TEAM GEMEZ WHY119'),
-('21063004283651', 'R', '2', 'FIN/R/21/06/0001', '280608335930', '50000000', 'Lima Puluh Juta Rupiah', 'Keterangan Satu', 'Keterangan 2', 'Keterangan Tiga', 'TEAM GEMEZ WHY119', NULL, NULL, '2021-06-30 04:37:02', 'TEAM GEMEZ WHY119', '2021-06-30 04:37:02', 'TEAM GEMEZ WHY119');
+INSERT INTO `tb_non_operational` (`no_bukti`, `status`, `id_department`, `no_ppu`, `id_principal`, `jumlah`, `terbilang`, `ket_1`, `ket_2`, `ket_3`, `requested_by`, `approved_by`, `acknowledge_by`, `qr_code_add`, `link_report`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('21063004054098', 'P', '2', 'FIN/P/21/06/0001', '280608335930', '32000000', 'Tiga Puluh Dua Juta Rupiah', 'tes 1', 'tes 2 ', 'tes 3', 'TEAM GEMEZ WHY119', NULL, NULL, 'http://localhost/KLine/report/ppu/21063004054098.png', 'http://localhost/KLine/report/ppu/21063004054098.pdf', '2021-06-30 04:40:34', 'TEAM GEMEZ WHY119', '2021-06-30 04:40:34', 'TEAM GEMEZ WHY119'),
+('21063004283651', 'R', '2', 'FIN/R/21/06/0001', '280608335930', '50000000', 'Lima Puluh Juta Rupiah', 'Keterangan Satu', 'Keterangan 2', 'Keterangan Tiga', 'TEAM GEMEZ WHY119', NULL, NULL, 'http://localhost/KLine/report/ppu/21063004283651.png', 'http://localhost/KLine/report/ppu/21063004283651.pdf', '2021-06-30 04:37:02', 'TEAM GEMEZ WHY119', '2021-06-30 04:37:02', 'TEAM GEMEZ WHY119'),
+('21063012081042', 'R', '8', 'OPR/R/21/06/0001', '280608335930', '20.000.000', 'Dua Puluh Juta ', 'KMS SAFJLSFJLASf', '', '', 'TEAM GEMEZ WHY119', NULL, NULL, 'http://localhost/KLine/report/ppu/21063012081042.png', 'http://localhost/KLine/report/ppu/21063012081042.pdf', '2021-06-30 12:10:36', 'TEAM GEMEZ WHY119', '2021-06-30 12:10:36', 'TEAM GEMEZ WHY119'),
+('21063012241136', 'P', '8', 'OPR/P/21/06/0001', '280608335930', '25.500.000', 'Dua Puluh Lima Juta Lima Ratus', 'TES', '', '', 'TEAM GEMEZ WHY119', NULL, NULL, NULL, NULL, '2021-06-30 12:11:58', 'TEAM GEMEZ WHY119', '2021-06-30 12:11:58', 'TEAM GEMEZ WHY119');
 
 -- --------------------------------------------------------
 

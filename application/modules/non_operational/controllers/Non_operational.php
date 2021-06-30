@@ -146,6 +146,12 @@ class Non_operational extends MX_Controller
 		echo json_encode($noPPU);
 	}
 
+	public function viewBarcode($noBukti) 
+	{
+		$dataNonOpr = $this->nonOperational->getBarCodeData($noBukti);
+		echo json_encode($dataNonOpr);
+	}
+
 	public function generateReportPPU($noBukti) 
 	{
 		$dataPdf = $this->nonOperational->getDataPPU($noBukti);
@@ -227,9 +233,38 @@ class Non_operational extends MX_Controller
        	$pdf->Cell(50,5,$dataPdf->created_by,0,0,'C');
        	$pdf->Cell(50,5,'________________________',0,0,'C');
         
+       	$filename= 'report/ppu/' . $dataPdf->no_bukti .'.pdf';
+
+        // Generate Qr Code
+        $this->load->library('ciqrcode'); //pemanggilan library QR CODE
+        $config['cacheable']    = true; //boolean, the default is true
+        $config['cachedir']     = './report/ppu/'; //string, the default is application/cache/
+        $config['errorlog']     = './report/ppu/'; //string, the default is application/logs/
+        $config['imagedir']     = './report/ppu/'; //direktori penyimpanan qr code
+        $config['quality']      = true; //boolean, the default is true
+        $config['size']         = '1024'; //interger, the default is 1024
+        $config['black']        = array(224,255,255); // array, default is array(255,255,255)
+        $config['white']        = array(70,130,180); // array, default is array(0,0,0)
+        $this->ciqrcode->initialize($config);
+        $image_name=$dataPdf->no_bukti.'.png'; //buat name dari qr code sesuai dengan nim
+        $params['data'] = base_url($filename); //data yang akan di jadikan QR CODE
+        $params['level'] = 'H'; //H=High
+        $params['size'] = 10;
+        $params['savename'] = FCPATH.$config['imagedir'].$image_name; //simpan image QR CODE ke folder assets/images/
+        $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
+        // End Generate
 
         $filename= 'report/ppu/' . $dataPdf->no_bukti .'.pdf';
 		$pdf->Output($filename,'F');
+
+		$saveToDb = 'report/ppu/' . $dataPdf->no_bukti . '.png';
+		$qrSave = array(
+				'qr_code_add' => base_url($saveToDb),
+				'link_report' => base_url($filename)
+		);
+
+		$this->nonOperational->saveQrCode($qrSave, $dataPdf->no_bukti);
+
 		redirect('non_operational','refresh');
 	}	
 

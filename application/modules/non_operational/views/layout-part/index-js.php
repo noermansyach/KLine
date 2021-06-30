@@ -37,5 +37,20 @@
 			});
     	}
 
+        function viewBarcode(noBukti) {
+            $.ajax({
+                url : "<?php echo base_url('non_operational/viewBarcode/'); ?>" + noBukti,
+                type : "GET",
+                success : function(result) {
+                    objOpr = JSON.parse(result);
+                    $("#gambarQr").attr("src", objOpr.qr_code_add);
+                    $("#linkReport").attr("href", objOpr.link_report);
+                },
+                error : function(result){
+                    // $("#alert").prop("style", "display: block").text("Error koneksi mengambil data supplier");
+                }
+            });
+        }
+
     	
     </script>
