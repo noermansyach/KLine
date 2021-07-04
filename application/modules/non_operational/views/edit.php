@@ -28,43 +28,89 @@
                                 <!-- <table class="table table-bordered"> -->
                                 <table class="table">
                                     <tr>
-                                        <td>Kode Principal</td>
-                                        <td>
+                                        <td>Receive or Payment</td>
+                                        <td colspan="3">
                                             <div class="row">
-                                                <input type="text" name="idPrincipal" class="form-control col-sm-8" value="<?php echo $principalData->id_principal; ?>" readonly="readonly">
-                                            </div>
-                                        </td>
-                                        <td>Is DK Note</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="form-check col-sm-3">
+                                                <div class="form-check col-sm-2">
                                                     <label class="form-check-label">
-                                                      <input type="radio" class="form-check-input" name="dkNote" id="dkNote" value="Y" <?php echo ($principalData->is_dk_note == 'Y') ? 'checked' : ''; ?>> Ya </label>
+                                                      <input type="radio" class="form-check-input" name="receivePayment" id="receivePayment" value="R" <?php echo ($dataPPU->jenis_transaksi == 'R') ? 'checked' : ''; ?>> Receive </label>
                                                 </div>
-                                                <div class="form-check col-sm-5">
+                                                <div class="form-check col-sm-2">
                                                     <label class="form-check-label">
-                                                      <input type="radio" class="form-check-input" name="dkNote" id="dkNote" value="N" <?php echo ($principalData->is_dk_note == 'N') ? 'checked' : ''; ?>> Tidak </label>
+                                                      <input type="radio" class="form-check-input" name="receivePayment" id="receivePayment" value="P" <?php echo ($dataPPU->jenis_transaksi == 'R') ? '' : 'checked'; ?>> Payment </label>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>Nama Principal, Singkatan</td>
+                                        <td>Nomor Bukti</td>
                                         <td colspan="3">
                                             <div class="row">
-                                                <input type="text" name="namaPrincipal" class="form-control col-sm-5" value="<?php echo $principalData->nama_principal ?>"> 
-                                                <label class="col-form-label">&nbsp; , &nbsp;</label> 
-                                                <input type="text" name="initPrincipal" class="form-control form-control-sm col-sm-1" value="<?php echo $principalData->inisial_nama; ?>">
+                                                <input type="text" name="noBukti" class="form-control form-control-sm col-sm-3" readonly="readonly" value="<?php echo $dataPPU->no_bukti; ?>">
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>Alamat</td>
+                                        <td>Tanggal</td>
                                         <td colspan="3">
                                             <div class="row">
-                                                <textarea class="form-control col-sm-8" name="alamatSatu" rows="1"><?php echo $principalData->alamat; ?></textarea> &nbsp;
+                                                <input type="text" name="tanggal" id="tanggal" class="form-control col-sm-2" value="<?php echo date('d-m-Y', strtotime($dataPPU->created_time)); ?>" readonly="readonly">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Departemen</td>
+                                        <td>
+                                            <div class="row">
+                                                <select name="selectDepartment" id="selectDepartment" class="js-example-basic-single col-sm-11">
+                                                    <option value="">- Pilih Departemen -</option>
+                                                    <?php foreach ($departementList as $value): ?>
+                                                        <option value="<?php echo $value->id_department; ?>" <?php echo ($dataPPU->id_department == $value->id_department) ? 'selected' : ''; ?>><?php echo $value->init . ' - ' . $value->department_name;  ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>Nomor PPU</td>
+                                        <td>
+                                            <input type="text" name="noPPU" id="noPPU" class="form-control col-sm-7" value="<?php echo $dataPPU->no_ppu; ?>" readonly="readonly">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Dibayar Kepada</td>
+                                        <td colspan="3">
+                                            <div class="row">
+                                                <select name="selectPrincipal" class="js-example-basic-single col-sm-6">
+                                                    <option value=""> - </option>
+                                                    <?php foreach ($principalList as $value): ?>
+                                                        <option value="<?php echo $value->id_principal ?>" <?php echo ($dataPPU->id_principal == $value->id_principal) ? 'selected': ''; ?>><?php echo $value->inisial_nama . ' - ' . $value->nama_principal;  ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Jumlah</td>
+                                        <td>
+                                            <div class="row">
+                                                <input type="text" class="form-control form-control-sm col-sm-6" name="jumlah" value="<?php echo $dataPPU->jumlah; ?>">
+                                            </div>
+                                        </td>
+                                        <td>Terbilang</td>
+                                        <td>
+                                            <input type="text" class="form-control" name="terbilang" value="<?php echo $dataPPU->terbilang ?>">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Keterangan</td>
+                                        <td colspan="3">
+                                            <div class="row">
+                                                <textarea class="form-control col-sm-8" name="ketSatu" rows="1"><?php echo $dataPPU->ket_1; ?></textarea> &nbsp;
                                             </div>
                                         </td>
                                     </tr>
@@ -73,80 +119,18 @@
                                         <td style="border-top: 0"></td>
                                         <td colspan="3" style="border-top: 0">
                                             <div class="row" style="margin-top: -25px;">
-                                                <textarea class="form-control col-sm-8" name="alamatDua" rows="1"><?php echo $principalData->alamat_kedua ?></textarea> &nbsp;
+                                                <textarea class="form-control col-sm-8" name="ketDua" rows="1"><?php echo $dataPPU->ket_2; ?></textarea> &nbsp;
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>Kode Pos</td>
-                                        <td>
-                                            <div class="row">
-                                                <input type="text" name="kodePos" class="form-control col-sm-8" value="<?php echo $principalData->kode_pos ?>">
+                                        <td style="border-top: 0"></td>
+                                        <td colspan="3" style="border-top: 0">
+                                            <div class="row" style="margin-top: -25px;">
+                                                <textarea class="form-control col-sm-8" name="ketTiga" rows="1"><?php echo $dataPPU->ket_3; ?></textarea> &nbsp;
                                             </div>
                                         </td>
-                                        <td>Negara</td>
-                                        <td>
-                                            <div class="row">
-                                                <select name="selectCountry" class="js-example-basic-single" style="width:100%">
-                                                    <option value="">- Pilih Negara -</option>
-                                                    <?php foreach ($countryData as $value): ?>
-                                                        <option value="<?php echo $value->iso_code ?>" <?php echo ($principalData->iso_code == $value->iso_code) ? 'selected' : ''; ?>><?php echo '+'.$value->country_code .' - '. $value->country_name; ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Telepon 1</td>
-                                        <td>
-                                            <div class="row">
-                                                <input type="text" name="areaTelpSatu" class="form-control form-control-sm col-sm-2" value="<?php echo $principalData->kode_area_telp_satu; ?>"> &nbsp;
-                                                <input type="text" name="teleponSatu" class="form-control form-control-sm col-sm-5" value="<?php echo $principalData->telepon_satu; ?>">
-                                            </div>
-                                        </td>
-                                        <td>Telepon 2</td>
-                                        <td>
-                                            <div class="row">
-                                                <input type="text" name="areaTelpDua" class="form-control form-control-sm col-sm-2" value="<?php echo $principalData->kode_area_telp_dua ?>"> &nbsp;
-                                                <input type="text" name="teleponDua" class="form-control form-control-sm col-sm-5" value="<?php echo $principalData->telepon_dua; ?>">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>Fax</td>
-                                        <td colspan="3">
-                                            <div class="row">
-                                                <input type="text" name="areaFax" class="form-control form-control-sm col-sm-1" value="<?php echo $principalData->kode_area_fax ?>"> &nbsp;
-                                                <input type="text" name="fax" class="form-control form-control-sm col-sm-2" value="<?php echo $principalData->fax ?>">
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Contact Person</td>
-                                        <td colspan="3">
-                                            <div class="row">
-                                                <input type="text" name="contactPerson" class="form-control form-control-sm col-sm-4" value="<?php echo $principalData->contact_person ?>">
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Akun</td>
-                                        <td colspan="2">
-                                            <div class="row">
-                                                <select name="selectAccount" class="js-example-basic-single" style="width:100%">
-                                                    <option value="">- Pilih Akun -</option>
-                                                    <?php foreach ($dataAccount as $value): ?>
-                                                        <option value="<?php echo $value->no_acc ?>" <?php echo ($principalData->no_acc == $value->no_acc) ? 'selected' : ''; ?>><?php echo $value->no_acc . ' - ' . $value->nama_acc; ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <td></td>
                                     </tr>
 
                                     <tr>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jun 2021 pada 13.12
+-- Waktu pembuatan: 04 Jul 2021 pada 08.47
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -749,44 +749,6 @@ INSERT INTO `tb_modul_action` (`id_modul_action`, `name`, `id_modul`, `created_t
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_non_operational`
---
-
-CREATE TABLE `tb_non_operational` (
-  `no_bukti` varchar(255) NOT NULL,
-  `status` enum('R','P') DEFAULT NULL,
-  `id_department` varchar(255) DEFAULT NULL,
-  `no_ppu` varchar(255) DEFAULT NULL,
-  `id_principal` varchar(255) DEFAULT NULL,
-  `jumlah` varchar(255) DEFAULT NULL,
-  `terbilang` varchar(255) DEFAULT NULL,
-  `ket_1` varchar(255) DEFAULT NULL,
-  `ket_2` varchar(255) DEFAULT NULL,
-  `ket_3` varchar(255) DEFAULT NULL,
-  `requested_by` varchar(255) DEFAULT NULL,
-  `approved_by` varchar(255) DEFAULT NULL,
-  `acknowledge_by` varchar(255) DEFAULT NULL,
-  `qr_code_add` varchar(255) DEFAULT NULL,
-  `link_report` varchar(255) DEFAULT NULL,
-  `created_time` datetime DEFAULT NULL,
-  `created_by` varchar(255) DEFAULT NULL,
-  `updated_time` datetime DEFAULT NULL,
-  `updated_by` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `tb_non_operational`
---
-
-INSERT INTO `tb_non_operational` (`no_bukti`, `status`, `id_department`, `no_ppu`, `id_principal`, `jumlah`, `terbilang`, `ket_1`, `ket_2`, `ket_3`, `requested_by`, `approved_by`, `acknowledge_by`, `qr_code_add`, `link_report`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
-('21063004054098', 'P', '2', 'FIN/P/21/06/0001', '280608335930', '32000000', 'Tiga Puluh Dua Juta Rupiah', 'tes 1', 'tes 2 ', 'tes 3', 'TEAM GEMEZ WHY119', NULL, NULL, 'http://localhost/KLine/report/ppu/21063004054098.png', 'http://localhost/KLine/report/ppu/21063004054098.pdf', '2021-06-30 04:40:34', 'TEAM GEMEZ WHY119', '2021-06-30 04:40:34', 'TEAM GEMEZ WHY119'),
-('21063004283651', 'R', '2', 'FIN/R/21/06/0001', '280608335930', '50000000', 'Lima Puluh Juta Rupiah', 'Keterangan Satu', 'Keterangan 2', 'Keterangan Tiga', 'TEAM GEMEZ WHY119', NULL, NULL, 'http://localhost/KLine/report/ppu/21063004283651.png', 'http://localhost/KLine/report/ppu/21063004283651.pdf', '2021-06-30 04:37:02', 'TEAM GEMEZ WHY119', '2021-06-30 04:37:02', 'TEAM GEMEZ WHY119'),
-('21063012081042', 'R', '8', 'OPR/R/21/06/0001', '280608335930', '20.000.000', 'Dua Puluh Juta ', 'KMS SAFJLSFJLASf', '', '', 'TEAM GEMEZ WHY119', NULL, NULL, 'http://localhost/KLine/report/ppu/21063012081042.png', 'http://localhost/KLine/report/ppu/21063012081042.pdf', '2021-06-30 12:10:36', 'TEAM GEMEZ WHY119', '2021-06-30 12:10:36', 'TEAM GEMEZ WHY119'),
-('21063012241136', 'P', '8', 'OPR/P/21/06/0001', '280608335930', '25.500.000', 'Dua Puluh Lima Juta Lima Ratus', 'TES', '', '', 'TEAM GEMEZ WHY119', NULL, NULL, NULL, NULL, '2021-06-30 12:11:58', 'TEAM GEMEZ WHY119', '2021-06-30 12:11:58', 'TEAM GEMEZ WHY119');
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `tb_pelabuhan`
 --
 
@@ -847,12 +809,13 @@ INSERT INTO `tb_perkiraan` (`no_acc`, `nama_acc`, `acc_induk`, `level`, `jenis_p
 ('1000.00', 'KAS', '100', '4', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:32:07', 'nurman', '2021-06-20 15:32:07', 'nurman'),
 ('1000.01', 'KAS BESAR RUPIAH', '1000.00', '5', '', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:32:28', 'nurman', '2021-06-20 15:32:28', 'nurman'),
 ('1001.01', 'KAS BESAR RUPIAH SEMARANG', '1000.01', '6', 'AKTIVA', 'YES', '', '', 1500000, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:48:58', 'nurman', '2021-06-20 15:48:58', 'nurman'),
-('1001.02', 'KAS BESAR', '1000.01', '6', 'PASSIVA', 'YES', '', '', 2000000, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:50:06', 'nurman', '2021-06-20 15:50:06', 'nurman'),
+('1001.02', 'KAS BESAR', '1000.01', '6', 'PASSIVA', 'YES', '', '', 2000000, '', NULL, '- Pilih Cabang -', '', '82491840921', '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:50:06', 'nurman', '2021-06-20 15:50:06', 'nurman'),
 ('1001.03', 'TES', '1000.01', '6', 'BIAYA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:12', 'nurman', '2021-06-20 15:51:12', 'nurman'),
 ('1001.04', 'TES 2', '1000.01', '6', 'AKTIVA', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:42', 'nurman', '2021-06-20 15:51:42', 'nurman'),
 ('1000.01', 'Bank Mandiri Tebet', '1000.01', '6', 'AKTIVA', 'YES', 'KAS', 'TES', NULL, '', NULL, '2', 'MDR TEBET', '123 12312 123112', '7', '1', '2021-06-24 12:00:50', 'admin', '2021-06-24 12:00:50', 'admin'),
-('1001.01', 'TES LAGI', '1000.01', '6', 'AKTIVA', 'NO', 'BANK', NULL, 800000000, 'NO', NULL, '2', 'MDR - TEBET', '321214142131', '7', NULL, '2021-06-28 12:30:20', 'admin', '2021-06-28 12:30:20', 'admin'),
-('1001.05', 'TES LAGI 2', '1000.01', '6', 'PASSIVA', 'NO', 'KAS', NULL, NULL, '', NULL, '2', 'KAS 111', NULL, NULL, '2', '2021-06-28 12:34:11', 'admin', '2021-06-28 12:34:11', 'admin');
+('1001.01', 'TES LAGI', '1000.01', '6', 'AKTIVA', 'NO', 'BANK', NULL, 800000000, 'NO', NULL, '2', 'MDR - TEBET', '321214142131', '7', '2', '2021-06-28 12:30:20', 'admin', '2021-06-28 12:30:20', 'admin'),
+('1001.05', 'TES LAGI 2', '1000.01', '6', 'PASSIVA', 'NO', 'KAS', NULL, NULL, '', NULL, '2', 'KAS 111', NULL, NULL, '2', '2021-06-28 12:34:11', 'admin', '2021-06-28 12:34:11', 'admin'),
+('1001.02', 'BANK MANDIRI TAWES', '1000.01', '6', 'AKTIVA', 'YES', 'BANK', NULL, 800000000, 'YES', NULL, '2', 'MDR - TAWES', '213-1231-12314-1212', '7', '2', '2021-07-03 10:48:38', 'AINA SOPHIA', '2021-07-03 10:48:38', 'AINA SOPHIA');
 
 -- --------------------------------------------------------
 
@@ -894,7 +857,8 @@ INSERT INTO `tb_perkiraan_bunglon` (`no_acc_bunglon`, `no_acc`, `nama_acc`, `acc
 ('6001.04', '1001.04', 'TES 2', '1000.01', '6', 'PASSIVABY', 'YES', '', '', NULL, '', NULL, '- Pilih Cabang -', '', NULL, '- Pilih Bank -', '- Pilih Currency -', '2021-06-20 15:51:42', 'nurman', '2021-06-20 15:51:42', 'nurman'),
 ('6000.01', '1000.01', 'Bank Mandiri Tebet', '1000.01', '6', 'PASSIVABY', 'YES', 'KAS', 'TES', NULL, '', NULL, '2', 'MDR TEBET', '123 12312 123112', '7', '1', '2021-06-24 12:00:50', 'admin', '2021-06-24 12:00:50', 'admin'),
 ('6001.01', '1001.01', 'TES LAGI', '1000.01', '6', 'PASSIVABY', 'NO', 'BANK', NULL, 800000000, 'NO', NULL, '2', 'MDR - TEBET', '321214142131', '7', NULL, '2021-06-28 12:30:20', 'admin', '2021-06-28 12:30:20', 'admin'),
-('5001.05', '1001.05', 'TES LAGI 2', '1000.01', '6', 'PASSIVA', 'NO', 'KAS', NULL, NULL, '', NULL, '2', 'KAS 111', NULL, NULL, '2', '2021-06-28 12:34:11', 'admin', '2021-06-28 12:34:11', 'admin');
+('5001.05', '1001.05', 'TES LAGI 2', '1000.01', '6', 'PASSIVA', 'NO', 'KAS', NULL, NULL, '', NULL, '2', 'KAS 111', NULL, NULL, '2', '2021-06-28 12:34:11', 'admin', '2021-06-28 12:34:11', 'admin'),
+('6001.02', '1001.02', 'BANK MANDIRI TAWES', '1000.01', '6', 'PASSIVABY', 'YES', 'BANK', NULL, 800000000, 'YES', NULL, '2', 'MDR - TAWES', '213-1231-12314-1212', '7', NULL, '2021-07-03 10:48:38', 'AINA SOPHIA', '2021-07-03 10:48:38', 'AINA SOPHIA');
 
 -- --------------------------------------------------------
 
@@ -961,6 +925,50 @@ INSERT INTO `tb_principal` (`id_principal`, `nama_principal`, `inisial_nama`, `i
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_transaksi`
+--
+
+CREATE TABLE `tb_transaksi` (
+  `no_bukti` varchar(255) NOT NULL,
+  `status` enum('R','P') DEFAULT NULL,
+  `id_department` varchar(255) DEFAULT NULL,
+  `no_ppu` varchar(255) DEFAULT NULL,
+  `id_principal` varchar(255) DEFAULT NULL,
+  `jumlah` varchar(255) DEFAULT NULL,
+  `terbilang` varchar(255) DEFAULT NULL,
+  `ket_1` varchar(255) DEFAULT NULL,
+  `ket_2` varchar(255) DEFAULT NULL,
+  `ket_3` varchar(255) DEFAULT NULL,
+  `id_kunjungan` varchar(255) DEFAULT NULL,
+  `requested_by` varchar(255) DEFAULT NULL,
+  `approved_by` varchar(255) DEFAULT NULL,
+  `acknowledge_by` varchar(255) DEFAULT NULL,
+  `no_acc_bank` varchar(255) DEFAULT NULL,
+  `no_rekening` varchar(255) DEFAULT NULL,
+  `qr_code_add` varchar(255) DEFAULT NULL,
+  `link_report` varchar(255) DEFAULT NULL,
+  `id_company` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_transaksi`
+--
+
+INSERT INTO `tb_transaksi` (`no_bukti`, `status`, `id_department`, `no_ppu`, `id_principal`, `jumlah`, `terbilang`, `ket_1`, `ket_2`, `ket_3`, `id_kunjungan`, `requested_by`, `approved_by`, `acknowledge_by`, `no_acc_bank`, `no_rekening`, `qr_code_add`, `link_report`, `id_company`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('21063004054098', 'P', '8', 'OPR/P/21/06/0002', '280608335930', '20000000', 'Dua Puluh Juta Rupiah', 'sdjkfhakjsh', 'jajajajsjtes 2 ', 'aeutiut92tes 3', '', 'TEAM GEMEZ WHY119', NULL, NULL, NULL, NULL, 'http://localhost/KLine/report/ppu/21063004054098.png', 'http://localhost/KLine/report/ppu/21063004054098.pdf', NULL, '2021-07-01 10:16:46', 'TEAM GEMEZ WHY119', '2021-07-01 10:16:46', 'TEAM GEMEZ WHY119'),
+('21063004283651', 'R', '2', 'FIN/R/21/06/0001', '280608335930', '50000000', 'Lima Puluh Juta Rupiah', 'Keterangan Satu', 'Keterangan 2', 'Keterangan Tiga', NULL, 'TEAM GEMEZ WHY119', NULL, NULL, NULL, NULL, 'http://localhost/KLine/report/ppu/21063004283651.png', 'http://localhost/KLine/report/ppu/21063004283651.pdf', NULL, '2021-06-30 04:37:02', 'TEAM GEMEZ WHY119', '2021-06-30 04:37:02', 'TEAM GEMEZ WHY119'),
+('21063012081042', 'R', '8', 'OPR/R/21/06/0001', '280608335930', '20.000.000', 'Dua Puluh Juta ', 'KMS SAFJLSFJLASf', '', '', NULL, 'TEAM GEMEZ WHY119', NULL, NULL, NULL, NULL, 'http://localhost/KLine/report/ppu/21063012081042.png', 'http://localhost/KLine/report/ppu/21063012081042.pdf', NULL, '2021-06-30 12:10:36', 'TEAM GEMEZ WHY119', '2021-06-30 12:10:36', 'TEAM GEMEZ WHY119'),
+('21070102591437', 'R', '2', 'FIN/R/21/07/0001', '280608335930', '20000000', 'Dua Puluh Juta Rupiah', 'TIME CHARTER MV PRITHA PERIOD 2', '', '', 'TR211006122335', 'TEAM GEMEZ WHY119', '210630040849', '210614124636', NULL, NULL, 'http://localhost/KLine/report/ppu/21070102591437.png', 'http://localhost/KLine/report/ppu/21070102591437.pdf', '2', '2021-07-01 14:15:31', 'TEAM GEMEZ WHY119', '2021-07-01 14:15:31', 'TEAM GEMEZ WHY119'),
+('21070301125837', 'P', '2', 'FIN/R/21/07/0002', '280608335930', '14000000', 'Empat Belas Juta Rupiah', 'Jaksdfkhasjf', 'Jaskdiguuuu', 'hahtiwhtwn', 'TR210806462317', 'AINA SOPHIA', NULL, '210627122805', '1001.02', '213-1231-12314-1212', NULL, NULL, '2', '2021-07-03 14:49:33', 'AINA SOPHIA', '2021-07-03 14:49:33', 'AINA SOPHIA'),
+('21070403583925', 'P', '2', 'FIN/P/21/07/0001', '280608335930', '70000000', 'Tujuh Puluh Juta Rupiah', 'TERIZLA', 'HILDA ', 'LEOMORD', 'TR210506582534', 'TEAM GEMEZ WHY119', NULL, '210614124636', '1001.02', '213-1231-12314-1212', NULL, NULL, '2', '2021-07-04 03:40:44', 'TEAM GEMEZ WHY119', '2021-07-04 03:40:44', 'TEAM GEMEZ WHY119');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_user`
 --
 
@@ -1012,6 +1020,36 @@ INSERT INTO `tb_user_auth` (`id`, `id_user`, `id_modul_action`, `created_time`, 
 ('210613155245', '1', '1', '2021-06-13 15:52:17', '2021-06-13 15:52:20'),
 ('210613155246', '1', '2', '2021-06-13 15:53:51', '2021-06-13 15:53:55'),
 ('210613155247', '1', '3', '2021-06-13 15:53:58', '2021-06-13 15:54:00');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_verifikasi_ppu`
+--
+
+CREATE TABLE `tb_verifikasi_ppu` (
+  `id_verifikasi` varchar(255) NOT NULL,
+  `no_bukti` varchar(255) DEFAULT NULL,
+  `no_ppu` varchar(255) DEFAULT NULL,
+  `id_department` varchar(255) DEFAULT NULL,
+  `id_principal` varchar(255) DEFAULT NULL,
+  `debitKredit` varchar(255) DEFAULT NULL,
+  `status` enum('P','R') DEFAULT NULL,
+  `no_acc_contra` varchar(255) DEFAULT NULL,
+  `nama_acc_contra` varchar(255) DEFAULT NULL,
+  `id_company` varchar(255) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_verifikasi_ppu`
+--
+
+INSERT INTO `tb_verifikasi_ppu` (`id_verifikasi`, `no_bukti`, `no_ppu`, `id_department`, `id_principal`, `debitKredit`, `status`, `no_acc_contra`, `nama_acc_contra`, `id_company`, `created_time`, `created_by`, `updated_time`, `updated_by`) VALUES
+('073843210704181', '21070301125837', 'FIN/R/21/07/0002', '2', '280608335930', '14000000', 'R', '1000.01', 'Bank Mandiri Tebet', '2', '2021-07-04 07:43:38', 'TEAM GEMEZ WHY119', '2021-07-04 07:43:38', 'TEAM GEMEZ WHY119');
 
 --
 -- Indexes for dumped tables
@@ -1102,12 +1140,6 @@ ALTER TABLE `tb_modul_action`
   ADD PRIMARY KEY (`id_modul_action`);
 
 --
--- Indeks untuk tabel `tb_non_operational`
---
-ALTER TABLE `tb_non_operational`
-  ADD PRIMARY KEY (`no_bukti`);
-
---
 -- Indeks untuk tabel `tb_pelabuhan`
 --
 ALTER TABLE `tb_pelabuhan`
@@ -1126,6 +1158,12 @@ ALTER TABLE `tb_principal`
   ADD PRIMARY KEY (`id_principal`);
 
 --
+-- Indeks untuk tabel `tb_transaksi`
+--
+ALTER TABLE `tb_transaksi`
+  ADD PRIMARY KEY (`no_bukti`);
+
+--
 -- Indeks untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
@@ -1136,6 +1174,12 @@ ALTER TABLE `tb_user`
 --
 ALTER TABLE `tb_user_auth`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `tb_verifikasi_ppu`
+--
+ALTER TABLE `tb_verifikasi_ppu`
+  ADD PRIMARY KEY (`id_verifikasi`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang

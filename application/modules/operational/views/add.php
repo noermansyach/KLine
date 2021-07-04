@@ -28,43 +28,99 @@
                                 <!-- <table class="table table-bordered"> -->
                                 <table class="table">
                                     <tr>
-                                        <td>Kode Principal</td>
-                                        <td>
+                                        <td>Receive or Payment</td>
+                                        <td colspan="3">
                                             <div class="row">
-                                                <input type="text" name="idPrincipal" class="form-control col-sm-8" value="<?php echo $idPrincipal; ?>" readonly="readonly">
-                                            </div>
-                                        </td>
-                                        <td>Is DK Note</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="form-check col-sm-3">
+                                                <div class="form-check col-sm-2">
                                                     <label class="form-check-label">
-                                                      <input type="radio" class="form-check-input" name="dkNote" id="dkNote" value="Y"> Ya </label>
+                                                      <input type="radio" class="form-check-input" name="receivePayment" id="receivePayment" value="R"> Receive </label>
                                                 </div>
-                                                <div class="form-check col-sm-5">
+                                                <div class="form-check col-sm-2">
                                                     <label class="form-check-label">
-                                                      <input type="radio" class="form-check-input" name="dkNote" id="dkNote" value="N"> Tidak </label>
+                                                      <input type="radio" class="form-check-input" name="receivePayment" id="receivePayment" value="P"> Payment </label>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>Nama Principal, Singkatan</td>
+                                        <td>Nomor Bukti</td>
                                         <td colspan="3">
                                             <div class="row">
-                                                <input type="text" name="namaPrincipal" class="form-control col-sm-5"> 
-                                                <label class="col-form-label">&nbsp; , &nbsp;</label> 
-                                                <input type="text" name="initPrincipal" class="form-control form-control-sm col-sm-1">
+                                                <input type="text" name="noBukti" class="form-control form-control-sm col-sm-3" readonly="readonly" value="<?php echo $noBukti; ?>">
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>Alamat</td>
+                                        <td>Tanggal</td>
                                         <td colspan="3">
                                             <div class="row">
-                                                <textarea class="form-control col-sm-8" name="alamatSatu" rows="1"></textarea> &nbsp;
+                                                <input type="text" name="tanggal" id="tanggal" class="form-control col-sm-2" value="<?php echo $tanggalBuat; ?>" readonly="readonly">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Departemen</td>
+                                        <td>
+                                            <div class="row">
+                                                <select name="selectDepartment" id="selectDepartment" class="js-example-basic-single col-sm-11">
+                                                    <option value="">- Pilih Departemen -</option>
+                                                    <?php foreach ($departementList as $value): ?>
+                                                        <option value="<?php echo $value->id_department; ?>"><?php echo $value->init . ' - ' . $value->department_name;  ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td colspan="2">
+                                            <div class="row">
+                                                <label class="col-form-label col-sm-2">Nomor PPU</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="noPPU" id="noPPU" class="form-control col-sm-7" readonly="readonly">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Dibayar Kepada</td>
+                                        <td colspan="3">
+                                            <div class="row">
+                                                <select name="selectPrincipal" class="js-example-basic-single col-sm-6">
+                                                    <option value=""> - </option>
+                                                    <?php foreach ($principalList as $value): ?>
+                                                        <option value="<?php echo $value->id_principal ?>"><?php echo $value->inisial_nama . ' - ' . $value->nama_principal;  ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Jumlah</td>
+                                        <td>
+                                            <div class="row">
+                                                <input type="text" class="form-control form-control-sm col-sm-6" name="jumlah">
+                                            </div>
+                                        </td>
+                                        <td colspan="2">
+                                            <div class="row">
+                                                <label class="col-form-label col-sm-2">Terbilang </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control form-control-sm" name="terbilang">  
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+
+                                    <tr>
+                                        <td>Keterangan</td>
+                                        <td colspan="3">
+                                            <div class="row">
+                                                <textarea class="form-control col-sm-8" name="ketSatu" rows="1"></textarea> &nbsp;
                                             </div>
                                         </td>
                                     </tr>
@@ -73,25 +129,45 @@
                                         <td style="border-top: 0"></td>
                                         <td colspan="3" style="border-top: 0">
                                             <div class="row" style="margin-top: -25px;">
-                                                <textarea class="form-control col-sm-8" name="alamatDua" rows="1"></textarea> &nbsp;
+                                                <textarea class="form-control col-sm-8" name="ketDua" rows="1"></textarea> &nbsp;
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>Kode Pos</td>
-                                        <td>
-                                            <div class="row">
-                                                <input type="text" name="kodePos" class="form-control col-sm-8">
+                                        <td style="border-top: 0"></td>
+                                        <td colspan="3" style="border-top: 0">
+                                            <div class="row" style="margin-top: -25px;">
+                                                <textarea class="form-control col-sm-8" name="ketTiga" rows="1"></textarea> &nbsp;
                                             </div>
                                         </td>
-                                        <td>Negara</td>
-                                        <td>
+                                    </tr>
+
+                                   <tr>
+                                        <td>Bank</td>
+                                        <td colspan="3">
                                             <div class="row">
-                                                <select name="selectCountry" class="js-example-basic-single" style="width:100%">
-                                                    <option value="">- Pilih Negara -</option>
-                                                    <?php foreach ($countryData as $value): ?>
-                                                        <option value="<?php echo $value->iso_code ?>"><?php echo '+'.$value->country_code .' - '. $value->country_name; ?></option>
+                                                <select name="selectAccBank" id="selectAccBank" class="js-example-basic-single col-sm-9">
+                                                    <option value=""> - </option>
+                                                    <?php foreach ($accBankData as $value): ?>
+                                                        <option value="<?php echo $value->no_acc ?>"><?php echo $value->no_acc . ' / ' . $value->nama_acc . ' / ' .$value->init_kas_bank . ' / ' . $value->init; ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                                <div class="col-sm-3">
+                                                    <input type="text" name="noRekening" class="form-control form-control-sm" id="noRekening">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Vesel</td>
+                                        <td colspan="3">
+                                            <div class="row">
+                                                <select name="selectVesel" id="selectVesel" class="js-example-basic-single col-sm-9">
+                                                    <option value=""> - </option>
+                                                    <?php foreach ($vesel as $value): ?>
+                                                        <option value="<?php echo $value->id_kunjungan ?>"><?php echo $value->id_kunjungan . ' - ' . $value->voyage . ' - '. date('d/m/Y', strtotime($value->tgl_berangkat)) .' - '. date('d/m/Y', strtotime($value->tgl_tiba)) .' - '.$value->nama_kapal; ?></option>
                                                     <?php endforeach ?>
                                                 </select>
                                             </div>
@@ -99,54 +175,51 @@
                                     </tr>
 
                                     <tr>
-                                        <td>Telepon 1</td>
+                                        <td>Vogage</td>
                                         <td>
                                             <div class="row">
-                                                <input type="text" name="areaTelpSatu" class="form-control form-control-sm col-sm-2"> &nbsp;
-                                                <input type="text" name="teleponSatu" class="form-control form-control-sm col-sm-5">
+                                                <input type="text" class="form-control form-control-sm col-sm-6" name="voyage" id="voyage">
                                             </div>
                                         </td>
-                                        <td>Telepon 2</td>
                                         <td>
                                             <div class="row">
-                                                <input type="text" name="areaTelpDua" class="form-control form-control-sm col-sm-2"> &nbsp;
-                                                <input type="text" name="teleponDua" class="form-control form-control-sm col-sm-5">
+                                                <label class="col-form-label col-sm-2">TA</label> 
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control form-control-sm" name="eta" id="eta">
+                                                </div>
                                             </div>
                                         </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>Fax</td>
-                                        <td colspan="3">
+                                        <td>
                                             <div class="row">
-                                                <input type="text" name="areaFax" class="form-control form-control-sm col-sm-1"> &nbsp;
-                                                <input type="text" name="fax" class="form-control form-control-sm col-sm-2">
+                                                <label class="col-form-label col-sm-2">TD</label> 
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control form-control-sm" name="etd" id="etd">
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>Contact Person</td>
+                                        <td>Port</td>
                                         <td colspan="3">
                                             <div class="row">
-                                                <input type="text" name="contactPerson" class="form-control form-control-sm col-sm-4">
+                                                <input type="text" name="port" class="form-control form-control-sm col-sm-5" id="port">
                                             </div>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>Akun</td>
-                                        <td colspan="2">
+                                        <td>Acknowledge By</td>
+                                        <td colspan="3">
                                             <div class="row">
-                                                <select name="selectAccount" class="js-example-basic-single" style="width:100%">
-                                                    <option value="">- Pilih Akun -</option>
-                                                    <?php foreach ($dataAccount as $value): ?>
-                                                        <option value="<?php echo $value->no_acc ?>"><?php echo $value->no_acc . ' - ' . $value->nama_acc; ?></option>
+                                                <select name="selectAcknowledge" class="js-example-basic-single col-sm-4">
+                                                    <option value=""> - </option>
+                                                    <?php foreach ($acknowledgeList as $value): ?>
+                                                        <option value="<?php echo $value->id_employee ?>"><?php echo $value->employee_name; ?></option>
                                                     <?php endforeach ?>
                                                 </select>
                                             </div>
                                         </td>
-                                        <td></td>
                                     </tr>
 
                                     <tr>

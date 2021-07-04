@@ -51,7 +51,7 @@ class Non_operational extends MX_Controller
 		$this->_data['tanggalBuat'] = date('d-m-Y');
 
 		if ($_POST) {
-			$dataPrincipal = array(
+			$dataPPU = array(
 				'no_bukti' => $_POST['noBukti'],
 				'status' => $_POST['receivePayment'],
 				'id_department' => $_POST['selectDepartment'],
@@ -68,47 +68,41 @@ class Non_operational extends MX_Controller
 				'updated_time' => date('Y-m-d H:i:s'),
 				'updated_by' => $this->session->userdata('nama')
 			);
-			$this->nonOperational->insertNonOperational($dataPrincipal);
+			$this->nonOperational->insertNonOperational($dataPPU);
 			redirect('non_operational','refresh');
 		} else {
 			$this->load->view('layout', $this->_data);
 		}
 	}
 
-	public function edit($idPrincipal) 
+	public function edit($noBukti) 
 	{
 		$this->_data['css'] = "layout-part/form-css";
 		$this->_data['js'] = "layout-part/form-js";
 		$this->_data['content'] = "edit";
-		$this->_data['principalData'] = $this->principal->getPrincipal($idPrincipal);
-		$this->_data['countryData'] = $this->principal->getCountry();
-		$this->_data['dataAccount'] = $this->principal->getAccount();
+		$this->_data['noBukti'] = date("ymdhsi") . rand(1, 100);
+		$this->_data['dataPPU'] = $this->nonOperational->getDataPPU($noBukti);
+		$this->_data['principalList'] = $this->nonOperational->getPrincipal();
+		$this->_data['departementList'] = $this->nonOperational->getDepartment($this->_company);
 		$this->_data['tanggalBuat'] = date('d-m-Y');
 
 		if ($_POST) {
-			$dataPrincipal = array(
-				'nama_principal' => $_POST['namaPrincipal'],
-				'inisial_nama' => $_POST['initPrincipal'],
-				'is_dk_note' => $_POST['dkNote'],
-				'alamat' => $_POST['alamatSatu'],
-				'alamat_kedua' => $_POST['alamatDua'],
-				'kode_pos' => $_POST['kodePos'], 
-				'iso_code' => $_POST['selectCountry'],
-				'kode_area_telp_satu' => $_POST['areaTelpSatu'],
-				'telepon_satu' => $_POST['teleponSatu'], 
-				'kode_area_telp_dua' => $_POST['areaTelpDua'],
-				'telepon_dua' => $_POST['teleponDua'],
-				'kode_area_fax' => $_POST['areaFax'],
-				'fax' => $_POST['fax'],
-				'contact_person' => $_POST['contactPerson'],
-				'no_acc' => $_POST['selectAccount'],
-				'created_time' => date('Y-m-d H:i:s'),
-				'created_by' => $this->session->userdata('nama'),
+			$dataPPU = array(
+				'status' => $_POST['receivePayment'],
+				'id_department' => $_POST['selectDepartment'],
+				'no_ppu' => $_POST['noPPU'],
+				'id_principal' => $_POST['selectPrincipal'],
+				'jumlah' => $_POST['jumlah'],
+				'terbilang' => $_POST['terbilang'],
+				'ket_1' => $_POST['ketSatu'], 
+				'ket_2' => $_POST['ketDua'],
+				'ket_3' => $_POST['ketTiga'],
+				'requested_by' => $this->session->userdata('nama'),
 				'updated_time' => date('Y-m-d H:i:s'),
 				'updated_by' => $this->session->userdata('nama')
 			);
-			$this->principal->updatePrincipal($dataPrincipal, $_POST['idPrincipal']);
-			redirect('principal','refresh');
+			$this->nonOperational->updateNonOperational($dataPPU, $noBukti);
+			redirect('non_operational','refresh');
 		} else {
 			$this->load->view('layout', $this->_data);
 		}

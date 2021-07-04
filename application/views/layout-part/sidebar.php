@@ -66,13 +66,12 @@
 
 			<li class="nav-item nav-category">Transaksi</li>
 
-
 			<li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('kunjungan') ?>">
-                <span class="icon-bg"><i class="mdi mdi-anchor menu-icon"></i></span>
-                <span class="menu-title">Kunjungan Kapal</span>
-              </a>
-            </li>
+        <a class="nav-link" href="<?php echo base_url('kunjungan') ?>">
+          <span class="icon-bg"><i class="mdi mdi-anchor menu-icon"></i></span>
+          <span class="menu-title">Kunjungan Kapal</span>
+        </a>
+      </li>
 
             <li class="nav-item">
 				<a class="nav-link" data-toggle="collapse" href="#rp" aria-expanded="false" aria-controls="page-layouts">
@@ -82,33 +81,19 @@
 				</a>
 				<div class="collapse" id="rp">
 					<ul class="nav flex-column sub-menu">
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('') ?>">Operasional</a></li>
+						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('operational') ?>">Operasional</a></li>
 						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('non_operational') ?>">Non Operasional</a></li>
 						
 					</ul>
 				</div>
 			</li>
 
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('estimasi_uang') ?>">
-                <span class="icon-bg"><i class="fa fa-money menu-icon"></i></span>
-                <span class="menu-title">Estimasi Uang</span>
-              </a>
-            </li> -->
-
-            <!-- <li class="nav-item">
-				<a class="nav-link" data-toggle="collapse" href="#kasBank" aria-expanded="false" aria-controls="page-layouts">
-					<span class="icon-bg"> <i class="fa fa-bank menu-icon"></i> </span>
-					<span class="menu-title">Kas & Bank</span>
-					<i class="menu-arrow"></i>
-				</a>
-				<div class="collapse" id="kasBank">
-					<ul class="nav flex-column sub-menu">
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">Entry Kas</a></li>
-						<li class="nav-item"> <a class="nav-link" href="<?php echo base_url('#') ?>">Entry Bank</a></li>
-					</ul>
-				</div>
-			</li> -->
+			<li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('verifikasi_uang') ?>">
+          <span class="icon-bg"><i class="mdi mdi-briefcase-check menu-icon"></i></span>
+          <span class="menu-title">Verifikasi Uang</span>
+        </a>
+      </li>
 
 		</ul>
     </nav>

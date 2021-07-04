@@ -40,6 +40,7 @@
 													<th>Tanggal</th>
 													<th class="text-center">Generate</th>
 													<th class="text-center">Detail</th>
+													<th class="text-center">Edit</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -47,12 +48,12 @@
 													$no = 1;
 													if (!empty($table_data)) {
 														foreach ($table_data as $value) {
-												?>
+												?>	
 														<tr>
 															<td><?php echo $no++; ?></td>
 															<td><?php echo strtoupper($value->no_ppu); ?></td>
 															<td><?php echo strtoupper($value->department_name); ?></td>
-															<td><?php echo ($value->jenis_transaksi == 'P') ? 'KELUAR' : 'MASUK'; ?></td>
+															<td><?php echo ($value->jenis_transaksi == 'pP') ? 'KELUAR' : 'MASUK'; ?></td>
 															<td><?php echo strtoupper($value->dibayar_kepada); ?></td>
 															<td><?php echo date('d-m-Y', strtotime($value->created_time)) ?></td>
 															<td class="text-center">
@@ -60,6 +61,9 @@
 															</td>
 															<td class="text-center">
 																<button data-toggle="modal" name="viewQr" id="viewQr" data-target="#detail" class="btn btn-outline-warning" title="View Barcode" onclick="viewBarcode(<?php echo $value->no_bukti; ?>)"> <i class="mdi mdi-eye"></i> </button>
+															</td>
+															<td class="text-center">
+																<a href="<?php echo base_url('non_operational/edit/'. $value->no_bukti) ?>" class="btn btn-light" title="Edit"> <i class="mdi mdi-lead-pencil"></i> </a>
 															</td>
 														</tr>
 												<?php 
