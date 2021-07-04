@@ -104,11 +104,12 @@ class Verifikasi_uang extends MX_Controller
 					);
 			$this->verifikasi->insertVerifikasi($dataVerifikasi, $idTransaksi);
 
-			// $dataOperational = array(
-			// 							'approved_by' => $this->session->userdata('employeeId')
-			// 						);
-			// $this->verifikasi->updatePPU($dataOperational, $idTransaksi);
-			$urlBaru = 'detail/'. $idTransaksi;
+			$dataOperational = array(
+										'approved_by' => $this->session->userdata('employeeId')
+									);
+			$this->verifikasi->updatePPU($dataOperational, $idTransaksi);
+			
+			$urlBaru = 'verifikasi_uang/detail/'. $idTransaksi;
 			redirect($urlBaru, 'refresh');
 		} else {
 			$this->load->view('layout', $this->_data);
