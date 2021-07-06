@@ -12,6 +12,7 @@
   //   $('#datepicker-popup').datepicker({
   //     enableOnReadonly: true,
   //     todayHighlight: true,
+  //     autoclose:true,
   //   });
   // }
   if ($("#inline-datepicker").length) {
@@ -25,13 +26,10 @@
       autoclose: true
     });
   }
-  // if($('.input-daterange').length) {
-  //   $('.input-daterange input').each(function() {
-  //     $(this).datepicker('clearDates');
-  //   });
-  //   $('.input-daterange').datepicker({});
-  // }
-
-  $(".datepicker1").datepicker();
-  $(".datepicker2").datepicker();
+  if($('.input-daterange').length) {
+    $('.input-daterange input').each(function() {
+      $(this).datepicker('clearDates');
+    });
+    $('.input-daterange').datepicker({});
+  }
 })(jQuery);

@@ -6,6 +6,7 @@
         [5, 10, 15, -1],
         [5, 10, 15, "All"]
       ],
+      "ordering": false,
       "iDisplayLength": 10,
       "language": {
         search: ""

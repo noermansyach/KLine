@@ -19,11 +19,6 @@
 
     <script type="text/javascript">
         
-        function hide() {
-
-        }
-
-        // $("#accLevel1").hide();
         $("#selectLevel1").hide();
         $("#accLevel2").hide();
         $("#accLevel3").hide();

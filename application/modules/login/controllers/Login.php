@@ -65,26 +65,20 @@ class Login extends MX_Controller
 		$validation = $this->form_validation->set_rules($this->rules());
 
 		if($validation->run($this)) {
-			if ($dataUser->id_level == '1') {
-				$data_session = array(
+			$data_session = array(
 					'id' 			=> $dataUser->id_user,
 					'nama' 			=> $username,
 					'employeeId' 	=> $dataUser->id_employee,
+					'department' => $dataUser->id_department,
+					'position' 	=> $dataUser->id_position,
 					'status' 		=> 'isLogin',
 					'company' 		=> $dataUser->id_company,
 					'level' 		=> $dataUser->id_level
-				);	
+			);	
+			if ($dataUser->id_level == '1') {
 				$this->session->set_userdata($data_session);
 				redirect('user','refresh');
 			} else {
-				$data_session = array(
-					'id' 			=> $dataUser->id_user,
-					'nama' 			=> $username,
-					'employeeId' 	=> $dataUser->id_employee,
-					'status' 		=> 'isLogin',
-					'company' 		=> $dataUser->id_company,
-					'level' 		=> $dataUser->id_level
-				);	
 				$this->session->set_userdata($data_session);
 				redirect('company','refresh');
 			}

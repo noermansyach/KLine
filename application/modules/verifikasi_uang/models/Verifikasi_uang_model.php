@@ -8,6 +8,8 @@ class Verifikasi_uang_model extends MY_Model
 	public function readAllListVerifikasi(){
 		return $this->db->select('A.*, B.nama_principal')
 						->join('tb_principal B', 'A.id_principal = B.id_principal')
+						->where('A.approved_by !=', null)
+						->or_where('A.approved_by !=', '')
 						->order_by('updated_time', 'asc')
 						->get('tb_transaksi A')
 						->result();
